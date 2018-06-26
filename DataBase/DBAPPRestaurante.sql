@@ -1,10 +1,10 @@
 -- ****************** SqlDBM: Microsoft SQL Server ******************
 -- ******************************************************************
 
-CREATE DATABASE DBAPPRestaurante
+CREATE DATABASE APPRestaurante
 GO
 
-USE  DBAPPRestaurante
+USE  APPRestaurante
 GO
 
 --************************************** [dbo].[TablaDatos]
