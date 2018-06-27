@@ -23,6 +23,13 @@ namespace APPRestaurante.Repository.Test
         }
 
         [TestMethod]
+        public void ObtenerPorId()
+        {
+            var result = _repository.GetEntitybyId(1);
+            Assert.AreEqual(result != null, true);
+        }
+
+        [TestMethod]
         public void Insert()
         {
             var cliente = new Cliente
@@ -40,7 +47,32 @@ namespace APPRestaurante.Repository.Test
         [TestMethod]
         public void update()
         {
-
+            var cliente = new Cliente
+            {
+                id = 1,
+                nombre = "Hugo",
+                apellido = "Roca",
+                tipo_documento = "DNI",
+                num_documento = "12345678",
+                estado = false
+            };
+            Assert.AreEqual(_repository.Update(cliente), true);
         }
+
+        [TestMethod]
+        public void Delete()
+        {
+            var cliente = new Cliente
+            {
+                id = 1,
+                nombre = "Hugo",
+                apellido = "Roca",
+                tipo_documento = "DNI",
+                num_documento = "12345678",
+                estado = false
+            };
+            Assert.AreEqual(_repository.Delete(cliente), true);
+        }
+
     }
 }
