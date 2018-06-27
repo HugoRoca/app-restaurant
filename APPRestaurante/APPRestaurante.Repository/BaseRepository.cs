@@ -1,59 +1,60 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using APPRestaurante.Models;
-using Dapper.Contrib.Extensions;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace APPRestaurante.Repository
 {
-    public class Repository : IRepository
+    public class BaseRepository<T> : IRepository<T> where T : class
     {
-        private readonly string _connectionString;
+        protected readonly string _connectionString;
 
-        public Repository()
+        public BaseRepository()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["APPRestaurante"].ConnectionString;
         }
 
-        public bool Delete(Cliente cliente)
+        public bool Delete(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var result = connection.Delete(cliente);
-                return false;
+                return connection.Delete(entity);
             }
         }
 
-        public Cliente getClientePorId(int idCliente)
+        public IEnumerable<T> GetAll()
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Get<Cliente>(idCliente);
+                return connection.GetAll<T>();
             }
         }
 
-        public int Insert(Cliente cliente)
+        public T GetEntitybyId(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return (int) connection.Insert(cliente);
+                return connection.Get<T>(id);
             }
         }
 
-        public IEnumerable<Cliente> Lista()
+        public int Insert(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.GetAll<Cliente>();
+                return (int)connection.Insert(entity);
             }
         }
 
-        public bool Update(Cliente cliente)
+        public bool Update(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Update(cliente);
+                return connection.Update(entity);
             }
         }
     }

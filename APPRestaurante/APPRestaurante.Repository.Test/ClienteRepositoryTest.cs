@@ -8,17 +8,17 @@ namespace APPRestaurante.Repository.Test
     [TestClass]
     public class ClienteRepositoryTest
     {
-        private readonly Repository _repository;
+        private readonly IRepository<Cliente> _repository;
 
         public ClienteRepositoryTest()
         {
-            _repository = new Repository();
+            _repository = new BaseRepository<Cliente>();
         }
 
         [TestMethod]
         public void Lista()
         {
-            var result = _repository.Lista();
+            var result = _repository.GetAll();
             Assert.AreEqual(result.Count() > 0, true);
         }
 
@@ -37,6 +37,10 @@ namespace APPRestaurante.Repository.Test
             Assert.AreEqual(result > 0, true);
         }
 
-        
+        [TestMethod]
+        public void update()
+        {
+
+        }
     }
 }

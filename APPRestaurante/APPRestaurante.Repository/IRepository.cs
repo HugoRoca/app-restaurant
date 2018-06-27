@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace APPRestaurante.Repository
 {
-    interface IRepository
+    public interface IRepository<T> where T : class
     {
-        int Insert(Cliente cliente);
-        bool Update(Cliente cliente);
-        bool Delete(Cliente cliente);
-        Cliente getClientePorId(int idCliente);
-        IEnumerable<Cliente> Lista();
+        int Insert(T entity);
+        bool Update(T entity);
+        bool Delete(T entity);
+        T GetEntitybyId(int id);
+        IEnumerable<T> GetAll();
     }
 }
