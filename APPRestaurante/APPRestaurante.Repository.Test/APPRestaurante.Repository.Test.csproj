@@ -64,6 +64,10 @@
       <Project>{3320a24a-03b6-41d3-a767-a4513a6e5cc8}</Project>
       <Name>APPRestaurante.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\APPRestaurante.UnitOfWork\APPRestaurante.UnitOfWork.csproj">
+      <Project>{E61386B3-5649-4025-BB01-513A89EC7E30}</Project>
+      <Name>APPRestaurante.UnitOfWork</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
