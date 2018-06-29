@@ -89,11 +89,61 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\ace-fonts.css" />
+    <Content Include="Assets\css\ace-ie.css" />
+    <Content Include="Assets\css\ace-part2.css" />
+    <Content Include="Assets\css\ace.css" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\font-awesome.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\js\ace-extra.js" />
+    <Content Include="Assets\js\ace\ace.ajax-content.js" />
+    <Content Include="Assets\js\ace\ace.auto-container.js" />
+    <Content Include="Assets\js\ace\ace.auto-padding.js" />
+    <Content Include="Assets\js\ace\ace.js" />
+    <Content Include="Assets\js\ace\ace.onpage-help.js" />
+    <Content Include="Assets\js\ace\ace.searchbox-autocomplete.js" />
+    <Content Include="Assets\js\ace\ace.settings-rtl.js" />
+    <Content Include="Assets\js\ace\ace.settings-skin.js" />
+    <Content Include="Assets\js\ace\ace.settings.js" />
+    <Content Include="Assets\js\ace\ace.sidebar-scroll-1.js" />
+    <Content Include="Assets\js\ace\ace.sidebar-scroll-2.js" />
+    <Content Include="Assets\js\ace\ace.sidebar.js" />
+    <Content Include="Assets\js\ace\ace.submenu-hover.js" />
+    <Content Include="Assets\js\ace\ace.touch-drag.js" />
+    <Content Include="Assets\js\ace\ace.widget-box.js" />
+    <Content Include="Assets\js\ace\ace.widget-on-reload.js" />
+    <Content Include="Assets\js\ace\elements.aside.js" />
+    <Content Include="Assets\js\ace\elements.colorpicker.js" />
+    <Content Include="Assets\js\ace\elements.fileinput.js" />
+    <Content Include="Assets\js\ace\elements.onpage-help.js" />
+    <Content Include="Assets\js\ace\elements.scroller.js" />
+    <Content Include="Assets\js\ace\elements.spinner.js" />
+    <Content Include="Assets\js\ace\elements.treeview.js" />
+    <Content Include="Assets\js\ace\elements.typeahead.js" />
+    <Content Include="Assets\js\ace\elements.wizard.js" />
+    <Content Include="Assets\js\ace\elements.wysiwyg.js" />
+    <Content Include="Assets\js\jquery.js" />
+    <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\excanvas.js" />
+    <Content Include="Assets\js\flot\jquery.flot.js" />
+    <Content Include="Assets\js\flot\jquery.flot.pie.js" />
+    <Content Include="Assets\js\flot\jquery.flot.resize.js" />
+    <Content Include="Assets\js\html5shiv.js" />
+    <Content Include="Assets\js\jquery-ui.custom.js" />
+    <Content Include="Assets\js\jquery.easypiechart.js" />
+    <Content Include="Assets\js\jquery.mobile.custom.js" />
+    <Content Include="Assets\js\jquery.sparkline.js" />
+    <Content Include="Assets\js\jquery.ui.touch-punch.js" />
+    <Content Include="Assets\js\respond.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -101,6 +151,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\OpenSans-300.woff" />
+    <Content Include="Assets\fonts\OpenSans-400.woff" />
+    <Content Include="Assets\fonts\readme" />
+    <Content Include="Assets\js\ace\readme" />
+    <Content Include="Assets\js\ace\scripts.json" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -113,6 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

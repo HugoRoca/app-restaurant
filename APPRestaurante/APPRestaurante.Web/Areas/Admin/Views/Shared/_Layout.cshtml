@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+    string controlador = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>@ViewBag.Title | APPRestaurante v 1.0</title>
+    <!--Styles-->
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Assets/css/ace-fonts.css" rel="stylesheet" />
+    @if (controlador != "login")
+    {
+        <link href="~/Assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" rel="stylesheet" />
+        <script src="~/Assets/js/ace-extra.js"></script>
+    }
+    else
+    {
+        <link href="~/Assets/css/ace.css" rel="stylesheet" />
+    }
+
+    <!--[if lte IE 9]>
+        <link href="~/Assets/css/ace-part2.css" rel="stylesheet" />
+    <![endif]-->
+    <!--[if lte IE 9]>
+        <link href="~/Assets/css/ace-ie.css" rel="stylesheet" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <script src="~/Assets/js/html5shiv.js"></script>
+        <script src="~/Assets//js/respond.js"></script>
+    <![endif]-->
+</head>
+<body class="@(controlador != "login" ? "no-skin" : "login-layout light-login")">
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
