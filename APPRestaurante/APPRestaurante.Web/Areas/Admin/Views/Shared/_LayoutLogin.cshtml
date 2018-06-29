@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>@ViewBag.Title | APPRestaurante v 1.0</title>
+    <!--Styles-->
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Assets/css/ace-fonts.css" rel="stylesheet" />
+    <link href="~/Assets/css/ace.css" rel="stylesheet" />
+    <!--[if lte IE 9]>
+        <link href="@Url.Content("~/Assets/css/ace-part2.css")" rel="stylesheet" />
+    <![endif]-->
+    <!--[if lte IE 9]>
+        <link href="@Url.Content("~/Assets/css/ace-ie.css")" rel ="stylesheet" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <script src="@Url.Content("~/Assets/js/html5shiv.js")"></script>
+        <script src="@Url.Content("~/Assets//js/respond.js")"></script>
+    <![endif]-->
+</head>
+<body class="login-layout light-login">
+
+    @RenderBody()
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='@Url.Content("~/Assets/js/jquery.js")'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='@Url.Content("~/Assets/js/jquery1x.js")'>"+"<"+"/script>");
+        </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='@Url.Content("~/Assets/js/jquery.mobile.custom.js")'>" + "<" + "/script>");
+    </script>
+</body>
+</html>
