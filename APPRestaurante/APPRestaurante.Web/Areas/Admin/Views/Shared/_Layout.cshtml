@@ -27,19 +27,76 @@
     }
 
     <!--[if lte IE 9]>
-        <link href="~/Assets/css/ace-part2.css" rel="stylesheet" />
+        <link href="@Url.Content("~/Assets/css/ace-part2.css")" rel="stylesheet" />
     <![endif]-->
     <!--[if lte IE 9]>
-        <link href="~/Assets/css/ace-ie.css" rel="stylesheet" />
+        <link href="@Url.Content("~/Assets/css/ace-ie.css")" rel ="stylesheet" />
     <![endif]-->
     <!--[if lte IE 8]>
-        <script src="~/Assets/js/html5shiv.js"></script>
-        <script src="~/Assets//js/respond.js"></script>
+        <script src="@Url.Content("~/Assets/js/html5shiv.js")"></script>
+        <script src="@Url.Content("~/Assets//js/respond.js")"></script>
     <![endif]-->
 </head>
 <body class="@(controlador != "login" ? "no-skin" : "login-layout light-login")">
-    <div>
-        @RenderBody()
-    </div>
+    @RenderBody()
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='@Url.Content("~/Assets/js/jquery.js")'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='@Url.Content("~/Assets/js/jquery1x.js")'>"+"<"+"/script>");
+        </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='@Url.Content("~/Assets/js/jquery.mobile.custom.js")'>" + "<" + "/script>");
+    </script>
+    @if (controlador != "login")
+    {
+        <script src="~/Assets/js/bootstrap.js"></script>
+        <!--[if lte IE 8]>
+            <script src="~/Assets/js/excanvas.js"></script>
+        <![endif]-->
+        <script src="~/Assets/js/jquery-ui.custom.js"></script>
+        <script src="~/Assets/js/jquery.ui.touch-punch.js"></script>
+        <script src="~/Assets/js/jquery.easypiechart.js"></script>
+        <script src="~/Assets/js/jquery.sparkline.js"></script>
+        <script src="~/Assets/js/flot/jquery.flot.js"></script>
+        <script src="~/Assets/js/flot/jquery.flot.pie.js"></script>
+        <script src="~/Assets/js/flot/jquery.flot.resize.js"></script>
+        <script src="~/Assets/js/ace/elements.scroller.js"></script>
+        <script src="~/Assets/js/ace/elements.colorpicker.js"></script>
+        <script src="~/Assets/js/ace/elements.fileinput.js"></script>
+        <script src="~/Assets/js/ace/elements.typeahead.js"></script>
+        <script src="~/Assets/js/ace/elements.wysiwyg.js"></script>
+        <script src="~/Assets/js/ace/elements.spinner.js"></script>
+        <script src="~/Assets/js/ace/elements.treeview.js"></script>
+        <script src="~/Assets/js/ace/elements.wizard.js"></script>
+        <script src="~/Assets/js/ace/elements.aside.js"></script>
+        <script src="~/Assets/js/ace/ace.js"></script>
+        <script src="~/Assets/js/ace/ace.ajax-content.js"></script>
+        <script src="~/Assets/js/ace/ace.touch-drag.js"></script>
+        <script src="~/Assets/js/ace/ace.sidebar.js"></script>
+        <script src="~/Assets/js/ace/ace.sidebar-scroll-1.js"></script>
+        <script src="~/Assets/js/ace/ace.submenu-hover.js"></script>
+        <script src="~/Assets/js/ace/ace.widget-box.js"></script>
+        <script src="~/Assets/js/ace/ace.settings.js"></script>
+        <script src="~/Assets/js/ace/ace.settings-rtl.js"></script>
+        <script src="~/Assets/js/ace/ace.settings-skin.js"></script>
+        <script src="~/Assets/js/ace/ace.widget-on-reload.js"></script>
+        <script src="~/Assets/js/ace/ace.searchbox-autocomplete.js"></script>
+
+        <link href="~/Assets/css/ace.onpage-help.css" rel="stylesheet" />
+        <link href="~/Assets/css/sunburst.css" rel="stylesheet" />
+
+        <script src="~/Assets/js/ace/elements.onpage-help.js"></script>
+        <script src="~/Assets/js/ace/ace.onpage-help.js"></script>
+        <script src="~/Assets/js/rainbow.js"></script>
+        <script src="~/Assets/js/generic.js"></script>
+        <script src="~/Assets/js/html.js"></script>
+        <script src="~/Assets/js/css.js"></script>
+        <script src="~/Assets/js/javascript.js"></script>
+    }
 </body>
 </html>
