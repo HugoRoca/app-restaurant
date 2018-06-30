@@ -30,13 +30,46 @@
     <![endif]-->
 </head>
 <body class="no-skin">
+
     @Html.Partial("~/Areas/Admin/Views/Shared/_Navbar.cshtml")
+
     <div class="main-container container" id="main-container">
         <script type="text/javascript">
             try { ace.settings.check('main-container', 'fixed') } catch (e) { }
         </script>
+
         @Html.Partial("~/Areas/Admin/Views/Shared/_Sidebar.cshtml")
-        @RenderBody()
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                    </script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Inicio</a>
+                        </li>
+                        <li class="active">Dashboard</li>
+                    </ul>
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+                            <span class="input-icon">
+                                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+                <div class="page-content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("~/Areas/Admin/Views/Shared/_Footer.cshtml")
+
     </div>
     <!--[if !IE]> -->
     <script type="text/javascript">
