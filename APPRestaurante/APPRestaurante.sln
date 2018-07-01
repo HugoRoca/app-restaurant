@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APPRestaurante.UnitOfWork",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APPRestaurante.Web", "APPRestaurante.Web\APPRestaurante.Web.csproj", "{8612A8CD-F43B-4A3A-9B34-7D8EE3756BD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APPRestaurante.Helper", "APPRestaurante.Helper\APPRestaurante.Helper.csproj", "{C5A5C8F4-0E7C-48F0-B988-D6E5284D6A3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8612A8CD-F43B-4A3A-9B34-7D8EE3756BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8612A8CD-F43B-4A3A-9B34-7D8EE3756BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8612A8CD-F43B-4A3A-9B34-7D8EE3756BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A5C8F4-0E7C-48F0-B988-D6E5284D6A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A5C8F4-0E7C-48F0-B988-D6E5284D6A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A5C8F4-0E7C-48F0-B988-D6E5284D6A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A5C8F4-0E7C-48F0-B988-D6E5284D6A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

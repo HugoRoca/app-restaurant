@@ -152,8 +152,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClienteController.cs" />
     <Compile Include="Areas\Admin\Controllers\InicioController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="FiltertActions\ErrorHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +189,7 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,9 +200,29 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Cliente\" />
     <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APPRestaurante.Helper\APPRestaurante.Helper.csproj">
+      <Project>{c5a5c8f4-0e7c-48f0-b988-d6e5284d6a3d}</Project>
+      <Name>APPRestaurante.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\APPRestaurante.Models\APPRestaurante.Models.csproj">
+      <Project>{2f71088a-a6e9-468b-aee5-94fb71cc2417}</Project>
+      <Name>APPRestaurante.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\APPRestaurante.Repository\APPRestaurante.Repository.csproj">
+      <Project>{3320a24a-03b6-41d3-a767-a4513a6e5cc8}</Project>
+      <Name>APPRestaurante.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\APPRestaurante.UnitOfWork\APPRestaurante.UnitOfWork.csproj">
+      <Project>{e61386b3-5649-4025-bb01-513a89ec7e30}</Project>
+      <Name>APPRestaurante.UnitOfWork</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
