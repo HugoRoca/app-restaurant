@@ -8,14 +8,12 @@ using System.Web.Mvc;
 
 namespace APPRestaurante.Web.Areas.Admin.Controllers
 {
-    public class InicioController : Controller
+    public class InicioController : BaseController
     {
         private static readonly log4net.ILog log = LogHelper.GetLogger();
 
-        protected readonly IUnitOfWork _unit;
-        public InicioController()
+        public InicioController(IUnitOfWork unit) : base(unit)
         {
-            _unit = new AppRestauranteUnitOfWork();
         }
 
         // GET: Admin/Inicio
@@ -44,8 +42,8 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             {
                 log.Error(ex.Message, ex);
             }
-                return Json(new { succes = true });
-            
+            return Json(new { succes = true });
+
         }
     }
 }
