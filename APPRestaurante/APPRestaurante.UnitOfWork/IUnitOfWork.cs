@@ -1,5 +1,6 @@
 ﻿using APPRestaurante.Models;
 using APPRestaurante.Repository;
+using APPRestaurante.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace APPRestaurante.UnitOfWork
     public interface IUnitOfWork
     {
         IRepository<Cliente> Clientes { get; }
+        IUsuarioRepository Usuario { get; }
     }
 }
