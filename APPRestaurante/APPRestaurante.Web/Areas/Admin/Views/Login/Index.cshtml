@@ -30,19 +30,20 @@
                                         <fieldset>
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
-                                                    <input type="text" class="form-control" placeholder="Username">
+                                                    <input type="text" class="form-control" placeholder="Username" id="txtUsuario">
                                                     <i class="ace-icon fa fa-user"></i>
                                                 </span>
                                             </label>
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
-                                                    <input type="password" class="form-control" placeholder="Password" />
+                                                    <input type="password" class="form-control" placeholder="Password" id="txtClave" />
                                                     <i class="ace-icon fa fa-lock"></i>
                                                 </span>
                                             </label>
+                                            <span style="color:red;" id="spanError"></span>
                                             <div class="space"></div>
                                             <div class="clearfix">
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                <button type="button" id="btnEntrar" class="width-35 pull-right btn btn-sm btn-primary">
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">Entrar</span>
                                                 </button>
@@ -59,4 +60,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    var loginData = {
+        urlProvider: {
+            validarUsuario: '@Url.Action("Index", "Login")'
+        }
+    };
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Usuario/index.js")"></script>
 
