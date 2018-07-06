@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using APPRestaurante.Web.Areas.Admin.Filters;
 
 namespace APPRestaurante.Web.Areas.Admin.Controllers
 {
+    [Autenticado]
     public class InicioController : BaseController
     {
         private static readonly log4net.ILog log = LogHelper.GetLogger();

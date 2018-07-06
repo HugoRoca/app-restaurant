@@ -1,11 +1,9 @@
-﻿using APPRestaurante.UnitOfWork;
+﻿using APPRestaurante.Helper;
+using APPRestaurante.UnitOfWork;
 using APPRestaurante.Web.Helper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using APPRestaurante.Web.Areas.Admin.Filters;
 
 namespace APPRestaurante.Web.Areas.Admin.Controllers
 {
@@ -18,6 +16,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
         }
 
+        [NoLogin]
         public ActionResult Index()
         {
             return View();
@@ -39,13 +38,22 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 {
                     return Json(new { Success = false, Message = "Usuario y/o contraseña incorrecto." });
                 }
+
+                SessionHelper.AddUserToSession(resultUsuario.id.ToString());
             }
             catch (Exception ex)
             {
                 log.Error("Error Validar Usuario", ex);
-                return Json(new { Error = true, Message = "Ocurrió un error al procesar solicitud."});
-            }           
+                return Json(new { Error = true, Message = "Ocurrió un error al procesar solicitud." });
+            }
 
+            return Json(new { Success = true });
+        }
+
+        [HttpPost]
+        public JsonResult CerrarSession()
+        {
+            SessionHelper.DestroyUserSession();
             return Json(new { Success = true});
         }
     }

@@ -187,6 +187,7 @@
     <Compile Include="Areas\Admin\Controllers\ClienteController.cs" />
     <Compile Include="Areas\Admin\Controllers\InicioController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Filters\AdminFilters.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
