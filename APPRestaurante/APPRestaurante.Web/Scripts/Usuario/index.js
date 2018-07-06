@@ -94,6 +94,7 @@ window.loginModule = loginModule;
 
 $(document).ready(function () {
     loginModule.Inicializar();
+    console.log('login');
 });
 
 /*

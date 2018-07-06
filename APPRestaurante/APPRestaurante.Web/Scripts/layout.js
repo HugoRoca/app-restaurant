@@ -1,9 +1,16 @@
-﻿var inicioModule = (function (globalData, $) {
+﻿var layoutModule = (function (globalData, $) {
     'use strict';
 
     var me = {};
 
     var urls = globalData.urlProvider;
+
+    me.Elements = (function () {
+        function setSpanNombreUsuario() { return $('#spanNombre'); }
+        return {
+            setSpanNombreUsuario: setSpanNombreUsuario
+        }
+    })();
 
     me.Services = (function () {
         function cerrarSesion() {
@@ -40,20 +47,25 @@
             var body = $('body');
             body.on('click', '#btnCerrarSession', me.Eventos.salir);
         }
+        function nombreUsuario() {
+            me.Elements.setSpanNombreUsuario().text('HUGO ANTONIO');
+        }
         return {
-            inicializarEventos: inicializarEventos
+            inicializarEventos: inicializarEventos,
+            nombreUsuario: nombreUsuario
         }
     })();
 
     me.Inicializar = function () {
         me.Funciones.inicializarEventos();
+        me.Funciones.nombreUsuario();
     }
 
     return me;
-})(inicioData, jQuery);
+})(layoutData, jQuery);
 
-window.inicioModule = inicioModule;
+window.layoutModule = layoutModule;
 
 $(document).ready(function () {
-    inicioModule.Inicializar();
+    layoutModule.Inicializar();
 });

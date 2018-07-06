@@ -176,7 +176,7 @@
     <Content Include="Assets\js\rainbow.js" />
     <Content Include="Assets\js\respond.js" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\Inicio\index.js" />
+    <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Usuario\index.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -238,6 +238,7 @@
     <Folder Include="Areas\Admin\Views\Cliente\" />
     <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\Inicio\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APPRestaurante.Helper\APPRestaurante.Helper.csproj">
