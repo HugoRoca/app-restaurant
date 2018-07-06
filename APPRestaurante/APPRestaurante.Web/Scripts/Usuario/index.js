@@ -11,8 +11,8 @@
     }
 
     me.Elements = (function () {
-        function getInputUsuario() { return $('#txtUsuario'); }
-        function getInputClave() { return $('#txtClave'); }
+        function getInputUsuario() { return $('.inputUsuario'); }
+        function getInputClave() { return $('.inputClave'); }
         function setErrorSpan() { return $('#spanError'); }
         return {
             getInputUsuario: getInputUsuario,
@@ -38,7 +38,8 @@
     me.Funciones = (function () {
         function inicializarEventos() {
             var body = $('body');
-            body.on('click', '#btnEntrar', me.Eventos.ingresar);
+            body.on('click', '.btn-primary', me.Eventos.ingresar);
+            body.on('keydown', '.inputClave', me.Eventos.ingresarEnter)
         }
         function setError(text) {
             me.Elements.setErrorSpan().text(text);
@@ -71,8 +72,15 @@
                 me.Funciones.setError(e.Message);
             });
         }
+        function ingresarEnter(e) {
+            if (e.keyCode === 13 && !e.shiftKey) {
+                e.preventDefault();
+                ingresar();
+            }
+        }
         return {
-            ingresar: ingresar
+            ingresar: ingresar,
+            ingresarEnter: ingresarEnter
         }        
     })();
     me.Inicializar = function () {

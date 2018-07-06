@@ -41,7 +41,7 @@
         @Html.Partial("~/Areas/Admin/Views/Shared/_Sidebar.cshtml")
 
         <div class="main-content">
-            <div class="main-content-inner">                
+            <div class="main-content-inner">
 
                 @Html.Partial("~/Areas/Admin/Views/Shared/_Breadcrumbs.cshtml")
 
@@ -112,5 +112,16 @@
     <script src="~/Assets/js/html.js"></script>
     <script src="~/Assets/js/css.js"></script>
     <script src="~/Assets/js/javascript.js"></script>
+
+    <script>
+    var inicioData = {
+        urlProvider: {
+            cerrarSesion: '@Url.Action("CerrarSession", "Login")',
+            redirectLogin: '@Url.Action("Index", "Login")'
+        }
+    };
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Inicio/index.js")"></script>
+
 </body>
 </html>
