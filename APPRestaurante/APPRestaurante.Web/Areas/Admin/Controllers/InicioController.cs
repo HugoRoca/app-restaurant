@@ -22,16 +22,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         // GET: Admin/Inicio
         public ActionResult Index()
         {
-            try
-            {
-                ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(SessionHelper.GetUser());
-                return View(_unit.Usuario.GetEntitybyId(SessionHelper.GetUser()));
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return View();
         }
     }
 }

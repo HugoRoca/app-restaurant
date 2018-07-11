@@ -185,6 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CargaController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClienteController.cs" />
     <Compile Include="Areas\Admin\Controllers\InicioController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
@@ -235,6 +236,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Carga\" />
     <Folder Include="Areas\Admin\Views\Cliente\" />
     <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Models\" />
