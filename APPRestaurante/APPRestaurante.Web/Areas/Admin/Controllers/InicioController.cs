@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using APPRestaurante.Web.Areas.Admin.Filters;
+using APPRestaurante.Helper;
 
 namespace APPRestaurante.Web.Areas.Admin.Controllers
 {
@@ -23,29 +24,14 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             try
             {
-                return View(_unit.Clientes.GetEntitybyId(7));
+                ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(SessionHelper.GetUser());
+                return View(_unit.Usuario.GetEntitybyId(SessionHelper.GetUser()));
             }
             catch (Exception)
             {
 
                 throw;
             }
-        }
-
-        public JsonResult Error()
-        {
-            try
-            {
-                var zero = 0;
-                var x = 5 / zero;
-
-            }
-            catch (Exception ex)
-            {
-                log.Error(ex.Message, ex);
-            }
-            return Json(new { succes = true });
-
         }
     }
 }

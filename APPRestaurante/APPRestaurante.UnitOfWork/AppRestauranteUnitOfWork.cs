@@ -16,10 +16,12 @@ namespace APPRestaurante.UnitOfWork
         {
             Clientes = new BaseRepository<Cliente>();
             Usuario = new UsuarioRepository();
+            Permiso = new PermisoRepository();
         }
 
         public IRepository<Cliente> Clientes { get; private set; }
         public IUsuarioRepository Usuario { get; private set; }
+        public IPermisoRepository Permiso { get; private set; }
 
         public void Dispose()
         {
