@@ -38,8 +38,9 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 {
                     return Json(new { Success = false, Message = "Usuario y/o contraseña incorrecto." });
                 }
-
+                
                 SessionHelper.AddUserToSession(resultUsuario.id.ToString());
+                ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(SessionHelper.GetUser());
             }
             catch (Exception ex)
             {
