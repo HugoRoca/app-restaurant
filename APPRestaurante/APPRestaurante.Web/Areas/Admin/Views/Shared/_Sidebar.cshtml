@@ -1,5 +1,5 @@
 ﻿@{
-    var permisos = (IEnumerable<APPRestaurante.Models.Permiso>) ViewBag.Permisos;
+    var permisos = (IEnumerable<APPRestaurante.Models.Permiso>)ViewBag.Permisos;
 }
 
 <div id="sidebar" class="sidebar                  responsive sidebar-fixed">
@@ -41,18 +41,43 @@
     </div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
-    @foreach (var item in ViewBag.Permisos)
-    {
-        <li>@item.descripcion</li>
-    }
-        <li class="active">
-            <a href="index.html">
-                <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text"> Dashboard </span>
-            </a>
+        @foreach (var item in ViewBag.Permisos)
+        {
+            if (item.id == 1)
+            {
+                <li class="active">
+                    <a href="@item.url">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text"> @item.descripcion.ToUpper() </span>
+                    </a>
 
-            <b class="arrow"></b>
-        </li>
+                    <b class="arrow"></b>
+                </li>
+            }
+            else
+            {
+                if (item.padre == 0)
+                {
+                    <li class="">
+                        <a href="@item.url" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-desktop"></i>
+                            <span class="menu-text"> @item.descripcion.ToUpper() </span>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+                        <b class="arrow"></b>
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="typography.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Typography
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            }
+        }
 
         <li class="">
             <a href="#" class="dropdown-toggle">
