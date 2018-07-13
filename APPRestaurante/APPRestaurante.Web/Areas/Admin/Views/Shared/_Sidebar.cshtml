@@ -1,4 +1,8 @@
-﻿<div id="sidebar" class="sidebar                  responsive sidebar-fixed">
+﻿@{
+    var permisos = (IEnumerable<APPRestaurante.Models.Permiso>) ViewBag.Permisos;
+}
+
+<div id="sidebar" class="sidebar                  responsive sidebar-fixed">
     <script type="text/javascript">
         try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
     </script>
@@ -37,6 +41,10 @@
     </div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
+    @foreach (var item in ViewBag.Permisos)
+    {
+        <li>@item.descripcion</li>
+    }
         <li class="active">
             <a href="index.html">
                 <i class="menu-icon fa fa-tachometer"></i>

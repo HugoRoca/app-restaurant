@@ -7,13 +7,15 @@ using APPRestaurante.Web.Areas.Admin.Filters;
 
 namespace APPRestaurante.Web.Areas.Admin.Controllers
 {
-    public class LoginController : BaseController
+    public class LoginController : Controller
     {
         // GET: Admin/Login
         private static readonly log4net.ILog log = LogHelper.GetLogger();
+        protected readonly IUnitOfWork _unit;
 
-        public LoginController(IUnitOfWork unit) : base(unit)
+        public LoginController(IUnitOfWork unit)
         {
+            _unit = unit;
         }
 
         [NoLogin]
@@ -38,9 +40,8 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 {
                     return Json(new { Success = false, Message = "Usuario y/o contraseña incorrecto." });
                 }
-                
+
                 SessionHelper.AddUserToSession(resultUsuario.id.ToString());
-                ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(SessionHelper.GetUser());
             }
             catch (Exception ex)
             {
