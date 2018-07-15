@@ -19,7 +19,9 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(SessionHelper.GetUser());
+            var idUsuario = SessionHelper.GetUser();
+            ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(idUsuario);
+            ViewBag.Usuario = _unit.Usuario.GetEntitybyId(idUsuario);
 
             base.OnActionExecuting(filterContext);
         }
