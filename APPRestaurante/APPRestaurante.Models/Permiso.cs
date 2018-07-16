@@ -10,5 +10,6 @@ namespace APPRestaurante.Models
         public bool estado { get; set; }
         public int padre { get; set; }
         public string url { get; set; }
+        public string icono { get; set; }
     }
 }
