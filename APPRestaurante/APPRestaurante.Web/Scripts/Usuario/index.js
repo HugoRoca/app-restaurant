@@ -58,9 +58,10 @@
                 me.Funciones.setError('Debe de ingresar los datos correctamente.');
                 return;
             }
-
+            cargandoAbrir();
             var successValidate = function (r) {
                 if (!r.Success) {
+                    cargandoCerar();
                     me.Funciones.setError(r.Message);
                     return;
                 }
@@ -69,6 +70,7 @@
             }
 
             me.Services.validar(_usuario, _clave).then(successValidate, function (e) {
+                cargandoCerar();
                 me.Funciones.setError(e.Message);
             });
         }
@@ -77,6 +79,12 @@
                 e.preventDefault();
                 ingresar();
             }
+        }
+        function cargandoAbrir() {
+            $('.cargaPantalla').show();
+        }
+        function cargandoCerar() {
+            $('.cargaPantalla').hide();
         }
         return {
             ingresar: ingresar,

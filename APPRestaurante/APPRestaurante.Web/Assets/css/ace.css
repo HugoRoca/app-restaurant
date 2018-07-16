@@ -19904,3 +19904,14 @@ input.typeahead.scrollable ~ .tt-dropdown-menu {
     display: none !important;
   }
 }
+
+/* GIF */
+.cargaPantalla {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1049;
+    background: url(../images/cargando_puntos.gif) center no-repeat rgba(255,255,255,0.5);
+}
