@@ -177,6 +177,7 @@
     <Content Include="Assets\js\rainbow.js" />
     <Content Include="Assets\js\respond.js" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\general.js" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Usuario\index.js" />
     <Content Include="Web.config" />
