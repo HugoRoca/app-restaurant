@@ -58,10 +58,12 @@
                 me.Funciones.setError('Debe de ingresar los datos correctamente.');
                 return;
             }
-            cargandoAbrir();
+
+            FuncionesGenerales.AbrirCargando();
+
             var successValidate = function (r) {
                 if (!r.Success) {
-                    cargandoCerar();
+                    FuncionesGenerales.CerrarCargando();
                     me.Funciones.setError(r.Message);
                     return;
                 }
@@ -70,7 +72,7 @@
             }
 
             me.Services.validar(_usuario, _clave).then(successValidate, function (e) {
-                cargandoCerar();
+                FuncionesGenerales.CerrarCargando();
                 me.Funciones.setError(e.Message);
             });
         }
@@ -80,16 +82,10 @@
                 ingresar();
             }
         }
-        function cargandoAbrir() {
-            $('.cargaPantalla').show();
-        }
-        function cargandoCerar() {
-            $('.cargaPantalla').hide();
-        }
         return {
             ingresar: ingresar,
             ingresarEnter: ingresarEnter
-        }        
+        }
     })();
     me.Inicializar = function () {
         me.Funciones.inicializarEventos();

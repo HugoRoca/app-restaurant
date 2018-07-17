@@ -1,16 +1,8 @@
-﻿(function () {
-    'use strict';
-
-    FuncionesGenerales = {
-        AbrirCargando: function () {
-
-        },
-        CerrarCargando: function () {
-
-        }
-    };
-
-
-
-
-})();
+﻿FuncionesGenerales = {
+    AbrirCargando: function () {
+        $('.cargaPantalla').show();
+    },
+    CerrarCargando: function () {
+        $('.cargaPantalla').hide();
+    }
+};

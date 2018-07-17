@@ -28,16 +28,15 @@
     <![endif]-->
     <!--JQUERY-->
     <!--[if !IE]> -->
-        <script src="~/Assets/js/jquery.js"></script>
+    <script src="~/Assets/js/jquery.js"></script>
     <!-- <![endif]-->
     <!--[if IE]>
         <script type="text/javascript">
             window.jQuery || document.write("<script src='@Url.Content("~/Assets/js/jquery1x.js")'>"+"<"+"/script>");
         </script>
     <![endif]-->
-        <style>
-            
-        </style>
+    <style>
+    </style>
 </head>
 <body class="login-layout light-login">
     <div class="cargaPantalla" style="display: none;"></div>
@@ -46,5 +45,6 @@
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement) document.write("<script src='@Url.Content("~/Assets/js/jquery.mobile.custom.js")'>" + "<" + "/script>");
     </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/general.js")"></script>
 </body>
 </html>
