@@ -47,18 +47,13 @@
             var body = $('body');
             body.on('click', '#btnCerrarSession', me.Eventos.salir);
         }
-        function nombreUsuario() {
-            me.Elements.setSpanNombreUsuario().text('HUGO ANTONIO');
-        }
         return {
-            inicializarEventos: inicializarEventos,
-            nombreUsuario: nombreUsuario
+            inicializarEventos: inicializarEventos
         }
     })();
 
     me.Inicializar = function () {
         me.Funciones.inicializarEventos();
-        me.Funciones.nombreUsuario();
     }
 
     return me;

@@ -180,6 +180,8 @@
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Usuario\index.js" />
+    <Content Include="Uploads\jehidi.chavez.png" />
+    <Content Include="Uploads\hugo.roca.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

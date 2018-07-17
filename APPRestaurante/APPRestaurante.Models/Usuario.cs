@@ -9,5 +9,7 @@ namespace APPRestaurante.Models
         public string usuario { get; set; }
         public string clave { get; set; }
         public bool estado { get; set; }
+        public string nombres { get; set; }
+        public string foto { get; set; }
     }
 }
