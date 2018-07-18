@@ -129,6 +129,7 @@
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\images\cargando_puntos.gif" />
+    <Content Include="Assets\images\Loading.gif" />
     <Content Include="Assets\images\pattern.jpg" />
     <Content Include="Assets\js\ace-extra.js" />
     <Content Include="Assets\js\ace\ace.ajax-content.js" />
