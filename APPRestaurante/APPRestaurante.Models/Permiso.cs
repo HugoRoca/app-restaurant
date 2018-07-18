@@ -11,5 +11,7 @@ namespace APPRestaurante.Models
         public int padre { get; set; }
         public string url { get; set; }
         public string icono { get; set; }
+        public string controlador { get; set; }
+        public bool active { get; set; }
     }
 }
