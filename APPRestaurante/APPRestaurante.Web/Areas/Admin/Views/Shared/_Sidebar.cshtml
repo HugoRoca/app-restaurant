@@ -1,7 +1,30 @@
 ﻿@{
     var permisos = (IEnumerable<APPRestaurante.Models.Permiso>)ViewBag.Permisos;
     string controlador = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
-    
+
+    foreach (var item in permisos)
+    {
+        if (item.controlador.ToUpper() == controlador.ToUpper())
+        {
+            item.active = true;
+
+            if (item.id > 0 && item.padre > 0)
+            {
+                foreach (var i in permisos)
+                {
+                    if (i.id == item.padre)
+                    {
+                        i.active = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
 }
 
 <div id="sidebar" class="sidebar                  responsive sidebar-fixed">
@@ -38,11 +61,14 @@
     </div>
 
     <ul class="nav nav-list">
-        @foreach (var item in ViewBag.Permisos)
+        @foreach (var item in permisos)
         {
+            <script>
+    console.log('@item.active');
+            </script>
             if (item.id == 1)
             {
-                <li class="@(controlador.ToUpper() == item.controlador.ToUpper() ? "active" : "")">
+                <li class="@(item.active ? "active" : "")">
                     <a href="@item.url">
                         <i class="@item.icono"></i>
                         <span class="menu-text"> @item.descripcion.ToUpper() </span>
@@ -63,11 +89,11 @@
                         </a>
                         <b class="arrow"></b>
                         <ul class="submenu">
-                            @foreach (var i in ViewBag.Permisos)
+                            @foreach (var i in permisos)
                             {
                                 if (item.id == i.padre)
                                 {
-                                    <li class="@(controlador.ToUpper() == i.controlador.ToUpper() ? "active" : "")">
+                                    <li class="@(i.active ? "active" : "")">
                                         <a href="@i.url">
                                             <i class="menu-icon fa fa-caret-right"></i>
                                             @i.descripcion
