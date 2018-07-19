@@ -63,9 +63,6 @@
     <ul class="nav nav-list">
         @foreach (var item in permisos)
         {
-            <script>
-    console.log('@item.active');
-            </script>
             if (item.id == 1)
             {
                 <li class="@(item.active ? "active" : "")">
@@ -81,7 +78,7 @@
             {
                 if (item.padre == 0)
                 {
-                    <li class="">
+                    <li class="@(item.active ? "active open" : "")">
                         <a href="@item.url" class="dropdown-toggle">
                             <i class="@item.icono"></i>
                             <span class="menu-text"> @item.descripcion.ToUpper() </span>
