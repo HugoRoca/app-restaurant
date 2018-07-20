@@ -14,5 +14,6 @@ namespace APPRestaurante.UnitOfWork
         IRepository<Cliente> Clientes { get; }
         IUsuarioRepository Usuario { get; }
         IPermisoRepository Permiso { get; }
+        IMenuRepository Menu { get; }
     }
 }
