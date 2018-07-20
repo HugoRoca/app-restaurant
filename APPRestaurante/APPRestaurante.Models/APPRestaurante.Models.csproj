@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Cliente.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="PermisoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

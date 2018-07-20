@@ -19,5 +19,18 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [Route("Count/{rows:int}")]
+        public JsonResult Count(int rows)
+        {
+            var total = _unit.Menu.Count();
+            var totalPagina = total / rows;
+            var page = new
+            {
+                TotalPages = totalPagina
+            };
+
+            return Json(page);
+        }
     }
 }

@@ -13,6 +13,14 @@ namespace APPRestaurante.Repository.Repositories
 {
     public class MenuRepository : BaseRepository<Menu>, IMenuRepository
     {
+        public int Count()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.ExecuteScalar<int>("select count(id) from menudetalle where estado = 1");
+            }
+        }
+
         public IEnumerable<Menu> ListaMenuPaginacion(DateTime desde, DateTime hasta, int startRow, int endRow)
         {
             using (var connection = new SqlConnection(_connectionString))
