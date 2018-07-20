@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace APPRestaurante.Web.Areas.Admin.Controllers
 {
+    [RoutePrefix("Menu")]
     public class MenuController : BaseController
     {
         public MenuController(IUnitOfWork unit) : base(unit)
