@@ -123,8 +123,12 @@
     <Content Include="Assets\css\ace-part2.css" />
     <Content Include="Assets\css\ace.css" />
     <Content Include="Assets\css\ace.onpage-help.css" />
+    <Content Include="Assets\css\bootstrap-datetimepicker.css" />
     <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\chosen.css" />
+    <Content Include="Assets\css\datepicker.css" />
     <Content Include="Assets\css\font-awesome.css" />
+    <Content Include="Assets\css\jquery-ui.custom.css" />
     <Content Include="Assets\css\sunburst.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
@@ -158,6 +162,7 @@
     <Content Include="Assets\js\ace\elements.typeahead.js" />
     <Content Include="Assets\js\ace\elements.wizard.js" />
     <Content Include="Assets\js\ace\elements.wysiwyg.js" />
+    <Content Include="Assets\js\bootstrap-datepicker.js" />
     <Content Include="Assets\js\css.js" />
     <Content Include="Assets\js\generic.js" />
     <Content Include="Assets\js\html.js" />
