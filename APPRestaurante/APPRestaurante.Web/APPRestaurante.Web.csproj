@@ -228,6 +228,8 @@
     <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Breadcrumbs.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\ListaMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Registro.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
