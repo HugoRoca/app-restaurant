@@ -40,11 +40,11 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             return Json(new { Page = page});
         }
 
-        public JsonResult ListaMenu(int page, int row)
+        public JsonResult ListaMenu(DateTime desde, DateTime hasta, int pagina, int fila)
         {
-            var start = ((page - 1) * row) + 1;
-            var end = page * row;
-            return Json(_unit.Menu.ListaMenuPaginacion(DateTime.Now, DateTime.Now, start, end));
+            var start = ((pagina - 1) * fila) + 1;
+            var end = pagina * fila;
+            return Json(_unit.Menu.ListaMenuPaginacion(desde, hasta, start, end));
         }
     }
 }

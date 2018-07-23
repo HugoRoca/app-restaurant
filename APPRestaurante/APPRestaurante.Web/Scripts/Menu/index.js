@@ -15,15 +15,33 @@
     })();
 
     me.Servicios = (function () {
+        function listaMenu(_desde, _hasta) {
+            return $.ajax({
+                url: urls.urlBuscar,
+                method: 'POST',
+                data: {
+                    desde: _desde,
+                    hasta: _hasta,
+
+                }
+            });
+        }
         return {}
     })();
 
     me.Eventos = (function () {
-        return {}
+        function LlamarNuevoRegistro() {
+            window.location.href = urls.llamaNuevoRegistro;
+        }
+        return {
+            LlamarNuevoRegistro: LlamarNuevoRegistro
+        }
     })();
 
     me.Funciones = (function () {
         function inicializarEventos() {
+            var body = $('body');
+            body.on('click', 'button[name=NuevoRegistro]', me.Eventos.LlamarNuevoRegistro);
             FuncionesGenerales.LlamarCalendario(me.Elementos.getFechaDesde());
             FuncionesGenerales.LlamarCalendario(me.Elementos.getFechaHasta());
         }
@@ -37,6 +55,7 @@
     }
 
     return me;
+
 })(menuData, jQuery);
 
 window.menuModule = menuModule;

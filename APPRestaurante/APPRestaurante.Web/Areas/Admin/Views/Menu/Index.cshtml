@@ -23,7 +23,7 @@
         </form>
         <div class="space space-8"></div>
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-responsive">
+            <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
                 <thead>
                     <tr>
                         <th class="text-center">Acciones</th>
@@ -57,8 +57,10 @@
 <script>
     var menuData = {
         urlProvider: {
-            nuevoRegistro: '@Url.Action("Registro", "Menu")'
+            llamaNuevoRegistro: '@Url.Action("Registro", "Menu")',
+            urlBuscar: '@Url.Action("ListaMenu", "Menu")'
         }
     };
 </script>
+<script type="text/javascript" src="@Url.Content("~/Assets/js/jquery.bootpag.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Scripts/Menu/index.js")"></script>
