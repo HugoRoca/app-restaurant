@@ -186,6 +186,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\Menu\index.js" />
     <Content Include="Scripts\Menu\Listado.js" />
     <Content Include="Scripts\Usuario\index.js" />
     <Content Include="Uploads\jehidi.chavez.png" />
@@ -250,10 +251,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\Carga\" />
     <Folder Include="Areas\Admin\Views\Cliente\" />
-    <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Inicio\" />
   </ItemGroup>

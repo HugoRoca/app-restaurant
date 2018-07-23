@@ -22,5 +22,12 @@
     },
     CerrarCargando: function () {
         $('#loadingScreen').hide();
+    },
+    LlamarCalendario: function (val) {
+        val.datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: "dd/mm/yy"
+        });
     }
 };

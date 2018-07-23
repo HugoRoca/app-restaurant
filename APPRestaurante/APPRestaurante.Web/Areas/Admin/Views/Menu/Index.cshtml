@@ -4,11 +4,24 @@
 }
 <div class="row">
     <div class="col-md-12">
-        <a class="btn btn-white btn-info btn-bold" href="@Url.Action("Registro", "Menu")">
+        <button type="button" name="NuevoRegistro" id="NuevoRegistro" class="btn btn-white btn-info btn-bold">
             <i class="ace-icon fa fa-plus bigger-120 blue"></i>
             Nuevo Registro
-        </a>
+        </button>
         <hr />
+        <form class="form-inline">
+            <div class="input-daterange input-group">
+                <input type="text" class="input-sm form-control Desde" id="Desde" />
+                <span class="input-group-addon">
+                    <i class="fa fa-exchange"></i>
+                </span>
+                <input type="text" class="input-sm form-control Hasta" id="Hasta" />
+            </div>
+            <button type="button" name="Buscar" id="Buscar" class="btn btn-info btn-sm">
+                <i class="ace-icon fa fa-search bigger-110"></i> Buscar
+            </button>
+        </form>
+        <div class="space space-8"></div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-responsive">
                 <thead>
@@ -30,7 +43,7 @@
                         </td>
                         <td>15/12/2015</td>
                         <td>Estofado de pollo</td>
-                        <td>Rico pollo acompañado deu una deliciones...</td>
+                        <td>Rico pollo acompañado de una deliciones...</td>
                         <td>Plato de fondo</td>
                         <td class="text-right">S/ 14.50</td>
                         <td class="text-center"><img src="~/Uploads/hugo.roca.png" alt="Alternate Text" /></td>
@@ -40,3 +53,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    var menuData = {
+        urlProvider: {
+            nuevoRegistro: '@Url.Action("Registro", "Menu")'
+        }
+    };
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Menu/index.js")"></script>
