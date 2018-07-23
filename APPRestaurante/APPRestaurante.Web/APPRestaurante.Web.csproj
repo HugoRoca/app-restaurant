@@ -167,6 +167,7 @@
     <Content Include="Assets\js\generic.js" />
     <Content Include="Assets\js\html.js" />
     <Content Include="Assets\js\javascript.js" />
+    <Content Include="Assets\js\jquery.bootpag.js" />
     <Content Include="Assets\js\jquery.js" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\excanvas.js" />
