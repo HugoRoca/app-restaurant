@@ -186,6 +186,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\Menu\Listado.js" />
     <Content Include="Scripts\Usuario\index.js" />
     <Content Include="Uploads\jehidi.chavez.png" />
     <Content Include="Uploads\hugo.roca.png" />
