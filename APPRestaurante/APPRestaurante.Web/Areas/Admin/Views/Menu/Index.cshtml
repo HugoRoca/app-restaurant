@@ -21,8 +21,7 @@
                 <i class="ace-icon fa fa-search bigger-110"></i> Buscar
             </button>
         </form>
-        <div class="space space-8"></div>
-        <div class="pagination"></div>
+        <div class="space-4"></div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
                 <thead>
@@ -60,7 +59,8 @@
     var menuData = {
         urlProvider: {
             llamaNuevoRegistro: '@Url.Action("Registro", "Menu")',
-            urlBuscar: '@Url.Action("ListaMenu", "Menu")'
+            urlBuscar: '@Url.Action("ListaMenu", "Menu")',
+            urlContador: '@Url.Action("ContarLista", "Menu")'
         }
     };
 </script>

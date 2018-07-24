@@ -29,5 +29,19 @@
             todayHighlight: true,
             format: "dd/mm/yy"
         });
+    },
+    ConvertirFechaDDMMYYYY: function (fechaTime) {
+        if (fechaTime == "0001-01-01T00:00:00") {
+            return null;
+        } else {
+            var date = new Date(fechaTime);
+            var Year = date.getFullYear();
+            var Month = (1 + date.getMonth()).toString();
+            Month = Month.length > 1 ? Month : '0' + Month;
+            var Day = date.getDate().toString();
+            Day = Day.length > 1 ? Day : '0' + Day;
+
+            return Day + "/" + Month + "/" + Year;
+        }
     }
 };
