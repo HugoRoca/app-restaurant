@@ -17,7 +17,7 @@
     })();
 
     me.Servicios = (function () {
-        function contarLista(_rows) {
+        function ContarLista(_rows) {
             return $.ajax({
                 url: urls.urlContador,
                 method: 'POST',
@@ -27,18 +27,45 @@
             });
         }
 
-        function Lista() {
+        function Lista(_pagina) {
+            var _desde = me.Elementos.getFechaDesde().val();
+            var _hasta = me.Elementos.getFechaHasta().val();
 
+            return $.ajax({
+                url: urls.urlBuscar,
+                method: 'POST',
+                data: {
+                    desde: _desde,
+                    hasta: _hasta,
+                    pagina: _pagina,
+                    fila: registros
+                }
+            });
         }
 
         return {
-            contarLista: contarLista
+            ContarLista: ContarLista,
+            Lista: Lista
         }
     })();
 
     me.Eventos = (function () {
         function LlamarNuevoRegistro() {
             window.location.href = urls.llamaNuevoRegistro;
+        }
+
+        function LlenarTabla(_pagina) {
+            FuncionesGenerales.AbrirCargando();
+
+            var successLista = function (r) {
+                console.log(r);
+                FuncionesGenerales.CerrarCargando();
+            }
+
+            me.Servicios.Lista(_pagina).then(successLista, function (e) {
+                console.log(e);
+                FuncionesGenerales.CerrarCargando();
+            });
         }
 
         function PaginacionDisenio(columnas) {
@@ -58,8 +85,7 @@
                 lastClass: 'last',
                 firstClass: 'first'
             }).on('page', function (event, num) {
-                //getCustomers(num);
-                console.log('Cambio de fila');
+                LlenarTabla(num);
             });
         }
 
@@ -71,14 +97,22 @@
                 FuncionesGenerales.CerrarCargando();
             };
 
-            me.Servicios.contarLista(registros).then(success, function (e) {
+            me.Servicios.ContarLista(registros).then(success, function (e) {
                 console.log(e);
                 FuncionesGenerales.CerrarCargando();
             });
         }
+
+        function Buscar() {
+            PaginacionFuncionalidad();
+            LlenarTabla(1);
+        }
+
         return {
             LlamarNuevoRegistro: LlamarNuevoRegistro,
-            PaginacionFuncionalidad: PaginacionFuncionalidad
+            PaginacionFuncionalidad: PaginacionFuncionalidad,
+            LlenarTabla: LlenarTabla,
+            Buscar: Buscar
         }
     })();
 
@@ -86,15 +120,17 @@
         function inicializarEventos() {
             var body = $('body');
             body.on('click', 'button[name=NuevoRegistro]', me.Eventos.LlamarNuevoRegistro);
+            body.on('click', 'button[name=Buscar]', me.Eventos.Buscar);
             FuncionesGenerales.LlamarCalendario(me.Elementos.getFechaDesde());
             FuncionesGenerales.LlamarCalendario(me.Elementos.getFechaHasta());
 
             var fecha = new Date();
             me.Elementos.getFechaDesde().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
             me.Elementos.getFechaHasta().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
-            //Init
-            me.Eventos.PaginacionFuncionalidad();
+            
+            me.Eventos.LlenarTabla(1);
         }
+
         return {
             inicializarEventos: inicializarEventos
         }

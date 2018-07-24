@@ -44,7 +44,8 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             var start = ((pagina - 1) * fila) + 1;
             var end = pagina * fila;
-            return Json(_unit.Menu.ListaMenuPaginacion(desde, hasta, start, end));
+            var resultado = _unit.Menu.ListaMenuPaginacion(desde, hasta, start, end);
+            return Json(resultado);
         }
     }
 }
