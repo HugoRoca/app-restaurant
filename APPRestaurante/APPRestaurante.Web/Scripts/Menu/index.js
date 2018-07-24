@@ -58,7 +58,25 @@
             FuncionesGenerales.AbrirCargando();
 
             var successLista = function (r) {
-                console.log(r);
+                var tabla = '';
+                for (var i = 0; i < r.length; i++) {
+                    tabla += '<tr>';
+                    tabla += '<td>' +
+                                '<button class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></button>' +
+                                '<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>' +
+                        '</td>';
+                    tabla += '<td>' + r[i].fecha + '</td>';
+                    tabla += '<td>' + r[i].titulo + '</td>';
+                    tabla += '<td>' + r[i].descripcion + '</td>';
+                    tabla += '<td>' + r[i].tipo + '</td>';
+                    tabla += '<td class="text-right">' + r[i].precio + '</td>';
+                    tabla += '<td class="text-center">' + r[i].foto + '</td>';
+                    tabla += '</tr > ';
+                }
+
+                if (tabla != '') {
+                    $('#ListaMenuTbody').html(tabla);
+                }
                 FuncionesGenerales.CerrarCargando();
             }
 
