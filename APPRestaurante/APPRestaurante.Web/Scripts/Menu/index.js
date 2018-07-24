@@ -15,18 +15,18 @@
     })();
 
     me.Servicios = (function () {
-        function listaMenu(_desde, _hasta) {
+        function contarLista(_rows) {
             return $.ajax({
-                url: urls.urlBuscar,
+                url: urls.urlContador,
                 method: 'POST',
                 data: {
-                    desde: _desde,
-                    hasta: _hasta,
-
+                    rows: _rows
                 }
             });
         }
-        return {}
+        return {
+            contarLista: contarLista
+        }
     })();
 
     me.Eventos = (function () {

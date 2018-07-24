@@ -28,10 +28,10 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Count(int rows)
+        public JsonResult ContarLista(int rows)
         {
             var total = _unit.Menu.Count();
-            var totalPagina = total / rows;
+            var totalPagina = total % rows != 0 ? (total / rows) + 1 : total / rows;
             var page = new
             {
                 TotalPages = totalPagina
