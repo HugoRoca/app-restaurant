@@ -21,6 +21,27 @@ namespace APPRestaurante.Repository.Repositories
             }
         }
 
+        public int InsertarMenu(Menu menu)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@fecha", menu.fecha);
+                parameters.Add("@idUsuario", menu.idUsuario);
+                parameters.Add("@titulo", menu.titulo);
+                parameters.Add("@descripcion", menu.descripcion);
+                parameters.Add("@tipo", menu.tipo);
+                parameters.Add("@precio", menu.precio);
+                parameters.Add("@foto", menu.foto);
+
+                var result = 0;
+                connection.Query<int>("Menu_Insertar_SP", parameters, commandType: CommandType.StoredProcedure);
+                result = 1;
+
+                return result;
+            }
+        }
+
         public IEnumerable<Menu> ListaMenuPaginacion(DateTime desde, DateTime hasta, int startRow, int endRow)
         {
             using (var connection = new SqlConnection(_connectionString))

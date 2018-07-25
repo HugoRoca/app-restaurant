@@ -11,5 +11,6 @@ namespace APPRestaurante.Repository.Interfaces
     {
         IEnumerable<Menu> ListaMenuPaginacion(DateTime desde, DateTime hasta, int startRow, int endRow);
         int Count();
+        int InsertarMenu(Menu menu);
     }
 }
