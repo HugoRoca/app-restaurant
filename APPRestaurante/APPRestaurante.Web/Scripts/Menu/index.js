@@ -5,14 +5,14 @@
 
     var urls = globalData.urlProvider;
 
-    var registros = 10;
-
     me.Elementos = (function () {
         function getFechaDesde() { return $('.Desde'); }
         function getFechaHasta() { return $('.Hasta'); }
+        function getTotalFilas() { return $('select[name=totalRegistros]'); }
         return {
             getFechaDesde: getFechaDesde,
-            getFechaHasta: getFechaHasta
+            getFechaHasta: getFechaHasta,
+            getTotalFilas: getTotalFilas
         }
     })();
 
@@ -38,7 +38,7 @@
                     desde: _desde,
                     hasta: _hasta,
                     pagina: _pagina,
-                    fila: registros
+                    fila: me.Elementos.getTotalFilas().val()
                 }
             });
         }
@@ -115,7 +115,7 @@
                 FuncionesGenerales.CerrarCargando();
             };
 
-            me.Servicios.ContarLista(registros).then(success, function (e) {
+            me.Servicios.ContarLista(me.Elementos.getTotalFilas().val()).then(success, function (e) {
                 console.log(e);
                 FuncionesGenerales.CerrarCargando();
             });
@@ -139,6 +139,7 @@
             var body = $('body');
             body.on('click', 'button[name=NuevoRegistro]', me.Eventos.LlamarNuevoRegistro);
             body.on('click', 'button[name=Buscar]', me.Eventos.Buscar);
+            body.on('change', 'select[name=totalRegistros]', me.Eventos.Buscar);
             FuncionesGenerales.LlamarCalendario(me.Elementos.getFechaDesde());
             FuncionesGenerales.LlamarCalendario(me.Elementos.getFechaHasta());
 
