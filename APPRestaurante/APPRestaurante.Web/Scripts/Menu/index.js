@@ -5,7 +5,7 @@
 
     var urls = globalData.urlProvider;
 
-    var registros = 5;
+    var registros = 10;
 
     me.Elementos = (function () {
         function getFechaDesde() { return $('.Desde'); }
