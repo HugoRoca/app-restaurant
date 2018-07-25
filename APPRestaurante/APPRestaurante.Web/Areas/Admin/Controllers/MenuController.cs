@@ -1,4 +1,5 @@
-﻿using APPRestaurante.UnitOfWork;
+﻿using APPRestaurante.Models;
+using APPRestaurante.UnitOfWork;
 using APPRestaurante.Web.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 TotalPages = totalPagina
             };
 
-            return Json(new { Page = page});
+            return Json(new { Page = page });
         }
 
         public JsonResult ListaMenu(DateTime desde, DateTime hasta, int pagina, int fila)
@@ -46,6 +47,26 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             var end = pagina * fila;
             var resultado = _unit.Menu.ListaMenuPaginacion(desde, hasta, start, end);
             return Json(resultado);
+        }
+
+        public JsonResult InsertarMenu(Menu menu)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
+                if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
+                if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
+                if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
+                if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
+
+                var insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
+                var message = insert ? "Registro exitoso." : "Hubo un error al registrar.";
+                return Json(new { Success = false, Message = message });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Error = true, Message = "Hubo un error al registrar." });
+            }
         }
     }
 }
