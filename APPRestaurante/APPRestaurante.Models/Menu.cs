@@ -16,5 +16,6 @@ namespace APPRestaurante.Models
         public string tipo { get; set; }
         public double precio { get; set; }
         public string foto { get; set; }
+        public int idUsuario { get; set; }
     }
 }
