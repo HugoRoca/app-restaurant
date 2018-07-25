@@ -11,7 +11,7 @@ as
 begin
 	DECLARE @idMenu int = 0;
 
-	IF (select count(*) from menu where CONVERT(DATE, fecha) = @fecha) <= 0
+	IF (select count(*) from menu where CONVERT(DATE, fecha) = @fecha) = 0
 	begin
 		insert into menu(fecha, idUsuario, fecha_registro) values(@fecha, @idUsuario, getdate())
 	end
