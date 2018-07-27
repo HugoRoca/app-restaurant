@@ -56,17 +56,16 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             try
             {
                 var insert = false;
-                if (ModelState.IsValid)
-                {
-                    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
-                    foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
 
-                    menu.foto = foto.FileName;
-                    menu.idUsuario = SessionHelper.GetUser();
+                string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
 
-                    insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
-                    RedirectToAction("Index", "Menu");
-                }
+                menu.foto = archivo;
+                menu.idUsuario = SessionHelper.GetUser();
+
+                insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
+                RedirectToAction("Index", "Menu");
+
                 //if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
                 //if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
                 //if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
