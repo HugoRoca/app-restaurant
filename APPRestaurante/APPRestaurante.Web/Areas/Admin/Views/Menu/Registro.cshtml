@@ -11,13 +11,13 @@
             </div>
             <div class="widget-body">
                 <div class="widget-main">
-
-                    <form class="form-horizontal" role="form">
+                    @using (Html.BeginForm("InsertarMenu", "Menu", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
                         <div class="form-group">
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Fecha:</label>
                             <div class="col-xs-12 col-sm-4">
                                 <div class="input-group">
-                                    <input class="form-control date-picker" type="text" />
+                                    <input class="form-control date-picker" name="fecha" type="text" />
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar bigger-110"></i>
                                     </span>
@@ -29,7 +29,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Titulo:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Titulo" id="Titulo" class="col-xs-12 col-sm-6" />
+                                    <input type="text" name="titulo" id="Titulo" class="col-xs-12 col-sm-6" />
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Descripción:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <textarea name="Descripcion" id="Descripcion" class="form-control" row="3"></textarea>
+                                    <textarea name="descripcion" id="Descripcion" class="form-control" row="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Tipo:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Tipo" id="Tipo" class="col-xs-12 col-sm-6" />
+                                    <input type="text" name="tipo" id="Tipo" class="col-xs-12 col-sm-6" />
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Precio:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Precio" id="Precio" class="col-xs-12 col-sm-6" />
+                                    <input type="text" name="precio" id="Precio" class="col-xs-12 col-sm-6" />
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Imagen:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="file" id="id-input-file-2" />
+                                    <input type="file" id="id-input-file-2" name="foto" />
                                 </div>
                             </div>
                         </div>
@@ -74,11 +74,11 @@
                             <a class="btn btn-danger" href="@Url.Action("Index","Menu")">
                                 <i class="fa fa-arrow-circle-o-left"></i> Atras
                             </a>
-                            <button class="btn btn-success">
+                            <button class="btn btn-success" type="submit">
                                 <i class="fa fa-save"></i> Guardar
                             </button>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
@@ -90,4 +90,7 @@
         todayHighlight: true,
         format: "dd/mm/yy"
     });
+
+    var fecha = new Date();
+    $('input[name=fecha]').val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
 </script>
