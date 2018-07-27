@@ -252,6 +252,7 @@
     <Folder Include="Areas\Admin\Views\Cliente\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Inicio\" />
+    <Folder Include="Uploads\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\APPRestaurante.Helper\APPRestaurante.Helper.csproj">
