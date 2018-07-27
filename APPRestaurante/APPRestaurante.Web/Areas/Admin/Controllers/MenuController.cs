@@ -49,17 +49,27 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             return Json(resultado);
         }
 
-        public JsonResult InsertarMenu(Menu menu)
+        [HttpPost]
+        public JsonResult InsertarMenu(Menu menu, HttpPostedFileBase foto)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
-                if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
-                if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
-                if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
-                if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
+                var insert = false;
+                if (ModelState.IsValid)
+                {
+                    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                    foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
 
-                var insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
+                    menu.foto = foto.FileName;
+
+                    insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
+                }
+                //if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
+                //if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
+                //if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
+                //if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
+                //if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
+
                 var message = insert ? "Registro exitoso." : "Hubo un error al registrar.";
                 return Json(new { Success = false, Message = message });
             }
