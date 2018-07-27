@@ -69,8 +69,8 @@
                     tabla += '<td>' + r[i].titulo + '</td>';
                     tabla += '<td>' + r[i].descripcion + '</td>';
                     tabla += '<td>' + r[i].tipo + '</td>';
-                    tabla += '<td class="text-right">' + r[i].precio + '</td>';
-                    tabla += '<td class="text-center">' + r[i].foto + '</td>';
+                    tabla += '<td class="text-right"> s/. ' + r[i].precio + '</td>';
+                    tabla += '<td class="text-center"><img src="../../Uploads/Menu/' + r[i].foto + '" width="100"></td>';
                     tabla += '</tr > ';
                 }
 

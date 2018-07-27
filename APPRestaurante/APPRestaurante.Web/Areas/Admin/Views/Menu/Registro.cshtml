@@ -17,7 +17,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Fecha:</label>
                             <div class="col-xs-12 col-sm-4">
                                 <div class="input-group">
-                                    <input class="form-control date-picker" name="fecha" type="text" />
+                                    <input class="form-control date-picker" name="fecha" type="text" autocomplete="off" />
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar bigger-110"></i>
                                     </span>
@@ -88,7 +88,7 @@
     $('.date-picker').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: "dd/mm/yy"
+        format: "dd/mm/yyyy"
     });
 
     var fecha = new Date();
