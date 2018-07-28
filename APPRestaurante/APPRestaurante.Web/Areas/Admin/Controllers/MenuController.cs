@@ -51,20 +51,22 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public void InsertarMenu(Menu menu, HttpPostedFileBase foto)
+        public ActionResult InsertarMenu(Menu menu, HttpPostedFileBase foto)
         {
             try
             {
                 var insert = false;
 
                 string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
-                foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
 
+                menu.fechaMenu = Convert.ToDateTime(menu.fecha);
                 menu.foto = archivo;
                 menu.idUsuario = SessionHelper.GetUser();
-
                 insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
-                RedirectToAction("Index", "Menu");
+
+                foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
+
+                return RedirectToAction("Index", "Menu");
 
                 //if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
                 //if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
