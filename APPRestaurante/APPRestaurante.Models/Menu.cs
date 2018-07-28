@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace APPRestaurante.Models
 {
@@ -6,6 +7,7 @@ namespace APPRestaurante.Models
     {
         public int id { get; set; }
         public string fecha { get; set; }
+        public DateTime fechaMenu { get; set; }
         public string usuario { get; set; }
         public string titulo { get; set; }
         public string descripcion { get; set; }
