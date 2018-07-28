@@ -26,7 +26,7 @@ namespace APPRestaurante.Repository.Repositories
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@fecha", menu.fecha);
+                parameters.Add("@fecha", menu.fechaMenu);
                 parameters.Add("@idUsuario", menu.idUsuario);
                 parameters.Add("@titulo", menu.titulo);
                 parameters.Add("@descripcion", menu.descripcion);
