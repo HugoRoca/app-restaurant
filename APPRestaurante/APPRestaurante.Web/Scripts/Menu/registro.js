@@ -31,7 +31,8 @@
     me.Funciones = (function () {
         function inicializarEventos() {
             var body = $('body');
-            FuncionesGenerales.LlamarCalendario(me.Elementos.getFecha());
+            //FuncionesGenerales.LlamarCalendario(me.Elementos.getFecha());
+            me.Elementos.getFecha().prop("disabled", true);
 
             var fecha = new Date();
             me.Elementos.getFecha().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
@@ -48,7 +49,7 @@
     return me;
 
 
-})(menuRegistroData, JQuery);
+})(menuRegistroData, jQuery);
 
 window.menuRegistroModule = menuRegistroModule;
 
