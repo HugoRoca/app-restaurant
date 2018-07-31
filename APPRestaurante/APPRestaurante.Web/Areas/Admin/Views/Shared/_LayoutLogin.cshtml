@@ -12,18 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>@ViewBag.Title | APPRestaurante v 1.0</title>
     <!--Styles-->
-    <link href="~/Areas/Admin/Assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Assets/css/ace-fonts.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Assets/css/ace.css" rel="stylesheet" />
-    <script src="~/Areas/Admin/Assets/js/jquery.js"></script>
+    @Styles.Render("~/bundles/CSS-Usuario")
+    @Scripts.Render("~/bundles/JS-Usuario")
 </head>
 <body class="login-layout light-login">
     @RenderBody()
-
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write("<script src='@Url.Content("~/Assets/js/jquery.mobile.custom.js")'>" + "<" + "/script>");
-    </script>
 
     <script type="text/javascript" src="@Url.Content("~/Scripts/general.js")"></script>
 </body>
