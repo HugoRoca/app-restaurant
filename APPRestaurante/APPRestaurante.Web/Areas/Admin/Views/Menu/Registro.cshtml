@@ -11,8 +11,7 @@
             </div>
             <div class="widget-body">
                 <div class="widget-main">
-                    @using (Html.BeginForm("InsertarMenu", "Menu", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
-                    {
+                    <form class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Fecha:</label>
                             <div class="col-xs-12 col-sm-4">
@@ -78,7 +77,7 @@
                                 <i class="fa fa-save"></i> Guardar
                             </button>
                         </div>
-                    }
+                    </form>
                 </div>
             </div>
         </div>
