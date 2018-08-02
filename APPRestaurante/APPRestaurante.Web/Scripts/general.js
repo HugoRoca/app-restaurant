@@ -36,13 +36,16 @@
                 $("#MensajeScreen").append("<div class='mensaje'></div>");
                 $(".mensaje").append("<div class='mensaje-titulo'>Mensaje</div>");
                 $(".mensaje").append("<div class='mensaje-descripcion'>" + Mensaje + "</div>");
-                $(".mensaje").append("<div class='mensaje-footer'><button class='btn btn-primary'>OK</button></div>");
+                $(".mensaje").append("<div class='mensaje-footer'><button class='btn btn-primary' onclick='FuncionesGenerales.CerrarMensaje();'>OK</button></div>");
             }
 
             $('#MensajeScreen').show();
         } catch (err) {
             console.log(err);
         }
+    },
+    CerrarMensaje: function () {
+        $('#MensajeScreen').hide();
     },
     LlamarCalendario: function (val) {
         val.datepicker({

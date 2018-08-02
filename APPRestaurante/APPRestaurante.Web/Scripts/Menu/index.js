@@ -148,8 +148,6 @@
             me.Elementos.getFechaHasta().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
             
             me.Eventos.LlenarTabla(1);
-
-            FuncionesGenerales.AbrirMensaje('probando mensae');
         }
 
         return {

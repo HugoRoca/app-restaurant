@@ -49,7 +49,9 @@
 
             var successRegistro = function (r) {
                 if (!r.Success) {
-                    alert('Debe de completar todos los campos');
+                    FuncionesGenerales.AbrirMensaje('Debe de completar los campos requeridos!');
+                } else {
+                    window.location.href = urls.urlPaginaLista;
                 }
             }
 
