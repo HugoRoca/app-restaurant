@@ -23,6 +23,26 @@
     CerrarCargando: function () {
         $('#loadingScreen').hide();
     },
+    AbrirMensaje: function (Mensaje) {
+        try {
+            if (!$("#loadingScreen")) {
+                $(document.body).append('<div id="loadingScreen"></div>');
+            }
+            else if ($("#loadingScreen").length == 0) {
+                $(document.body).append('<div id="loadingScreen"></div>');
+            }
+
+            if ($(".loading").length == 0) {
+                $("#loadingScreen").append("<div class='loading'></div>");
+                $(".loading").append("<div class='loading-titulo'>Mensaje</div>");
+                $(".loading").append("<div class='loading-mensaje'>" + Mensaje + "</div>");
+            }
+
+            $('#loadingScreen').show();
+        } catch (err) {
+            console.log(err);
+        }
+    },
     LlamarCalendario: function (val) {
         val.datepicker({
             autoclose: true,
