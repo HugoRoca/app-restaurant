@@ -25,20 +25,21 @@
     },
     AbrirMensaje: function (Mensaje) {
         try {
-            if (!$("#loadingScreen")) {
-                $(document.body).append('<div id="loadingScreen"></div>');
+            if (!$("#MensajeScreen")) {
+                $(document.body).append('<div id="MensajeScreen"></div>');
             }
-            else if ($("#loadingScreen").length == 0) {
-                $(document.body).append('<div id="loadingScreen"></div>');
-            }
-
-            if ($(".loading").length == 0) {
-                $("#loadingScreen").append("<div class='loading'></div>");
-                $(".loading").append("<div class='loading-titulo'>Mensaje</div>");
-                $(".loading").append("<div class='loading-mensaje'>" + Mensaje + "</div>");
+            else if ($("#MensajeScreen").length == 0) {
+                $(document.body).append('<div id="MensajeScreen"></div>');
             }
 
-            $('#loadingScreen').show();
+            if ($(".mensaje").length == 0) {
+                $("#MensajeScreen").append("<div class='mensaje'></div>");
+                $(".mensaje").append("<div class='mensaje-titulo'>Mensaje</div>");
+                $(".mensaje").append("<div class='mensaje-descripcion'>" + Mensaje + "</div>");
+                $(".mensaje").append("<div class='mensaje-footer'><button class='btn btn-primary'>OK</button></div>");
+            }
+
+            $('#MensajeScreen').show();
         } catch (err) {
             console.log(err);
         }

@@ -23787,3 +23787,53 @@ input.typeahead.scrollable ~ .tt-dropdown-menu {
     color: black;
     margin-top: 20px;
 }
+ 
+/*MENSAJE*/
+
+#MensajeScreen {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1049;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.mensaje {
+    padding: 20px 30px;
+    background: white;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+}
+
+.mensaje-titulo {
+    font-weight: 700;
+    font-size: 10pt;
+    color: #0C0B0C;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mensaje-descripcion {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 10pt;
+    color: black;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.mensaje-footer{
+    padding: 10px;
+    text-align:center;
+}
