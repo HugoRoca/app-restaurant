@@ -8,7 +8,7 @@
     me.Elementos = (function () {
         function getFecha() { return $('input[name=Fecha]'); }
         function getTitulo() { return $('input[name=Titulo]'); }
-        function getDescripcion() { return $('input[name=Descripcion]'); }
+        function getDescripcion() { return $('textarea[name=Descripcion]'); }
         function getTipo() { return $('input[name=Tipo]'); }
         function getPrecio() { return $('input[name=Precio]'); }
         return {
@@ -22,7 +22,7 @@
 
     me.Servicios = (function () {
         function registrar(formData) {
-            $.ajax({
+            return $.ajax({
                 url: urls.urlRegistro,
                 type: 'POST',
                 data: formData,

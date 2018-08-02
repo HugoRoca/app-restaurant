@@ -57,8 +57,8 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             menu.fecha = Request.Form["Fecha"];
             menu.titulo = Request.Form["Titulo"];
             menu.descripcion = Request.Form["Descripcion"];
+            menu.tipo = Request.Form["Tipo"];
             menu.precio = Request.Form["Precio"] == "" ? 0 : Convert.ToDouble(Request.Form["Precio"]);
-            menu.titulo = Request.Form["Tipo"];
 
             HttpPostedFileBase foto = Request.Files["Foto"];
 
