@@ -51,10 +51,25 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertarMenu(Menu menu, HttpPostedFileBase foto)
+        public JsonResult InsertarMenu()
         {
+            var menu = new Menu();
+            menu.fecha = Request.Form["Fecha"];
+            menu.titulo = Request.Form["Titulo"];
+            menu.descripcion = Request.Form["Descripcion"];
+            menu.precio = Request.Form["Precio"] == "" ? 0 : Convert.ToDouble(Request.Form["Precio"]);
+            menu.titulo = Request.Form["Tipo"];
+
+            HttpPostedFileBase foto = Request.Files["Foto"];
+
             try
             {
+                if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
+                if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
+                if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
+                if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
+                if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
+
                 var insert = false;
 
                 string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
@@ -66,13 +81,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
                 foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
 
-                return RedirectToAction("Index", "Menu");
-
-                //if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
-                //if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
-                //if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
-                //if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
-                //if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
+                return Json(new { Success = true, Message = "Registro Exitoso"});
             }
             catch (Exception ex)
             {

@@ -21,17 +21,52 @@
     })();
 
     me.Servicios = (function () {
-
+        function registrar(formData) {
+            $.ajax({
+                url: urls.urlRegistro,
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false
+            });
+        }
+        return {
+            registrar: registrar
+        }
     })();
 
     me.Eventos = (function () {
+        function insertarDatos() {
+            var formData = new FormData();
+            var file = document.getElementById("Foto").files[0];
+            formData.append("Foto", file);
+            formData.append("Fecha", me.Elementos.getFecha().val());
+            formData.append("Titulo", me.Elementos.getTitulo().val());
+            formData.append("Descripcion", me.Elementos.getDescripcion().val());
+            formData.append("Tipo", me.Elementos.getTipo().val());
+            formData.append("Precio", me.Elementos.getPrecio().val());
 
+            var successRegistro = function (r) {
+                if (!r.Success) {
+                    alert('Debe de completar todos los campos');
+                }
+            }
+
+            me.Servicios.registrar(formData).then(successRegistro, function (e) {
+                console.log(e);
+            });
+        }
+        return {
+            insertarDatos: insertarDatos
+        }
     })();
 
     me.Funciones = (function () {
         function inicializarEventos() {
             var body = $('body');
-            //FuncionesGenerales.LlamarCalendario(me.Elementos.getFecha());
+            body.on('click', 'button[name=btnGuardar]', me.Eventos.insertarDatos);
+            
             me.Elementos.getFecha().prop("disabled", true);
 
             var fecha = new Date();
