@@ -54,41 +54,61 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         public JsonResult InsertarMenu()
         {
             var menu = new Menu();
-            menu.idDetalle = Convert.ToInt32(Request.Form["idDetalle"]);
-            menu.fecha = Request.Form["Fecha"];
-            menu.titulo = Request.Form["Titulo"];
-            menu.descripcion = Request.Form["Descripcion"];
-            menu.tipo = Request.Form["Tipo"];
-            menu.precio = Request.Form["Precio"] == "" ? 0 : Convert.ToDouble(Request.Form["Precio"]);
-
-            HttpPostedFileBase foto = Request.Files["Foto"];
+            var insert = false;
+            string archivo = "";
+            var ruta = Server.MapPath("~/Uploads/Menu/");
 
             try
             {
+                menu.idDetalle = Convert.ToInt32(Request.Form["idDetalle"]);
+                menu.fecha = Request.Form["Fecha"];
+                menu.titulo = Request.Form["Titulo"];
+                menu.descripcion = Request.Form["Descripcion"];
+                menu.tipo = Request.Form["Tipo"];
+                menu.precio = Request.Form["Precio"] == "" ? 0 : Convert.ToDouble(Request.Form["Precio"]);
+
+                HttpPostedFileBase foto = Request.Files["Foto"];
+
                 if (string.IsNullOrWhiteSpace(menu.fecha)) return Json(new { Success = false, Message = "Falta completar la fecha." });
                 if (string.IsNullOrWhiteSpace(menu.titulo)) return Json(new { Success = false, Message = "Falta completar el título." });
                 if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
                 if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
                 if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
-
-                var insert = false;
-
-                string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                if (menu.idDetalle > 0 && string.IsNullOrWhiteSpace(foto.FileName)) return Json(new { Success = false, Message = "Falta completar la foto." });
 
                 menu.fechaMenu = Convert.ToDateTime(menu.fecha);
-                menu.foto = archivo;
                 menu.idUsuario = SessionHelper.GetUser();
 
                 if (menu.idDetalle > 0)
                 {
+                    var obtenerMenu = _unit.Menu.ObtenerMenu(menu.idDetalle);
+
+                    if (string.IsNullOrWhiteSpace(obtenerMenu.foto))
+                    {
+                        if (foto.ContentLength == 0) return Json(new { Success = false, Message = "Falta completar la foto." });
+                        archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                        menu.foto = archivo;
+                        foto.SaveAs(ruta + archivo);
+                    }
+                    else
+                    {
+                        if (foto.ContentLength > 0)
+                        {
+                            archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                            menu.foto = archivo;
+                            foto.SaveAs(ruta + archivo);
+                            if (System.IO.File.Exists(ruta + obtenerMenu.foto)) System.IO.File.Delete(ruta + obtenerMenu.foto);
+                        }
+                    }
+
                     insert = Convert.ToBoolean(_unit.Menu.EditarMenu(menu));
                 }
                 else
                 {
                     insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
-                }
 
-                foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
+                    foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
+                }
 
                 return Json(new { Success = true, Message = "Registro Exitoso" });
             }

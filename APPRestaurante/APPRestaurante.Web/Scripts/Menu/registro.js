@@ -46,7 +46,7 @@
             formData.append("Descripcion", me.Elementos.getDescripcion().val());
             formData.append("Tipo", me.Elementos.getTipo().val());
             formData.append("Precio", me.Elementos.getPrecio().val());
-
+            formData.append("idDetalle", 0);
             var successRegistro = function (r) {
                 if (!r.Success) {
                     FuncionesGenerales.AbrirMensaje('Debe de completar los campos requeridos!');
