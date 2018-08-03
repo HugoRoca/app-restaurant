@@ -21,6 +21,41 @@ namespace APPRestaurante.Repository.Repositories
             }
         }
 
+        public int EditarMenu(Menu menu)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@idDetalle", menu.idDetalle);
+                parameters.Add("@titulo", menu.titulo);
+                parameters.Add("@descripcion", menu.descripcion);
+                parameters.Add("@tipo", menu.tipo);
+                parameters.Add("@precio", menu.precio);
+                parameters.Add("@foto", menu.foto);
+
+                var result = 0;
+                connection.Query<int>("Menu_Editar_SP", parameters, commandType: CommandType.StoredProcedure);
+                result = 1;
+
+                return result;
+            }
+        }
+
+        public int EliminarMenu(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@idDetalle", id);
+
+                var result = 0;
+                connection.Query<int>("Menu_Eliminar_SP", parameters, commandType: CommandType.StoredProcedure);
+                result = 1;
+
+                return result;
+            }
+        }
+
         public int InsertarMenu(Menu menu)
         {
             using (var connection = new SqlConnection(_connectionString))
