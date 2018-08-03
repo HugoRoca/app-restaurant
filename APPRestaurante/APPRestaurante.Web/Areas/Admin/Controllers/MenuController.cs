@@ -54,6 +54,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         public JsonResult InsertarMenu()
         {
             var menu = new Menu();
+            menu.idDetalle = Convert.ToInt32(Request.Form["idDetalle"]);
             menu.fecha = Request.Form["Fecha"];
             menu.titulo = Request.Form["Titulo"];
             menu.descripcion = Request.Form["Descripcion"];
@@ -77,11 +78,19 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 menu.fechaMenu = Convert.ToDateTime(menu.fecha);
                 menu.foto = archivo;
                 menu.idUsuario = SessionHelper.GetUser();
-                insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
+
+                if (menu.idDetalle > 0)
+                {
+                    insert = Convert.ToBoolean(_unit.Menu.EditarMenu(menu));
+                }
+                else
+                {
+                    insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
+                }
 
                 foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
 
-                return Json(new { Success = true, Message = "Registro Exitoso"});
+                return Json(new { Success = true, Message = "Registro Exitoso" });
             }
             catch (Exception ex)
             {
