@@ -64,6 +64,7 @@
                     tabla += '<td>' +
                                 '<button class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></button>' +
                                 '<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>' +
+                                '<input type="hidden" id="hdId" value="' + r[i].idDetalle + '">' +
                         '</td>';
                     tabla += '<td>' + r[i].fecha + '</td>';
                     tabla += '<td>' + r[i].titulo + '</td>';
