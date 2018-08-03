@@ -1,8 +1,8 @@
 ﻿
+@model APPRestaurante.Models.Menu
 @{
     ViewBag.Title = "Registro";
 }
-
 <div class="row">
     <div class="col-xs-12">
         <div class="widget-box">
@@ -16,7 +16,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Fecha:</label>
                             <div class="col-xs-12 col-sm-4">
                                 <div class="input-group">
-                                    <input class="form-control date-picker" name="Fecha" type="text" autocomplete="off" data-date-format="yyyy-mm-dd"/>
+                                    <input class="form-control date-picker" name="Fecha" type="text" autocomplete="off" data-date-format="yyyy-mm-dd" value="@Model.fecha"/>
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar bigger-110"></i>
                                     </span>

@@ -49,7 +49,7 @@
             formData.append("idDetalle", 0);
             var successRegistro = function (r) {
                 if (!r.Success) {
-                    FuncionesGenerales.AbrirMensaje('Debe de completar los campos requeridos!');
+                    FuncionesGenerales.AbrirMensaje(r.Message);
                 } else {
                     window.location.href = urls.urlPaginaLista;
                 }
