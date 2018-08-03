@@ -6,6 +6,7 @@ namespace APPRestaurante.Models
     public class Menu
     {
         public int id { get; set; }
+        public int idMenu { get; set; }
         public string fecha { get; set; }
         public DateTime fechaMenu { get; set; }
         public string usuario { get; set; }

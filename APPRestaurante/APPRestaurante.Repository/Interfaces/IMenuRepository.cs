@@ -14,5 +14,6 @@ namespace APPRestaurante.Repository.Interfaces
         int InsertarMenu(Menu menu);
         int EditarMenu(Menu menu);
         int EliminarMenu(int id);
+        Menu ObtenerMenu(int id);
     }
 }

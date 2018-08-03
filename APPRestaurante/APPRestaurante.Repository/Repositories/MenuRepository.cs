@@ -90,5 +90,16 @@ namespace APPRestaurante.Repository.Repositories
                 return connection.Query<Menu>("menu_lista_sp", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public Menu ObtenerMenu(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@id", id);
+
+                return connection.QueryFirstOrDefault<Menu>("Menu_Obtener_SP", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
