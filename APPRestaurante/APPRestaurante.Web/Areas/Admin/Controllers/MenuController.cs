@@ -19,19 +19,22 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Menu
-        public ActionResult Index(int id = 0)
-        {
-            var model = new Menu();
-            if (id > 0)
-            {
-                model.fecha = "01/01/2018";
-            }
-            return View(model);
-        }
-
-        public ActionResult Registro()
+        public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Registro(int id = 0)
+        {
+            var model = new Menu();
+
+            if(id > 0)
+            {
+                model.fecha = "12/12/2018";
+                model.titulo = "Probando datos seteados";
+            }
+
+            return View(model);
         }
 
         [HttpPost]

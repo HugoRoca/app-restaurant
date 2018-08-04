@@ -1,5 +1,5 @@
-﻿
-@model APPRestaurante.Models.Menu
+﻿@using APPRestaurante.Models
+@model Menu
 @{
     ViewBag.Title = "Registro";
 }
@@ -28,7 +28,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Titulo:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Titulo" autocomplete="off" class="col-xs-12 col-sm-6" autofocus/>
+                                    <input type="text" name="Titulo" autocomplete="off" class="col-xs-12 col-sm-6" autofocus value="@Model.titulo"/>
                                 </div>
                             </div>
                         </div>
