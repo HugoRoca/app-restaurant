@@ -68,11 +68,13 @@
         function inicializarEventos() {
             var body = $('body');
             body.on('click', 'button[name=btnGuardar]', me.Eventos.insertarDatos);
-            
+
             me.Elementos.getFecha().prop("disabled", true);
 
-            var fecha = new Date();
-            me.Elementos.getFecha().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
+            if (me.Elementos.getFecha().val() == "") {
+                var fecha = new Date();
+                me.Elementos.getFecha().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
+            }
         }
         return {
             inicializarEventos: inicializarEventos

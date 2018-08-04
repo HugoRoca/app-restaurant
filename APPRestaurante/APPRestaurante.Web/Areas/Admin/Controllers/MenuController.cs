@@ -30,8 +30,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
             if(id > 0)
             {
-                model.fecha = "12/12/2018";
-                model.titulo = "Probando datos seteados";
+                model = _unit.Menu.ObtenerMenu(id);
             }
 
             return View(model);
