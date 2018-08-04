@@ -67,5 +67,9 @@
 
             return Day + "/" + Month + "/" + Year;
         }
+    },
+    ConvertirFechaYYYYMMDD: function (fecha) {
+        var date = fecha.split('/');
+        return date[2] + date[1] + date[0];
     }
 };

@@ -11,12 +11,14 @@
         function getDescripcion() { return $('textarea[name=Descripcion]'); }
         function getTipo() { return $('input[name=Tipo]'); }
         function getPrecio() { return $('input[name=Precio]'); }
+        function getIdDetalle() { return $('input[name=hdIdDetalle]'); }
         return {
             getFecha: getFecha,
             getTitulo: getTitulo,
             getDescripcion: getDescripcion,
             getTipo: getTipo,
-            getPrecio: getPrecio
+            getPrecio: getPrecio,
+            getIdDetalle: getIdDetalle
         }
     })();
 
@@ -46,7 +48,7 @@
             formData.append("Descripcion", me.Elementos.getDescripcion().val());
             formData.append("Tipo", me.Elementos.getTipo().val());
             formData.append("Precio", me.Elementos.getPrecio().val());
-            formData.append("idDetalle", 0);
+            formData.append("idDetalle", me.Elementos.getIdDetalle().val());
             var successRegistro = function (r) {
                 if (!r.Success) {
                     FuncionesGenerales.AbrirMensaje(r.Message);
@@ -68,12 +70,13 @@
         function inicializarEventos() {
             var body = $('body');
             body.on('click', 'button[name=btnGuardar]', me.Eventos.insertarDatos);
-
+            //$('.img-responsive').show();
             me.Elementos.getFecha().prop("disabled", true);
 
-            if (me.Elementos.getFecha().val() == "") {
+            if (me.Elementos.getIdDetalle().val() == 0) {
                 var fecha = new Date();
                 me.Elementos.getFecha().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
+                $('.img-responsive').hide();
             }
         }
         return {

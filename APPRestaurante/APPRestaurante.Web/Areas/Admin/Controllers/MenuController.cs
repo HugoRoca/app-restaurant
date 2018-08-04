@@ -28,7 +28,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             var model = new Menu();
 
-            if(id > 0)
+            if (id > 0)
             {
                 model = _unit.Menu.ObtenerMenu(id);
             }
@@ -37,9 +37,9 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult ContarLista(int rows)
+        public JsonResult ContarLista(int rows, string desde, string hasta)
         {
-            var total = _unit.Menu.Count();
+            var total = _unit.Menu.Count(desde, hasta);
             var totalPagina = total % rows != 0 ? (total / rows) + 1 : total / rows;
             var page = new
             {
@@ -81,7 +81,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 if (string.IsNullOrWhiteSpace(menu.descripcion)) return Json(new { Success = false, Message = "Falta completar la descripción." });
                 if (string.IsNullOrWhiteSpace(menu.tipo)) return Json(new { Success = false, Message = "Falta completar el tipo." });
                 if (menu.precio <= 0) return Json(new { Success = false, Message = "Falta completar el precio." });
-                if (menu.idDetalle > 0 && string.IsNullOrWhiteSpace(foto.FileName)) return Json(new { Success = false, Message = "Falta completar la foto." });
+                //if (menu.idDetalle > 0 && string.IsNullOrWhiteSpace(foto.FileName)) return Json(new { Success = false, Message = "Falta completar la foto." });
 
                 menu.fechaMenu = Convert.ToDateTime(menu.fecha);
                 menu.idUsuario = SessionHelper.GetUser();
@@ -90,16 +90,18 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 {
                     var obtenerMenu = _unit.Menu.ObtenerMenu(menu.idDetalle);
 
+                    menu.foto = obtenerMenu.foto;
+
                     if (string.IsNullOrWhiteSpace(obtenerMenu.foto))
                     {
-                        if (foto.ContentLength == 0) return Json(new { Success = false, Message = "Falta completar la foto." });
+                        if (foto == null) return Json(new { Success = false, Message = "Falta completar la foto." });
                         archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
                         menu.foto = archivo;
                         foto.SaveAs(ruta + archivo);
                     }
                     else
                     {
-                        if (foto.ContentLength > 0)
+                        if (foto != null)
                         {
                             archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
                             menu.foto = archivo;

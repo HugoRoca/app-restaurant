@@ -18,11 +18,15 @@
 
     me.Servicios = (function () {
         function ContarLista(_rows) {
+            var _desde = FuncionesGenerales.ConvertirFechaYYYYMMDD(me.Elementos.getFechaDesde().val());
+            var _hasta = FuncionesGenerales.ConvertirFechaYYYYMMDD(me.Elementos.getFechaHasta().val());
             return $.ajax({
                 url: urls.urlContador,
                 method: 'POST',
                 data: {
-                    rows: _rows
+                    rows: _rows,
+                    desde: _desde,
+                    hasta: _hasta
                 }
             });
         }
@@ -62,9 +66,9 @@
                 for (var i = 0; i < r.length; i++) {
                     tabla += '<tr>';
                     tabla += '<td>' +
-                                '<button class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></button>' +
-                                '<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>' +
-                                '<input type="hidden" id="hdId" value="' + r[i].idDetalle + '">' +
+                        '<a class="btn btn-success btn-xs" href="' + urls.llamaNuevoRegistro + '/' + r[i].idDetalle + '"> <i class="fa fa-edit"></i></a>' +
+                        '<a class="btn btn-danger btn-xs" href=""><i class="fa fa-trash"></i></a>' +
+                        '<input type="hidden" id="hdId" value="' + r[i].idDetalle + '">' +
                         '</td>';
                     tabla += '<td>' + r[i].fecha + '</td>';
                     tabla += '<td>' + r[i].titulo + '</td>';
@@ -147,7 +151,7 @@
             var fecha = new Date();
             me.Elementos.getFechaDesde().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
             me.Elementos.getFechaHasta().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
-            
+
             me.Eventos.LlenarTabla(1);
         }
 
