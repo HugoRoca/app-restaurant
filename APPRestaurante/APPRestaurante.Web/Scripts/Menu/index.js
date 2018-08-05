@@ -115,6 +115,9 @@
         function PaginacionFuncionalidad() {
             FuncionesGenerales.AbrirCargando();
 
+            if (me.Elementos.getFechaDesde().val() == "") return false;
+            if (me.Elementos.getFechaHasta().val() == "") return false;
+
             var success = function (r) {
                 PaginacionDisenio(r.Page.TotalPages);
                 FuncionesGenerales.CerrarCargando();
