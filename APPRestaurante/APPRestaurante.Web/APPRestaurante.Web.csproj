@@ -240,6 +240,7 @@
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Registro.cshtml" />
     <Content Include="Areas\Admin\Views\Empleado\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Empleado\Registro.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

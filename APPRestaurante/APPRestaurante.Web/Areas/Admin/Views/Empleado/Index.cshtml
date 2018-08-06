@@ -3,5 +3,38 @@
     ViewBag.Title = "Listado de empleado";
 }
 
-<h2>Lista de emplado</h2>
-
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" name="NuevoRegistro" id="NuevoRegistro" class="btn btn-white btn-info btn-bold">
+            <i class="ace-icon fa fa-plus bigger-120 blue"></i>
+            Nuevo Registro
+        </button>
+        <div>
+            <h5>
+                Mostrar registros por página:
+                <select name="totalRegistros">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                </select>
+            </h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
+                <thead>
+                    <tr>
+                        <th class="text-center">Acciones</th>
+                        <th class="text-center">Nombre</th>
+                        <th>Apellido</th>
+                        <th>Dirección</th>
+                        <th>Celular</th>
+                        <th>Fecha nacimiento</th>
+                        <th class="text-center">Foto</th>
+                    </tr>
+                </thead>
+                <tbody id="ListaEmpleadoTbody"></tbody>
+            </table>
+        </div>
+        <div class="pagination" style="margin: 0 auto;"></div>
+    </div>
+</div>
