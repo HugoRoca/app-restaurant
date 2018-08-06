@@ -1,7 +1,27 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Usuarios";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("Registro", "Usuario")" name="NuevoRegistro" class="btn btn-white btn-info btn-bold">
+            <i class="ace-icon fa fa-plus bigger-120 blue"></i>
+            Nuevo Registro
+        </a>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
+                <thead>
+                    <tr>
+                        <th class="text-center">Acciones</th>
+                        <th class="text-center">Usuario</th>
+                        <th class="text-center">Nombres y Apellidos</th>
+                    </tr>
+                </thead>
+                <tbody id="ListaUsuarioTbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
 

@@ -21,5 +21,10 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult Registro(int id = 0)
+        {
+            return View();
+        }
     }
 }
