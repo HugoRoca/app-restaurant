@@ -1,7 +1,83 @@
 ﻿
 @{
-    ViewBag.Title = "Registro";
+    ViewBag.Title = "Registro de Empleado";
 }
+<div class="row">
+    <div class="col-xs-12">
+        <div class="widget-box">
+            <div class="widget-header widget-header-blue widget-header-flat">
+                <h4 class="widget-title lighter">Registro de Empleado</h4>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="Nombres" autocomplete="off" class="col-xs-12 col-sm-6" autofocus />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="Apellidos" autocomplete="off" class="col-xs-12 col-sm-6" autofocus />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Dirección:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <textarea name="Direccion" class="form-control" row="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Celular:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="tel" name="Celular" autocomplete="off" class="col-xs-12 col-sm-6" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Fecha de Nacimiento:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="FechaNacimiento" autocomplete="off" class="col-xs-12 col-sm-6"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Foto:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="file" id="Foto" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="wizard-actions">
+                            <a class="btn btn-danger" href="@Url.Action("Index","Empleado")">
+                                <i class="fa fa-arrow-circle-o-left"></i> Atras
+                            </a>
+                            <button class="btn btn-success" type="button" name="btnGuardar">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Registro</h2>
 
