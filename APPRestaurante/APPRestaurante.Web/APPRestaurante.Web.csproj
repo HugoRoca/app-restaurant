@@ -205,6 +205,7 @@
     <Compile Include="Areas\Admin\Controllers\InicioController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsuarioController.cs" />
     <Compile Include="Areas\Admin\Filters\AdminFilters.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,6 +242,7 @@
     <Content Include="Areas\Admin\Views\Menu\Registro.cshtml" />
     <Content Include="Areas\Admin\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Empleado\Registro.cshtml" />
+    <Content Include="Areas\Admin\Views\Usuario\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
