@@ -78,8 +78,7 @@
                     tabla += '<tr>';
                     tabla += '<td>' +
                         '<a class="btn btn-success btn-xs" href="' + urls.llamaNuevoRegistro + '/' + r[i].idDetalle + '"> <i class="fa fa-edit"></i></a>' +
-                        '<a class="btn btn-danger btn-xs" href="javascript:;" onclick="EliminaRegistro(' + r[i].idDetalle + ');"><i class="fa fa-trash"></i></a>' +
-                        '<input type="hidden" id="hdId" value="' + r[i].idDetalle + '">' +
+                        '<a class="btn btn-danger btn-xs" href="javascript:;" onclick="menuModule.Eliminar(' + r[i].idDetalle + ');"><i class="fa fa-trash"></i></a>' +
                         '</td>';
                     tabla += '<td>' + r[i].fecha + '</td>';
                     tabla += '<td>' + r[i].titulo + '</td>';
@@ -148,8 +147,6 @@
         }
 
         function EliminaRegistro(_id) {
-            FuncionesGenerales.AbrirCargando();
-
             var successEliminar = function (r) {
                 FuncionesGenerales.CerrarCargando();
                 Buscar();
@@ -157,6 +154,7 @@
 
             bootbox.confirm("¿Está seguro de eliminar el registro?", function (result) {
                 if (result) {
+                    FuncionesGenerales.AbrirCargando();
                     me.Servicios.Eliminar(_id).then(successEliminar, function (e) {
                         FuncionesGenerales.CerrarCargando();
                         console.log(e);
@@ -169,7 +167,8 @@
             LlamarNuevoRegistro: LlamarNuevoRegistro,
             PaginacionFuncionalidad: PaginacionFuncionalidad,
             LlenarTabla: LlenarTabla,
-            Buscar: Buscar
+            Buscar: Buscar,
+            EliminaRegistro: EliminaRegistro
         }
     })();
 
@@ -196,6 +195,10 @@
 
     me.Inicializar = function () {
         me.Funciones.inicializarEventos();
+    }
+
+    me.Eliminar = function (_id) {
+        me.Eventos.EliminaRegistro(_id);
     }
 
     return me;
