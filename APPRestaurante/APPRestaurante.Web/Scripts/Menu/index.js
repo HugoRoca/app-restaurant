@@ -47,9 +47,20 @@
             });
         }
 
+        function Eliminar(_id) {
+            return $.ajax({
+                url: urls.urlEliminar,
+                method: 'POST',
+                data: {
+                    id: _id
+                }
+            });
+        }
+
         return {
             ContarLista: ContarLista,
-            Lista: Lista
+            Lista: Lista,
+            Eliminar: Eliminar
         }
     })();
 
@@ -67,7 +78,7 @@
                     tabla += '<tr>';
                     tabla += '<td>' +
                         '<a class="btn btn-success btn-xs" href="' + urls.llamaNuevoRegistro + '/' + r[i].idDetalle + '"> <i class="fa fa-edit"></i></a>' +
-                        '<a class="btn btn-danger btn-xs" href=""><i class="fa fa-trash"></i></a>' +
+                        '<a class="btn btn-danger btn-xs" href="javascript:;" onclick="EliminaRegistro(' + r[i].idDetalle + ');"><i class="fa fa-trash"></i></a>' +
                         '<input type="hidden" id="hdId" value="' + r[i].idDetalle + '">' +
                         '</td>';
                     tabla += '<td>' + r[i].fecha + '</td>';
@@ -115,9 +126,6 @@
         function PaginacionFuncionalidad() {
             FuncionesGenerales.AbrirCargando();
 
-            if (me.Elementos.getFechaDesde().val() == "") return false;
-            if (me.Elementos.getFechaHasta().val() == "") return false;
-
             var success = function (r) {
                 PaginacionDisenio(r.Page.TotalPages);
                 FuncionesGenerales.CerrarCargando();
@@ -130,8 +138,31 @@
         }
 
         function Buscar() {
+            if (me.Elementos.getFechaDesde().val() == "" || me.Elementos.getFechaHasta().val() == "") {
+                FuncionesGenerales.CerrarCargando();
+                FuncionesGenerales.AbrirMensaje('Debe de completar las fechas.');
+                return false;
+            }
             PaginacionFuncionalidad();
             LlenarTabla(1);
+        }
+
+        function EliminaRegistro(_id) {
+            FuncionesGenerales.AbrirCargando();
+
+            var successEliminar = function (r) {
+                FuncionesGenerales.CerrarCargando();
+                Buscar();
+            }
+
+            bootbox.confirm("¿Está seguro de eliminar el registro?", function (result) {
+                if (result) {
+                    me.Servicios.Eliminar(_id).then(successEliminar, function (e) {
+                        FuncionesGenerales.CerrarCargando();
+                        console.log(e);
+                    });
+                }
+            });
         }
 
         return {

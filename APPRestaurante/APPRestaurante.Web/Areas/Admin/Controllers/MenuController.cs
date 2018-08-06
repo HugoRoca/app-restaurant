@@ -126,5 +126,20 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [HttpPost]
+        public JsonResult EliminarMenu(int id)
+        {
+            try
+            {
+                if (id == 0) return Json(new { Success = false, Message = "Debe de colocar un ID" });
+                var result = _unit.Menu.EliminarMenu(id);
+                return Json(new { Success = true, Message = "Registro eliminado correctamente" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Error = true, Success = false, Message = ex });
+            }
+        }
     }
 }
