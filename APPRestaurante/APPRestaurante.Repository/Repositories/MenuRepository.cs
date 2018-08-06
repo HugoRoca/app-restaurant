@@ -13,11 +13,11 @@ namespace APPRestaurante.Repository.Repositories
 {
     public class MenuRepository : BaseRepository<Menu>, IMenuRepository
     {
-        public int Count()
+        public int Count(string desde, string hasta)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.ExecuteScalar<int>("select count(id) from menudetalle where estado = 1");
+                return connection.ExecuteScalar<int>("SELECT count(*) FROM MenuDetalle md inner join Menu m on m.id = md.idMenu WHERE md.estado = 1 and CONVERT(DATE, m.fecha) <= '" + hasta + "' AND CONVERT(DATE, m.fecha) >= '" + desde + "'");
             }
         }
 

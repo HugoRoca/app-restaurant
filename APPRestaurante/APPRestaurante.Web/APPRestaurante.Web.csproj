@@ -162,6 +162,7 @@
     <Content Include="Areas\Admin\Assets\js\ace\elements.typeahead.js" />
     <Content Include="Areas\Admin\Assets\js\ace\elements.wizard.js" />
     <Content Include="Areas\Admin\Assets\js\ace\elements.wysiwyg.js" />
+    <Content Include="Areas\Admin\Assets\js\bootbox.js" />
     <Content Include="Areas\Admin\Assets\js\bootstrap-datepicker.js" />
     <Content Include="Areas\Admin\Assets\js\css.js" />
     <Content Include="Areas\Admin\Assets\js\generic.js" />
