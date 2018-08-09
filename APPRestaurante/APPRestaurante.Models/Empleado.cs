@@ -8,14 +8,14 @@ namespace APPRestaurante.Models
 {
     public class Empleado
     {
-        public int idEmpleado { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
+        public int id { get; set; }
+        public string nombres { get; set; }
+        public string apellidos { get; set; }
         public string direccion { get; set; }
         public string celular { get; set; }
-        public string email { get; set; }
+        public string tipoDocumento { get; set; }
+        public string documento { get; set; }
         public string foto { get; set; }
-        public bool estado { get; set; }
-        public int idRol { get; set; }
+        public string estado { get; set; }
     }
 }
