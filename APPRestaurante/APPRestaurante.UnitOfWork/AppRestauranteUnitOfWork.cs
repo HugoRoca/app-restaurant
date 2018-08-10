@@ -18,12 +18,14 @@ namespace APPRestaurante.UnitOfWork
             Usuario = new UsuarioRepository();
             Permiso = new PermisoRepository();
             Menu = new MenuRepository();
+            Empleado = new BaseRepository<Empleado>();
         }
 
         public IRepository<Cliente> Clientes { get; private set; }
         public IUsuarioRepository Usuario { get; private set; }
         public IPermisoRepository Permiso { get; private set; }
         public IMenuRepository Menu { get; private set; }
+        public IRepository<Empleado> Empleado {get; private set;}
 
         public void Dispose()
         {
