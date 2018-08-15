@@ -38,3 +38,13 @@
         <div class="pagination" style="margin: 0 auto;"></div>
     </div>
 </div>
+<script>
+    var empleadoData = {
+        urlProvider: {
+            llamaNuevoRegistro: '@Url.Action("Registro", "Empleado")',
+            urlListar: '@Url.Action("ListaEmpleado", "Empleado")',
+            urlEliminar: '@Url.Action("EliminarEmpleado", "Empleado")'
+        }
+    };
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Empleado/index.js")"></script>
