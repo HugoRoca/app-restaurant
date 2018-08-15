@@ -185,6 +185,7 @@
     <Content Include="Areas\Admin\Assets\js\rainbow.js" />
     <Content Include="Areas\Admin\Assets\js\respond.js" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Empleado\index.js" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Menu\index.js" />

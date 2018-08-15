@@ -26,5 +26,23 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult ListaEmpleado()
+        {
+            return Json(_unit.Empleado.GetAll());
+        }
+
+        [HttpPost]
+        public JsonResult InsertarEmpleado()
+        {
+            return Json(new { });
+        }
+
+        [HttpPost]
+        public JsonResult EliminarEmpleado(int id)
+        {
+            return Json(new { });
+        }
     }
 }
