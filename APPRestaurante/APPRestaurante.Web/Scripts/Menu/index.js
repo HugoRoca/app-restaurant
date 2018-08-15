@@ -73,7 +73,6 @@
             FuncionesGenerales.AbrirCargando();
 
             var successLista = function (r) {
-                console.log(r);
                 var tabla = '';
                 for (var i = 0; i < r.length; i++) {
                     tabla += '<tr>';
