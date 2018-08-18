@@ -1,4 +1,5 @@
-﻿using APPRestaurante.UnitOfWork;
+﻿using APPRestaurante.Models;
+using APPRestaurante.UnitOfWork;
 using APPRestaurante.Web.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
@@ -36,13 +37,31 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult InsertarEmpleado()
         {
+            var empleado = new Empleado();
+            var insert = false;
+            string archivo = "";
+            var ruta = Server.MapPath("~/Uploads/Empleado/");
+
+            try
+            {
+                empleado.id = Convert.ToInt32(Request.Form["id"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
             return Json(new { });
         }
 
         [HttpPost]
         public JsonResult EliminarEmpleado(int id)
         {
-            return Json(new { });
+            var empleado = new Empleado();
+            empleado.id = id;
+
+            return Json(_unit.Empleado.Delete(empleado));
         }
     }
 }
