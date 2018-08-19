@@ -186,6 +186,7 @@
     <Content Include="Areas\Admin\Assets\js\respond.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Empleado\index.js" />
+    <Content Include="Scripts\Empleado\registro.js" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Menu\index.js" />
@@ -263,6 +264,7 @@
     <Folder Include="Areas\Admin\Views\Cliente\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Inicio\" />
+    <Folder Include="Uploads\Empleado\" />
     <Folder Include="Uploads\Menu\" />
   </ItemGroup>
   <ItemGroup>

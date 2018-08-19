@@ -45,6 +45,13 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             try
             {
                 empleado.id = Convert.ToInt32(Request.Form["Id"]);
+                empleado.nombres = Request.Form["Nombre"];
+                empleado.apellidos = Request.Form["Nombre"];
+                empleado.nombres = Request.Form["Apellido"];
+                empleado.direccion = Request.Form["Direccion"];
+                empleado.celular = Request.Form["Celular"];
+                empleado.tipoDocumento = Request.Form["TipoDocumento"];
+                empleado.documento = Request.Form["Documento"];
                 HttpPostedFileBase foto = Request.Files["Foto"];
 
                 if (empleado.id > 0)
