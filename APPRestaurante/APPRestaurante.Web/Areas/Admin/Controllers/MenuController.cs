@@ -114,8 +114,9 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 }
                 else
                 {
+                    archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                    menu.foto = archivo;
                     insert = Convert.ToBoolean(_unit.Menu.InsertarMenu(menu));
-
                     foto.SaveAs(Server.MapPath("~/Uploads/Menu/" + archivo));
                 }
 
