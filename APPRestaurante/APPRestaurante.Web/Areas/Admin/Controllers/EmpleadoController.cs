@@ -44,7 +44,20 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
             try
             {
-                empleado.id = Convert.ToInt32(Request.Form["id"]);
+                empleado.id = Convert.ToInt32(Request.Form["Id"]);
+                HttpPostedFileBase foto = Request.Files["Foto"];
+
+                if (empleado.id > 0)
+                {
+
+                }
+                else
+                {
+                    archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                    empleado.foto = archivo;
+                    insert = Convert.ToBoolean(_unit.Empleado.Insert(empleado));
+                    foto.SaveAs(ruta + archivo);
+                }
             }
             catch (Exception ex)
             {
@@ -52,7 +65,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             }
 
 
-            return Json(new { });
+            return Json(new { Success = true, Message = "Registro Exitoso" });
         }
 
         [HttpPost]
