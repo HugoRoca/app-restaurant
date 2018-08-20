@@ -12,5 +12,6 @@ namespace APPRestaurante.Repository.Interfaces
         Usuario ValidarUsuario(string usuario, string clave);
         IEnumerable<Usuario> ListaUsuario();
         Usuario ObtenerUsuario(int id);
+        int RegistrarUsuario(Usuario usuario);
     }
 }

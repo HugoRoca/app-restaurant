@@ -55,7 +55,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 }
 
                 model.empleados = list_empleado;
-                model.roles = list_empleado;
+                model.roles = list_rol;
 
                 if (id > 0)
                 {
@@ -80,6 +80,37 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         public JsonResult Eliminar(int id)
         {
             return Json(new { });
+        }
+
+        [HttpPost]
+        public JsonResult Insertar(UsuarioModel usuarioModel)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(usuarioModel.usuario)) return Json(new { Success = false, Message = "Falta completar el nombre de usuario" });
+                if (string.IsNullOrWhiteSpace(usuarioModel.clave)) return Json(new { Success = false, Message = "Falta completar la clave" });
+
+                var usuario = new Usuario();
+                usuario.idEmpleado = usuario.idEmpleado;
+                usuario.clave = usuarioModel.clave;
+                usuario.idRol = usuarioModel.idRol;
+                usuario.usuario = usuarioModel.usuario;
+
+                if (usuarioModel.id > 0)
+                {
+
+                }
+                else
+                {
+                    _unit.Usuario.RegistrarUsuario(usuario);
+                }
+
+                return Json(new { Success = true, Message = "Registro exitoso"});
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

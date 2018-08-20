@@ -27,6 +27,22 @@ namespace APPRestaurante.Repository.Repositories
             }
         }
 
+        public int RegistrarUsuario(Usuario usuario)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@usuario", usuario.usuario);
+                parameters.Add("@clave", usuario.clave);
+                parameters.Add("@idempleado", usuario.idEmpleado);
+                parameters.Add("@idrol", usuario.idRol);
+                var result = 0;
+                connection.Query<int>("Usuario_Insertar_SP", parameters, commandType: CommandType.StoredProcedure);
+                result = 1;
+                return result;
+            }
+        }
+
         public Usuario ValidarUsuario(string usuario, string clave)
         {
             using (var connection = new SqlConnection(_connectionString))

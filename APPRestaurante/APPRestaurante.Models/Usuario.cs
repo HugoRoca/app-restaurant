@@ -14,5 +14,6 @@ namespace APPRestaurante.Models
         public string foto { get; set; }
         public string rol { get; set; }
         public int idEmpleado { get; set; }
+        public int idRol { get; set; }
     }
 }
