@@ -21,7 +21,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             var idUsuario = SessionHelper.GetUser();
             ViewBag.Permisos = _unit.Permiso.ObtenerPermisosDeAcceso(idUsuario);
-            ViewBag.Usuario = _unit.Usuario.GetEntitybyId(idUsuario);
+            ViewBag.Usuario = _unit.Usuario.ObtenerUsuario(idUsuario);
 
             base.OnActionExecuting(filterContext);
         }
