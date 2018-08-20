@@ -18,7 +18,7 @@
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
                                     <input type="hidden" name="id" value="@Model.id" />
-                                    <input type="text" name="NombreUsuario" autocomplete="off" class="col-xs-12 col-sm-6" autofocus maxlength="20" value="@Model.usuario"/>
+                                    <input type="text" name="NombreUsuario" autocomplete="off" class="col-xs-12 col-sm-6" autofocus maxlength="20" value="@Model.usuario" />
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <a class="btn btn-danger" href="@Url.Action("Index","Usuario")">
                                 <i class="fa fa-arrow-circle-o-left"></i> Atras
                             </a>
-                            <button class="btn btn-success" type="button" name="btnGuardar">
+                            <button class="btn btn-success" type="button" name="Guardar">
                                 <i class="fa fa-save"></i> Guardar
                             </button>
                         </div>
@@ -73,7 +73,12 @@
         </div>
     </div>
 </div>
-
-
-
-
+<script>
+    var accesoRegistroData = {
+        urlProvider: {
+            urlRegistro: '@Url.Action("Insertar", "Usuario")',
+            urlPaginaLista: '@Url.Action("Index", "Usuario")'
+        }
+    }
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/usuario/registro.js")"></script>

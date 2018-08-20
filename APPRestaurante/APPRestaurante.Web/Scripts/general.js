@@ -37,6 +37,8 @@
                 $(".mensaje").append("<div class='mensaje-titulo'>Mensaje</div>");
                 $(".mensaje").append("<div class='mensaje-descripcion'>" + Mensaje + "</div>");
                 $(".mensaje").append("<div class='mensaje-footer'><button class='btn btn-primary' onclick='FuncionesGenerales.CerrarMensaje();'>OK</button></div>");
+            } else {
+                $('.mensaje-descripcion').html(Mensaje);
             }
 
             $('#MensajeScreen').show();

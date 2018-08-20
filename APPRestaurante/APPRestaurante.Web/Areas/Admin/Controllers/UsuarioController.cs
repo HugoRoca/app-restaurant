@@ -91,7 +91,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 if (string.IsNullOrWhiteSpace(usuarioModel.clave)) return Json(new { Success = false, Message = "Falta completar la clave" });
 
                 var usuario = new Usuario();
-                usuario.idEmpleado = usuario.idEmpleado;
+                usuario.idEmpleado = usuarioModel.idEmpleado;
                 usuario.clave = usuarioModel.clave;
                 usuario.idRol = usuarioModel.idRol;
                 usuario.usuario = usuarioModel.usuario;

@@ -193,6 +193,7 @@
     <Content Include="Scripts\Menu\index.js" />
     <Content Include="Scripts\Menu\registro.js" />
     <Content Include="Scripts\Usuario\index.js" />
+    <Content Include="Scripts\Usuario\registro.js" />
     <Content Include="Uploads\jehidi.chavez.png" />
     <Content Include="Uploads\hugo.roca.png" />
     <Content Include="Views\Home\Index.cshtml" />
