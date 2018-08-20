@@ -26,24 +26,45 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
         public ActionResult Registro(int id = 0)
         {
-            var empleado = _unit.Empleado.GetAll();
             var model = new UsuarioModel();
 
-            var list = new List<SelectListItem>();
-
-            foreach (var item in empleado)
+            try
             {
-                list.Add(new SelectListItem {
-                    Text = item.nombres + " " + item.apellidos,
-                    Value = item.id.ToString()
-                });
+                var empleado = _unit.Empleado.GetAll();
+                var rol = _unit.Rol.GetAll();
+
+                var list_empleado = new List<SelectListItem>();
+                var list_rol = new List<SelectListItem>();
+
+                foreach (var item in empleado)
+                {
+                    list_empleado.Add(new SelectListItem
+                    {
+                        Text = item.nombres + " " + item.apellidos,
+                        Value = item.id.ToString()
+                    });
+                }
+
+                foreach (var item in rol)
+                {
+                    list_rol.Add(new SelectListItem
+                    {
+                        Text = item.descripcion,
+                        Value = item.id.ToString()
+                    });
+                }
+
+                model.empleados = list_empleado;
+                model.roles = list_empleado;
+
+                if (id > 0)
+                {
+
+                }
             }
-
-            model.empleados = list;
-
-            if (id > 0)
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
 
             return View(model);

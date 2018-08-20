@@ -16,6 +16,8 @@ namespace APPRestaurante.Web.Areas.Admin.Models
         public string foto { get; set; }
         public string rol { get; set; }
         public int idEmpleado { get; set; }
+        public int idRol { get; set; }
         public List<SelectListItem> empleados { get; set; }
+        public List<SelectListItem> roles { get; set; }
     }
 }

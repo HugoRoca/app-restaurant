@@ -36,9 +36,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Rol:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <select class="form-control">
-                                        <option value="0">--Seleccione--</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.idRol, Model.roles, "--Seleccione--", new { Name = "Rol" })
                                 </div>
                             </div>
                         </div>
