@@ -1,10 +1,12 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-namespace APPRestaurante.Models
+namespace APPRestaurante.Web.Areas.Admin.Models
 {
-    [Table("Usuario")]
-    public class Usuario
+    public class UsuarioModel
     {
         public int id { get; set; }
         public string usuario { get; set; }
@@ -14,5 +16,6 @@ namespace APPRestaurante.Models
         public string foto { get; set; }
         public string rol { get; set; }
         public int idEmpleado { get; set; }
+        public List<SelectListItem> empleados { get; set; }
     }
 }

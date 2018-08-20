@@ -1,4 +1,5 @@
-﻿
+﻿@using APPRestaurante.Web.Areas.Admin.Models
+@model UsuarioModel
 @{
     ViewBag.Title = "Registro";
 }
@@ -16,13 +17,23 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombre de Usuario:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="NombreUsuario" autocomplete="off" class="col-xs-12 col-sm-6" autofocus maxlength="20" />
+                                    <input type="hidden" name="id" value="@Model.id" />
+                                    <input type="text" name="NombreUsuario" autocomplete="off" class="col-xs-12 col-sm-6" autofocus maxlength="20" value="@Model.usuario"/>
                                 </div>
                             </div>
                         </div>
                         <div class="space-2"></div>
                         <div class="form-group">
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres y apellidos:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    @Html.DropDownListFor(model => model.idEmpleado, Model.empleados, "--Seleccione--", new { Name = "Empleado" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Rol:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
                                     <select class="form-control">
@@ -36,7 +47,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Contraseña:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="password" name="Contrasenia" autocomplete="off" class="col-xs-12 col-sm-6" maxlength="10"/>
+                                    <input type="password" name="Contrasenia" autocomplete="off" class="col-xs-12 col-sm-6" maxlength="10" />
                                 </div>
                             </div>
                         </div>
@@ -45,7 +56,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Repetir Contraseña:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="password" name="RepetirContrasenia" autocomplete="off" class="col-xs-12 col-sm-6" maxlength="10"/>
+                                    <input type="password" name="RepetirContrasenia" autocomplete="off" class="col-xs-12 col-sm-6" maxlength="10" />
                                 </div>
                             </div>
                         </div>
