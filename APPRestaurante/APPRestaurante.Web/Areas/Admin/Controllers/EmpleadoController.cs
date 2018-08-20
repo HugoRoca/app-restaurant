@@ -25,7 +25,12 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
         public ActionResult Registro(int id = 0)
         {
-            return View();
+            var model = new Empleado();
+            if(id > 0)
+            {
+                model = _unit.Empleado.GetEntitybyId(id);
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -46,17 +51,41 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             {
                 empleado.id = Convert.ToInt32(Request.Form["Id"]);
                 empleado.nombres = Request.Form["Nombre"];
-                empleado.apellidos = Request.Form["Nombre"];
-                empleado.nombres = Request.Form["Apellido"];
+                empleado.apellidos = Request.Form["Apellido"];
                 empleado.direccion = Request.Form["Direccion"];
                 empleado.celular = Request.Form["Celular"];
                 empleado.tipoDocumento = Request.Form["TipoDocumento"];
                 empleado.documento = Request.Form["Documento"];
                 HttpPostedFileBase foto = Request.Files["Foto"];
+               
+                if (string.IsNullOrWhiteSpace(empleado.nombres)) return Json(new { Success = false, Message = "Falta completar el nombre." });
+                if (string.IsNullOrWhiteSpace(empleado.apellidos)) return Json(new { Success = false, Message = "Falta completar los apellidos." });
+                if(string.IsNullOrWhiteSpace(empleado.celular)) return Json(new { Success = false, Message = "Falta completar el numero de celular." });
 
                 if (empleado.id > 0)
                 {
+                    var obtenerEmpleado = _unit.Empleado.GetEntitybyId(empleado.id);
+                    empleado.foto = obtenerEmpleado.foto;
 
+                    if (string.IsNullOrEmpty(obtenerEmpleado.foto))
+                    {
+                        if(foto == null) return Json(new { Success = false, Message = "Falta completar la foto." });
+                        archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                        empleado.foto = archivo;
+                        foto.SaveAs(ruta + archivo);
+                    }
+                    else
+                    {
+                        if(foto != null)
+                        {
+                            archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + foto.FileName).ToLower();
+                            empleado.foto = archivo;
+                            foto.SaveAs(ruta + archivo);
+                            if (System.IO.File.Exists(ruta + obtenerEmpleado.foto)) System.IO.File.Delete(ruta + obtenerEmpleado.foto);
+                        }
+                    }
+
+                    var result = _unit.Empleado.Update(empleado);
                 }
                 else
                 {

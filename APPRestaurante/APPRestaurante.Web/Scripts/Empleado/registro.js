@@ -76,6 +76,10 @@
         function inicializarEventos() {
             var body = $('body');
             body.on('click', 'button[name=Guardar]', me.Eventos.insertarDatos);
+            console.log(me.Elementos.getId().val());
+            if (me.Elementos.getId().val() == 0) {
+                $('.img-responsive').hide();
+            }
         }
 
         return {

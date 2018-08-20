@@ -1,4 +1,5 @@
-﻿
+﻿@using APPRestaurante.Models
+@model Empleado
 @{
     ViewBag.Title = "Registro de Empleado";
 }
@@ -15,8 +16,8 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="hidden" name="Id" value="0" />
-                                    <input type="text" name="Nombres" autocomplete="off" class="col-xs-12 col-sm-6" autofocus />
+                                    <input type="hidden" name="Id" value="@Model.id" />
+                                    <input type="text" name="Nombres" autocomplete="off" maxlength="50" class="col-xs-12 col-sm-6" value="@Model.nombres" autofocus/>
                                 </div>
                             </div>
                         </div>
@@ -25,7 +26,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Apellidos:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Apellidos" autocomplete="off" class="col-xs-12 col-sm-6" autofocus />
+                                    <input type="text" name="Apellidos" autocomplete="off" maxlength="50" class="col-xs-12 col-sm-6" value="@Model.apellidos" />
                                 </div>
                             </div>
                         </div>
@@ -34,7 +35,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Dirección:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <textarea name="Direccion" class="form-control" row="3"></textarea>
+                                    <textarea name="Direccion" class="form-control" row="3">@Model.direccion</textarea>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +44,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Celular:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="tel" name="Celular" autocomplete="off" class="col-xs-12 col-sm-6" />
+                                    <input type="tel" name="Celular" autocomplete="off" maxlength="9" value="@Model.celular" class="col-xs-12 col-sm-6" />
                                 </div>
                             </div>
                         </div>
@@ -52,9 +53,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Tipo documento:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <select name="TipoDocumento" class="form-control">
-                                        <option value="DNI">DNI</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.tipoDocumento, new SelectList(new[]{"DNI"}), new { Name = "TipoDocumento" })
                                 </div>
                             </div>
                         </div>
@@ -63,7 +62,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Documento:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="tel" name="Documento" autocomplete="off" class="col-xs-12 col-sm-6" />
+                                    <input type="tel" name="Documento" autocomplete="off" maxlength="10" value="@Model.documento" class="col-xs-12 col-sm-6" />
                                 </div>
                             </div>
                         </div>
@@ -72,9 +71,10 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Foto:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="file" id="Foto" />
+                                    <input type="file" id="Foto" value="@Model.foto"/>
                                 </div>
                             </div>
+                            <img src="@Url.Content("~/Uploads/Empleado/")@Model.foto" class="img-responsive" alt="@Model.foto" width="250" height="250">
                         </div>
                         <hr />
                         <div class="wizard-actions">

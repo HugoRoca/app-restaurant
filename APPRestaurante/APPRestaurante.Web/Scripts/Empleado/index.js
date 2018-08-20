@@ -13,8 +13,20 @@
                 data: {}
             });
         }
+
+        function Eliminar(_id) {
+            return $.ajax({
+                url: urls.urlEliminar,
+                method: 'POST',
+                data: {
+                    id: _id
+                }
+            });
+        }
+
         return {
-            Lista: Lista
+            Lista: Lista,
+            Eliminar: Eliminar
         }
     })();
 
@@ -27,8 +39,8 @@
                 for (var i = 0; i < r.length; i++) {
                     tabla += '<tr>';
                     tabla += '<td>' +
-                        '<a class="btn btn-success btn-xs" href=""><i class="fa fa-edit"></i></a>' +
-                        '<a class="btn btn-danger btn-xs" href="javascript:;"><i class="fa fa-trash"></i></a>' +
+                        '<a class="btn btn-success btn-xs" href="' + urls.llamaNuevoRegistro + '/' + r[i].id + '"> <i class="fa fa-edit"></i></a>' +
+                        '<a class="btn btn-danger btn-xs" href="javascript:;" onclick="empleadoModule.Eliminar(' + r[i].id + ');"><i class="fa fa-trash"></i></a>' +
                         '</td>';
                     tabla += '<td>' + r[i].nombres + '</td>';
                     tabla += '<td>' + r[i].apellidos + '</td>';
@@ -52,8 +64,27 @@
                 FuncionesGenerales.CerrarCargando();
             });
         }
+
+        function EliminaRegistro(_id) {
+            var successEliminar = function (r) {
+                FuncionesGenerales.CerrarCargando();
+                LlenaTabla();
+            }
+
+            bootbox.confirm("¿Está seguro de eliminar el registro?", function (result) {
+                if (result) {
+                    FuncionesGenerales.AbrirCargando();
+                    me.Servicios.Eliminar(_id).then(successEliminar, function (e) {
+                        FuncionesGenerales.CerrarCargando();
+                        console.log(e);
+                    });
+                }
+            });
+        }
+
         return {
-            LlenaTabla: LlenaTabla
+            LlenaTabla: LlenaTabla,
+            EliminaRegistro: EliminaRegistro
         }
     })();
 
@@ -69,6 +100,10 @@
 
     me.Inicializar = function () {
         me.Funciones.inicializarEventos();
+    }
+
+    me.Eliminar = function (_id) {
+        me.Eventos.EliminaRegistro(_id);
     }
 
     return me;
