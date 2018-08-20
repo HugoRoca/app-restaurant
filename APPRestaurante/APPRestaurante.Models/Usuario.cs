@@ -11,5 +11,6 @@ namespace APPRestaurante.Models
         public bool estado { get; set; }
         public string nombres { get; set; }
         public string foto { get; set; }
+        public string rol { get; set; }
     }
 }

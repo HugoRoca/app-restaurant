@@ -26,5 +26,17 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult Lista()
+        {
+            return Json(_unit.Usuario.ListaUsuario());
+        }
+
+        [HttpPost]
+        public JsonResult Eliminar(int id)
+        {
+            return Json(new { });
+        }
     }
 }

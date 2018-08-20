@@ -17,6 +17,7 @@
                         <th class="text-center">Acciones</th>
                         <th class="text-center">Usuario</th>
                         <th class="text-center">Nombres y Apellidos</th>
+                        <th class="text-center">Accesos</th>
                     </tr>
                 </thead>
                 <tbody id="ListaUsuarioTbody"></tbody>
@@ -24,4 +25,13 @@
         </div>
     </div>
 </div>
-
+<script>
+    var accesoModule = {
+        urlProvider: {
+            llamaNuevoRegistro: '@Url.Action("Registro", "Usuario")',
+            urlListar: '@Url.Action("Lista", "Usuario")',
+            urlEliminar: '@Url.Action("Eliminar", "Usuario")'
+        }
+    };
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Acceso/index.js")"></script>

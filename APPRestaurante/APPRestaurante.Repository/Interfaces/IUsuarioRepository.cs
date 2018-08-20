@@ -10,5 +10,6 @@ namespace APPRestaurante.Repository.Interfaces
     public interface IUsuarioRepository: IRepository<Usuario>
     {
         Usuario ValidarUsuario(string usuario, string clave);
+        IEnumerable<Usuario> ListaUsuario();
     }
 }
