@@ -59,6 +59,7 @@
             }
 
             var usuario = {
+                id: me.Elementos.getId().val(),
                 idEmpleado: me.Elementos.getEmpleado().val(),
                 clave: me.Elementos.getPassword().val(),
                 idRol: me.Elementos.getRol().val(),
@@ -79,6 +80,14 @@
         function inicializarEventos() {
             var body = $('body');
             body.on('click', 'button[name=Guardar]', me.Eventos.insertarDatos);
+            $('.soloActualizar').hide();
+
+            if (me.Elementos.getId().val() > 0) {
+                me.Elementos.getUsuario().prop("disabled", true);
+                me.Elementos.getEmpleado().prop("disabled", true);
+                me.Elementos.getRol().prop("disabled", true);
+                $('.soloActualizar').show();
+            }
         }
 
         return {

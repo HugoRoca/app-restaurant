@@ -59,7 +59,11 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
                 if (id > 0)
                 {
-
+                    var data = _unit.Usuario.ObtenerUsuario(id);
+                    model.id = data.id;
+                    model.usuario = data.usuario;
+                    model.idEmpleado = data.idEmpleado;
+                    model.idRol = data.idRol;
                 }
             }
             catch (Exception ex)
@@ -96,16 +100,20 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 usuario.idRol = usuarioModel.idRol;
                 usuario.usuario = usuarioModel.usuario;
 
-                if (usuarioModel.id > 0)
+                if (usuarioModel.id == 0)
                 {
+                    var lista = _unit.Usuario.ListaUsuario();
+
+                    foreach (var item in lista)
+                    {
+                        if (item.idEmpleado == usuario.idEmpleado) return Json(new { Success = false, Message = "El empleado ya tiene un usuario registrado" });
+                        if (item.usuario == usuario.usuario) return Json(new { Success = false, Message = "El nombre de usuario ya se encuentra en uso." });
+                    }
 
                 }
-                else
-                {
-                    _unit.Usuario.RegistrarUsuario(usuario);
-                }
+                _unit.Usuario.RegistrarUsuario(usuario);
 
-                return Json(new { Success = true, Message = "Registro exitoso"});
+                return Json(new { Success = true, Message = "Registro exitoso" });
             }
             catch (Exception ex)
             {
