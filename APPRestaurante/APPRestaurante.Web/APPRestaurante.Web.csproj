@@ -184,8 +184,13 @@
     <Content Include="Areas\Admin\Assets\js\jquery1x.js" />
     <Content Include="Areas\Admin\Assets\js\rainbow.js" />
     <Content Include="Areas\Admin\Assets\js\respond.js" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\jquery.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Acceso\index.js" />
+    <Content Include="Scripts\Cobro\index.js" />
     <Content Include="Scripts\Empleado\index.js" />
     <Content Include="Scripts\Empleado\registro.js" />
     <Content Include="Scripts\general.js" />
@@ -251,6 +256,9 @@
     <Content Include="Areas\Admin\Views\Usuario\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Usuario\Registro.cshtml" />
     <Content Include="Areas\Admin\Views\Cobranza\Index.cshtml" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
