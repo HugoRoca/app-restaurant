@@ -185,8 +185,10 @@
     <Content Include="Areas\Admin\Assets\js\rainbow.js" />
     <Content Include="Areas\Admin\Assets\js\respond.js" />
     <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\flickity.min.css" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\flickity.js" />
     <Content Include="Assets\js\jquery.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Acceso\index.js" />
