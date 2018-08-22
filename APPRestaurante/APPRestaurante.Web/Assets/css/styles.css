@@ -1,11 +1,12 @@
 ﻿.carousel {
+
 }
 
 .carousel-cell {
     width: 670px;
     margin-right: 5rem;
-    background: #8C8;
-    /* border-radius: 5px; */
+    background: #4c9bd4;
+    border-radius: 5px;
     counter-increment: carousel-cell;
 }
 
