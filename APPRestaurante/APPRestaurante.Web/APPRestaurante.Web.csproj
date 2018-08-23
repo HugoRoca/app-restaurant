@@ -185,12 +185,14 @@
     <Content Include="Areas\Admin\Assets\js\rainbow.js" />
     <Content Include="Areas\Admin\Assets\js\respond.js" />
     <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\demoImg.jpg" />
     <Content Include="Assets\css\flickity.min.css" />
+    <Content Include="Assets\css\resCarousel.css" />
     <Content Include="Assets\css\styles.css" />
-    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\flickity.js" />
     <Content Include="Assets\js\jquery.js" />
+    <Content Include="Assets\js\resCarousel.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Acceso\index.js" />
     <Content Include="Scripts\Cobro\index.js" />
@@ -259,9 +261,6 @@
     <Content Include="Areas\Admin\Views\Usuario\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Usuario\Registro.cshtml" />
     <Content Include="Areas\Admin\Views\Cobranza\Index.cshtml" />
-    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

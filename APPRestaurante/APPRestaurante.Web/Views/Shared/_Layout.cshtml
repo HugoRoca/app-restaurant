@@ -10,38 +10,117 @@
     <meta name="viewport" content="width=device-width" />
     <title>APPResataurant</title>
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Assets/css/styles.css" rel="stylesheet" />
+    <link href="~/Assets/css/resCarousel.css" rel="stylesheet" />
     <script src="~/Assets/js/jquery.js"></script>
     <script src="~/Assets/js/bootstrap.js"></script>
+    <script src="~/Assets/js/resCarousel.js"></script>
+    <style>
+        body {
+            font-family: 'Trirong', serif;
+            background: #eee;
+        }
+
+        .p0 {
+            padding: 0;
+        }
+
+        .resCarousel-inner .item {
+            /*border: 4px solid #eee;*/
+            /*vertical-align: top;*/
+            text-align: center;
+        }
+
+            .resCarousel-inner .item .tile div,
+            .banner .item div {
+                display: table;
+                width: 100%;
+                min-height: 250px;
+                text-align: center;
+                /*box-shadow: 0 1px 1px rgba(0, 0, 0, .1);*/
+            }
+
+            .resCarousel-inner .item h1 {
+                display: table-cell;
+                vertical-align: middle;
+                color: white;
+            }
+
+        .banner .item div {
+            background: url('/Assets/css/demoImg.jpg') center top no-repeat;
+            background-size: cover;
+            min-height: 550px;
+        }
+
+        .item .tile div {
+            background: url('/Assets/css/demoImg.jpg') center center no-repeat;
+            background-size: cover;
+            height: 200px;
+            color: white;
+        }
+
+        .item div h1 {
+            background: rgba(0, 0, 0, .4);
+        }
+    </style>
 </head>
 <body>
     @RenderBody()
     <script>
-        $(document).ready(function () {
-            $("#myCarousel").on("slide.bs.carousel", function (e) {
-                var $e = $(e.relatedTarget);
-                var idx = $e.index();
-                var itemsPerSlide = 3;
-                var totalItems = $(".carousel-item").length;
+        //ResCarouselCustom();
+        var pageRefresh = true;
 
-                if (idx >= totalItems - (itemsPerSlide - 1)) {
-                    var it = itemsPerSlide - (totalItems - idx);
-                    for (var i = 0; i < it; i++) {
-                        // append slides to end
-                        if (e.direction == "left") {
-                            $(".carousel-item")
-                                .eq(i)
-                                .appendTo(".carousel-inner");
-                        } else {
-                            $(".carousel-item")
-                                .eq(0)
-                                .appendTo($(this).find(".carousel-inner"));
-                        }
-                    }
+        function ResCarouselCustom() {
+            var items = $("#dItems").val(),
+                slide = $("#dSlide").val(),
+                speed = $("#dSpeed").val(),
+                interval = $("#dInterval").val()
+
+            var itemsD = "data-items=\"" + items + "\"",
+                slideD = "data-slide=\"" + slide + "\"",
+                speedD = "data-speed=\"" + speed + "\"",
+                intervalD = "data-interval=\"" + interval + "\"";
+
+
+            var atts = "";
+            atts += items != "" ? itemsD + " " : "";
+            atts += slide != "" ? slideD + " " : "";
+            atts += speed != "" ? speedD + " " : "";
+            atts += interval != "" ? intervalD + " " : ""
+
+            //console.log(atts);
+
+            var dat = "";
+            dat += '<h4 >' + atts + '</h4>'
+            dat += '<div class=\"resCarousel\" ' + atts + '>'
+            dat += '<div class="resCarousel-inner">'
+            for (var i = 1; i <= 14; i++) {
+                dat += '<div class=\"item\"><div><h1>' + i + '</h1></div></div>'
+            }
+            dat += '</div>'
+            dat += '<button class=\'btn btn-default leftRs\'><i class=\"fa fa-fw fa-angle-left\"></i></button>'
+            dat += '<button class=\'btn btn-default rightRs\'><i class=\"fa fa-fw fa-angle-right\"></i></button>    </div>'
+            console.log(dat);
+            $("#customRes").html(null).append(dat);
+
+            if (!pageRefresh) {
+                ResCarouselSize();
+            } else {
+                pageRefresh = false;
+            }
+            //ResCarouselSlide();
+        }
+
+        $("#eventLoad").on('ResCarouselLoad', function () {
+            //console.log("triggered");
+            var dat = "";
+            var lenghtI = $(this).find(".item").length;
+            if (lenghtI <= 30) {
+                for (var i = lenghtI; i <= lenghtI + 10; i++) {
+                    dat += '<div class="item"><div class="tile"><div><h1>' + (i + 1) + '</h1></div><h3>Title</h3><p>content</p></div></div>'
                 }
-            });
+                $(this).append(dat);
+            }
         });
-
     </script>
 </body>
 </html>
