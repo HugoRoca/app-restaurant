@@ -1,83 +1,61 @@
-﻿.carousel {
+﻿@media (min-width: 768px) {
+    /* show 3 items */
+    .carousel-inner .active,
+    .carousel-inner .active + .carousel-item,
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
 
-}
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
 
-.carousel-cell {
-    width: 670px;
-    margin-right: 5rem;
-    background: #4c9bd4;
-    border-radius: 5px;
-    counter-increment: carousel-cell;
-}
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
 
-.card {
-    width: 650px;
-}
+    .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
 
-.card-content {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-rows: 1fr;
-    grid-template-rows: 1fr;
-    -ms-grid-columns: 350px 1fr;
-    grid-template-columns: 350px 1fr;
-    -ms-grid-column-gap: 1em;
-    grid-column-gap: 1em;
-    -ms-grid-column-row: 0;
-    grid-column-row: 0;
-}
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
 
-h2 {
-    margin-top: 0.4em;
-}
+    /* farthest right hidden item must be abso position for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
 
-.card-graphic {
-    grid-row: 1 / 1;
-    grid-column: 1 / 2;
-    line-height: 0;
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
 }
-
-.card-body {
-    grid-row: 1 / 1;
-    grid-column: 2 / 2;
-    -webkit-align-self: bottom;
-    -ms-flex-item-align: bottom;
-    -ms-grid-row-align: bottom;
-    align-self: bottom;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-/*
-.card-title {
-  font-size: 2rem;
-  margin-bottom: 0;
-  grid-row: 1 / 2;
-  grid-column: 2 / 2;
-}
-
-.card-icon {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-  justify-self: right;
-  width: 30px;
-  height: 30px;
-  background-color: LightBlue;
-  border-radius: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-column-align: center;
-      justify-items: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.card-stats {
-  -webkit-align-self: bottom;
-      -ms-flex-item-align: bottom;
-              -ms-grid-row-align: bottom;
-          align-self: bottom;
-  justify-self: right;
-}
-*/
