@@ -44,3 +44,7 @@
 .item div h1 {
     background: rgba(0, 0, 0, .4);
 }
+
+.card{
+    padding: 5px;
+}
