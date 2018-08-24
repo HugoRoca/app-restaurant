@@ -62,7 +62,8 @@ function ResCarouselSize() {
 
         for (var i = 0; i < 4; i++) {
             if (i == 0) {
-                var styleCollector0 = ".ResSlid" + index + " .item {width: " + 100 / itemsSplit[i] + "%}";
+                //var styleCollector0 = ".ResSlid" + index + " .item {width: " + 100 / itemsSplit[i] + "%}";
+                var styleCollector0 = ".ResSlid" + index + " .item {width: 100%}";
             } else if (i == 1) {
                 var styleCollector1 = ".ResSlid" + index + " .item {width: " + 100 / itemsSplit[i] + "%}";
             } else if (i == 2) {
