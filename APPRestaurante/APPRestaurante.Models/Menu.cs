@@ -18,5 +18,6 @@ namespace APPRestaurante.Models
         public int idUsuario { get; set; }
         public int idDetalle { get; set; }
         public int estado { get; set; }
+        public string precioString { get; set; }
     }
 }

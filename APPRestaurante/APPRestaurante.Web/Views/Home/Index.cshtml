@@ -1,303 +1,127 @@
-﻿<div class="container">
-    <h3>Plato de fondo</h3>
-    <div class="resCarousel" data-items="2-2-2-2" data-slide="2" data-interval="5000" data-speed="600" data-animator="lazy">
-        <div class="resCarousel-inner">
-            <div class="item">
-                <div class="tile">
-                    <div style="background: url('../../Assets/css/imagen-no-disponible.png') center center no-repeat; height: 250px; background-size: cover; color: white;">
-                        <h1>S/ 14.20</h1>
+﻿@using APPRestaurante.Models
+@{
+    List<Menu> Bebidas = ViewBag.Bebida;
+    List<Menu> Entrada = ViewBag.Entrada;
+    List<Menu> Fondo = ViewBag.Fondo;
+    List<Menu> Postre = ViewBag.Postre;
+
+}
+
+@if (Fondo.Count > 0)
+{
+    <div class="container">
+        <h3 class="text-center">Plato de fondo</h3>
+        <div class="resCarousel" data-items="2-2-2-2" data-slide="2" data-interval="5000" data-speed="600" data-animator="lazy">
+            <div class="resCarousel-inner">
+                @foreach (var item in Fondo)
+                {
+                    <div class="item">
+                        <div class="tile">
+                            <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
+                                <h1>S/ @item.precioString</h1>
+                            </div>
+                            <h3 class="text-center text-uppercase">@item.titulo</h3>
+                            <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
+                            <p>
+                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                            </p>
+                            <hr />
+                        </div>
                     </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
+                }
             </div>
-            <div class="item">
-                <div class="tile">
-                    <div style="background: url('../../Assets/css/imagen-no-disponible.png') center center no-repeat; height: 250px; background-size: cover; color: white;">
-                        <h1>S/ 15.50</h1>
-                    </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
-            </div>
-            <div class="item">
-                <div class="tile">
-                    <div style="background: url('../../Assets/css/imagen-no-disponible.png') center center no-repeat; height: 250px; background-size: cover; color: white;">
-                        <h1>S/ 20.50</h1>
-                    </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
-            </div>
+            <button class='btn btn-default leftRs'><</button>
+            <button class='btn btn-default rightRs'>></button>
         </div>
-        <button class='btn btn-default leftRs'><</button>
-        <button class='btn btn-default rightRs'>></button>
     </div>
-</div>
+}
 
-<!--home-->
-<div class="container p8">
-    <hr />
-    <h3>Entrada</h3>
-    <div class="resCarousel" data-items="2-2-2-2" data-slide="2" data-interval="5000" data-speed="600" data-animator="lazy">
-        <div class="resCarousel-inner">
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
+@if (Entrada.Count > 0)
+{
+    <div class="container p8">
+        <hr />
+        <h3 class="text-center">Entradas</h3>
+        <div class="resCarousel" data-items="2-2-2-2" data-slide="2" data-interval="5000" data-speed="600" data-animator="lazy">
+            <div class="resCarousel-inner">
+                @foreach (var item in Entrada)
+                {
+                    <div class="item">
+                        <div class="tile">
+                            <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
+                                <h1>S/ @item.precioString</h1>
+                            </div>
+                            <h3 class="text-center text-uppercase">@item.titulo</h3>
+                            <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
+                            <p>
+                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                            </p>
+                            <hr />
+                        </div>
                     </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
+                }
             </div>
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
-                    </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
-            </div>
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
-                    </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
-            </div>
+            <button class='btn btn-default leftRs'><</button>
+            <button class='btn btn-default rightRs'>></button>
         </div>
-        <button class='btn btn-default leftRs'><</button>
-        <button class='btn btn-default rightRs'>></button>
     </div>
-</div>
+}
 
-<!--home-->
-<div class="container p8">
-    <hr />
-    <h3>Postre</h3>
-    <div class="resCarousel" data-items="2-2-2-2" data-slide="2" data-interval="5000" data-speed="600" data-animator="lazy">
-        <div class="resCarousel-inner">
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
+@if (Postre.Count > 0)
+{
+    <div class="container p8">
+        <hr />
+        <h3 class="text-center">Postres</h3>
+        <div class="resCarousel" data-items="2-2-2-2" data-slide="2" data-interval="5000" data-speed="600" data-animator="lazy">
+            <div class="resCarousel-inner">
+                @foreach (var item in Postre)
+                {
+                    <div class="item">
+                        <div class="tile">
+                            <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
+                                <h1>S/ @item.precioString</h1>
+                            </div>
+                            <h3 class="text-center text-uppercase">@item.titulo</h3>
+                            <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 100)...</p>
+                            <p>
+                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                            </p>
+                            <hr />
+                        </div>
                     </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
+                }
             </div>
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
-                    </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
-            </div>
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
-                    </div>
-                    <h3 class="text-center text-uppercase">Estofado de pollo</h3>
-                    <p class="text-justify" style="padding: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et convallis metus, quis accumsan augue. Aenean nec est eget odio lobortis finibus quis vel turpis. Morbi sollicitudin lectus id finibus fermentum. Donec volutpat purus a consectetur semper.</p>
-                    <p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </p>
-                    <hr />
-                </div>
-            </div>
+            <button class='btn btn-default leftRs'><</button>
+            <button class='btn btn-default rightRs'>></button>
         </div>
-        <button class='btn btn-default leftRs'><</button>
-        <button class='btn btn-default rightRs'>></button>
     </div>
-</div>
+}
 
-<!--home-->
-<div class="container p8">
-    <hr />
-    <h4>Bebidas</h4>
-    <div class="resCarousel" data-items="2-3-4-5" data-slide="5" data-speed="900" data-interval="4000" data-load="3" data-animator="lazy">
-        <div class="resCarousel-inner" id="eventLoad">
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>1</h1>
+@if (Bebidas.Count > 0)
+{
+    <div class="container p8">
+        <hr />
+        <h3 class="text-center">Bebidas</h3>
+        <div class="resCarousel" data-items="2-4-4-4" data-interval="2000" data-slide="1" data-animator="lazy">
+            <div class="resCarousel-inner">
+                @foreach (var item in Bebidas)
+                {
+                    <div class="item">
+                        <div class="tile">
+                            <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
+                                <h1>S/ @item.precioString</h1>
+                            </div>
+                            <h3 class="text-center text-uppercase">@item.titulo</h3>
+                            <p class="text-justify" style="padding: 20px; height:100px;">@item.descripcion.ToString().Substring(0, 100)...</p>
+                            <p>
+                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                            </p>
+                            <hr />
+                        </div>
                     </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
+                }
             </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>2</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>3</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>4</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>5</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>6</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>7</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>8</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>9</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>10</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>11</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>12</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>13</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="tile">
-                    <div>
-                        <h1>14</h1>
-                    </div>
-                    <h3>Title</h3>
-                    <p>content</p>
-                </div>
-            </div>
-
+            <button class='btn btn-default leftRs'><</button>
+            <button class='btn btn-default rightRs'>></button>
         </div>
-        <button class='btn btn-default leftRs'><</button>
-        <button class='btn btn-default rightRs'>></button>
     </div>
-</div>
+}
