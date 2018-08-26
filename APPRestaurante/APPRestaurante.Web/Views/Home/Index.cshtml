@@ -23,7 +23,7 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -53,7 +53,7 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -83,7 +83,7 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 100)...</p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -113,7 +113,7 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px; height:100px;">@item.descripcion.ToString().Substring(0, 100)...</p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -125,3 +125,111 @@
         </div>
     </div>
 }
+
+<hr />
+<div class="container">
+    <h3>Agrega el pedido</h3>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Mesa</label>
+            <div class="col-sm-10">
+                <select class="form-control">
+                    <option value="value">text</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <select class="form-control">
+                    <option value="value">text</option>
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <table id="cart" class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th style="width:50%">Product</th>
+                <th style="width:10%">Price</th>
+                <th style="width:8%">Quantity</th>
+                <th style="width:22%" class="text-center">Subtotal</th>
+                <th style="width:10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
+                        <div class="col-sm-10">
+                            <h4 class="nomargin">Product 1</h4>
+                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">$1.99</td>
+                <td data-th="Quantity">
+                    <input type="number" class="form-control text-center" value="1">
+                </td>
+                <td data-th="Subtotal" class="text-center">1.99</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
+                        <div class="col-sm-10">
+                            <h4 class="nomargin">Product 1</h4>
+                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">$1.99</td>
+                <td data-th="Quantity">
+                    <input type="number" class="form-control text-center" value="1">
+                </td>
+                <td data-th="Subtotal" class="text-center">1.99</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
+                        <div class="col-sm-10">
+                            <h4 class="nomargin">Product 1</h4>
+                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">$1.99</td>
+                <td data-th="Quantity">
+                    <input type="number" class="form-control text-center" value="1">
+                </td>
+                <td data-th="Subtotal" class="text-center">1.99</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="visible-xs">
+                <td class="text-center"><strong>Total 1.99</strong></td>
+            </tr>
+            <tr>
+                <td><a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Limpiar todo</a></td>
+                <td colspan="2" class="hidden-xs"></td>
+                <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+                <td><a href="#" class="btn btn-success btn-block"><i class="fa fa-send-o"></i> Enviar </a></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
