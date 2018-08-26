@@ -77,6 +77,16 @@ namespace APPRestaurante.Repository.Repositories
             }
         }
 
+        public IEnumerable<Menu> ListaMenuHome(DateTime fecha)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@fecha", fecha);
+                return connection.Query<Menu>("Menu_ListaHome_SP", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public IEnumerable<Menu> ListaMenuPaginacion(DateTime desde, DateTime hasta, int startRow, int endRow)
         {
             using (var connection = new SqlConnection(_connectionString))

@@ -15,5 +15,6 @@ namespace APPRestaurante.Repository.Interfaces
         int EditarMenu(Menu menu);
         int EliminarMenu(int id);
         Menu ObtenerMenu(int id);
+        IEnumerable<Menu> ListaMenuHome(DateTime fecha);
     }
 }
