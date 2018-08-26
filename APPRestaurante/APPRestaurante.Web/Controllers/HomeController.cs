@@ -24,6 +24,7 @@ namespace APPRestaurante.Web.Controllers
             ViewBag.Entrada = lista.Where(x => x.tipo == "Entrada").ToList();
             ViewBag.Fondo = lista.Where(x => x.tipo == "Fondo").ToList();
             ViewBag.Postre = lista.Where(x => x.tipo == "Postre").ToList();
+            ViewBag.Empleado = _unit.Empleado.GetAll();
 
             ViewBag.Fecha = String.Format("Hoy es {0:D}", DateTime.Now);
             return View();
