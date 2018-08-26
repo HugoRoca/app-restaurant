@@ -185,8 +185,8 @@
     <Content Include="Areas\Admin\Assets\js\rainbow.js" />
     <Content Include="Areas\Admin\Assets\js\respond.js" />
     <Content Include="Assets\css\bootstrap.css" />
-    <Content Include="Assets\css\demoImg.jpg" />
     <Content Include="Assets\css\flickity.min.css" />
+    <Content Include="Assets\css\imagen-no-disponible.png" />
     <Content Include="Assets\css\resCarousel.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\bootstrap.js" />

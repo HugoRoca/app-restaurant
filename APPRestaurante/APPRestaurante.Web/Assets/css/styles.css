@@ -28,18 +28,18 @@
         color: white;
     }
 
-.banner .item div {
+/*.banner .item div {
     background: url('/Assets/css/demoImg.jpg') center top no-repeat;
     background-size: cover;
     min-height: 550px;
-}
+}*/
 
-.item .tile div {
+/*.item .tile div {
     background: url('/Assets/css/demoImg.jpg') center center no-repeat;
     background-size: cover;
     height: 200px;
     color: white;
-}
+}*/
 
 .item div h1 {
     background: rgba(0, 0, 0, .4);
