@@ -9,7 +9,7 @@
         function getFecha() { return $('input[name=Fecha]'); }
         function getTitulo() { return $('input[name=Titulo]'); }
         function getDescripcion() { return $('textarea[name=Descripcion]'); }
-        function getTipo() { return $('input[name=Tipo]'); }
+        function getTipo() { return $('select[name=Tipo]'); }
         function getPrecio() { return $('input[name=Precio]'); }
         function getIdDetalle() { return $('input[name=hdIdDetalle]'); }
         return {

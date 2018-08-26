@@ -185,7 +185,7 @@
             me.Elementos.getFechaDesde().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
             me.Elementos.getFechaHasta().val(FuncionesGenerales.ConvertirFechaDDMMYYYY(fecha));
 
-            me.Eventos.LlenarTabla(1);
+            me.Eventos.Buscar();
         }
 
         return {

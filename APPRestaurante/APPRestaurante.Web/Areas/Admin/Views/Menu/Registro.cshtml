@@ -47,7 +47,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Tipo:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Tipo" autocomplete="off" class="col-xs-12 col-sm-6" value="@Model.tipo" />
+                                    @Html.DropDownListFor(model => model.tipo, new SelectList(new[] { "Entrada", "Fondo", "Postre", "Bebida" }), new { Name = "Tipo" })
                                 </div>
                             </div>
                         </div>
