@@ -11,6 +11,7 @@ namespace APPRestaurante.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.Fecha = String.Format("Hoy es {0:D}", DateTime.Now);
             return View();
         }
     }
