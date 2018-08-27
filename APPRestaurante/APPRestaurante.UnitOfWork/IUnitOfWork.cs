@@ -17,5 +17,6 @@ namespace APPRestaurante.UnitOfWork
         IMenuRepository Menu { get; }
         IRepository<Empleado> Empleado { get; }
         IRepository<Rol> Rol { get; }
+        IPedidoRepository Pedido { get; }
     }
 }
