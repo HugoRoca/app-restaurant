@@ -1,4 +1,5 @@
-﻿using APPRestaurante.UnitOfWork;
+﻿using APPRestaurante.Models;
+using APPRestaurante.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,12 @@ namespace APPRestaurante.Web.Controllers
 
             ViewBag.Fecha = String.Format("Hoy es {0:D}", DateTime.Now);
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult InsertarPedido(Pedido pedido, PedidoDetalle pedidoDetalle)
+        {
+            return Json(new { });
         }
     }
 }
