@@ -24,7 +24,7 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
                             <p>
-                                <button class="btn btn-primary btn-lg" onclick="agregar(@Lista);"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg" onclick="homeModule.Agregar()"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -202,5 +202,12 @@
         </tfoot>
     </table>
 </div>
-
-<script src="~/Scripts/Inicio/index.js"></script>
+<script>
+    var homeData = {
+        urlProvider: {
+            llamaNuevoRegistro: '@Url.Action("Registro", "Empleado")'
+        },
+        listaDatos: JSON.stringify(@Lista)
+    };
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Inicio/index.js")"></script>
