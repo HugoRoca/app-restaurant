@@ -11,8 +11,8 @@
     })();
 
     me.Eventos = (function () {
-        function Agregar() {
-            console.log(listaData);
+        function Agregar(_json) {
+            console.log(_json);
             /*FuncionesGenerales.AbrirCargando();
 
             var successLista = function (r) {
@@ -55,6 +55,7 @@
         function inicializarEventos() {
             var body = $('body');
             //me.Eventos.LlenaTabla();
+            console.log(listaData);
         }
         return {
             inicializarEventos: inicializarEventos
@@ -65,8 +66,9 @@
         me.Funciones.inicializarEventos();
     }
 
-    me.Agregar = function () {
-        me.Eventos.Agregar();
+    me.Agregar = function (_json) {
+        console.log(_json);
+        me.Eventos.Agregar(_json);
     }
 
     return me;
