@@ -12,7 +12,9 @@
 
     me.Eventos = (function () {
         function Agregar(_json) {
-            console.log(_json);
+            console.log('- ' + _json);
+            localStorage.setItem("lastname", _json);
+            console.log('..' + localStorage.getItem("lastname"));
             /*FuncionesGenerales.AbrirCargando();
 
             var successLista = function (r) {
