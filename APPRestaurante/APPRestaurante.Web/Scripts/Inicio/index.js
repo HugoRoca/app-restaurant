@@ -11,10 +11,17 @@
     })();
 
     me.Eventos = (function () {
-        function Agregar(_json) {
-            console.log('- ' + _json);
-            localStorage.setItem("lastname", _json);
-            console.log('..' + localStorage.getItem("lastname"));
+        function Agregar(_id) {
+            var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
+            listaPedidos = listaPedidos == null ? [] : listaPedidos;
+            for (var item in listaData) {
+                if (listaData[item].id == _id) {
+                    listaPedidos.push(listaData[item]);
+                    break;
+                }
+            }
+
+            localStorage.setItem("pedidos", JSON.stringify(listaPedidos));
             /*FuncionesGenerales.AbrirCargando();
 
             var successLista = function (r) {
