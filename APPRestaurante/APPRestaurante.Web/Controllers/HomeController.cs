@@ -21,6 +21,7 @@ namespace APPRestaurante.Web.Controllers
         public ActionResult Index()
         {
             var lista = _unit.Menu.ListaMenuHome(DateTime.Now);
+            ViewBag.Lista = lista;
             ViewBag.Bebida = lista.Where(x => x.tipo == "Bebida").ToList();
             ViewBag.Entrada = lista.Where(x => x.tipo == "Entrada").ToList();
             ViewBag.Fondo = lista.Where(x => x.tipo == "Fondo").ToList();

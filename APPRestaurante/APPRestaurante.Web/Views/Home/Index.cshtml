@@ -4,6 +4,7 @@
     List<Menu> Entrada = ViewBag.Entrada;
     List<Menu> Fondo = ViewBag.Fondo;
     List<Menu> Postre = ViewBag.Postre;
+    List<Menu> Lista = ViewBag.Lista;
     List<Empleado> empleados = ViewBag.Empleado;
 }
 
@@ -23,7 +24,7 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg" onclick="agregar(@Lista);"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -201,3 +202,5 @@
         </tfoot>
     </table>
 </div>
+
+<script src="~/Scripts/Inicio/index.js"></script>
