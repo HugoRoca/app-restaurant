@@ -7,7 +7,7 @@
     var listaData = globalData.listaDatos;
 
     me.Servicios = (function () {
-        
+
     })();
 
     me.Eventos = (function () {
@@ -54,7 +54,7 @@
                 FuncionesGenerales.CerrarCargando();
             });*/
         }
-        
+
         return {
             Agregar: Agregar
         }
@@ -63,7 +63,8 @@
     me.Funciones = (function () {
         function inicializarEventos() {
             var body = $('body');
-            //me.Eventos.LlenaTabla();
+
+
             console.log(listaData);
         }
         return {
@@ -88,4 +89,15 @@ window.homeModule = homeModule;
 
 $(document).ready(function () {
     homeModule.Inicializar();
+
+    $('.count').prop('disabled', true);
+    $(document).on('click', '.plus', function () {
+        $('.count').val(parseInt($('.count').val()) + 1);
+    });
+    $(document).on('click', '.minus', function () {
+        $('.count').val(parseInt($('.count').val()) - 1);
+        if ($('.count').val() == 0) {
+            $('.count').val(1);
+        }
+    });
 });

@@ -24,6 +24,14 @@
                             <h3 class="text-center text-uppercase">@item.titulo</h3>
                             <p class="text-justify" style="padding: 20px;">@item.descripcion.ToString().Substring(0, 150)...</p>
                             <p>
+                                <div class="qty mt-5">
+                                    <span class="minus"><i class="fa fa-minus-square"></i></span>
+                                    <input type="text" class="count" name="qty" value="1">
+                                    <span class="plus"><i class="fa fa-plus-square"></i></span>
+                                </div>
+                            </p>
+
+                            <p>
                                 <button class="btn btn-primary btn-lg" onclick="homeModule.Agregar('@item.id')"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
