@@ -11,11 +11,19 @@
     })();
 
     me.Eventos = (function () {
-        function Agregar(_id) {
+        function Agregar(e) {
+            e.preventDefault();
+
+            var divPadre = $(this).parents("[data-pedido='producto']").eq(0);
+            console.log(divPadre);
+            var _idMenu = parseInt($(divPadre).find('.idMenu').val());
+            console.log(_idMenu);
+
+
             var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
             listaPedidos = listaPedidos == null ? [] : listaPedidos;
             for (var item in listaData) {
-                if (listaData[item].id == _id) {
+                if (listaData[item].id == _idMenu) {
                     listaPedidos.push(listaData[item]);
                     break;
                 }
@@ -55,17 +63,43 @@
             });*/
         }
 
+        function DisminuirCantidad(e) {
+            e.preventDefault();
+
+            var divPadre = $(this).parents("[data-calculo='Pedido']").eq(0);
+            var cantidad = $(divPadre).find('.cantidad').val();
+
+            cantidad = parseInt(cantidad) - 1;
+
+            if (parseInt(cantidad) == 0) {
+                cantidad = 1;
+            }
+
+            $(divPadre).find('.cantidad').val(cantidad);
+        }
+
+        function AumentarCantidad(e) {
+            e.preventDefault();
+
+            var divPadre = $(this).parents("[data-calculo='Pedido']").eq(0);
+            var cantidad = $(divPadre).find('.cantidad').val();
+            $(divPadre).find('.cantidad').val(parseInt(cantidad) + 1);
+        }
+
         return {
-            Agregar: Agregar
+            Agregar: Agregar,
+            DisminuirCantidad: DisminuirCantidad,
+            AumentarCantidad: AumentarCantidad
         }
     })();
 
     me.Funciones = (function () {
         function inicializarEventos() {
             var body = $('body');
+            body.on('click', '.disminuirCantidad', me.Eventos.DisminuirCantidad);
+            body.on('click', '.aumentarCantidad', me.Eventos.AumentarCantidad);
+            body.on('click', '.agregarPedido', me.Eventos.Agregar);
 
-
-            console.log(listaData);
         }
         return {
             inicializarEventos: inicializarEventos
@@ -76,11 +110,6 @@
         me.Funciones.inicializarEventos();
     }
 
-    me.Agregar = function (_json) {
-        console.log(_json);
-        me.Eventos.Agregar(_json);
-    }
-
     return me;
 
 })(homeData, jQuery);
@@ -89,15 +118,4 @@ window.homeModule = homeModule;
 
 $(document).ready(function () {
     homeModule.Inicializar();
-
-    $('.count').prop('disabled', true);
-    $(document).on('click', '.plus', function () {
-        $('.count').val(parseInt($('.count').val()) + 1);
-    });
-    $(document).on('click', '.minus', function () {
-        $('.count').val(parseInt($('.count').val()) - 1);
-        if ($('.count').val() == 0) {
-            $('.count').val(1);
-        }
-    });
 });
