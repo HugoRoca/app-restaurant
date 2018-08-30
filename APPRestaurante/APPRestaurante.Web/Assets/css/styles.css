@@ -17,7 +17,7 @@
     .banner .item div {
         display: table;
         width: 100%;
-        min-height: 250px;
+        /*min-height: 250px;*/
         text-align: center;
         /*box-shadow: 0 1px 1px rgba(0, 0, 0, .1);*/
     }
