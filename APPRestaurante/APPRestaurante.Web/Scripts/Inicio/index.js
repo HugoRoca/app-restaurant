@@ -11,56 +11,86 @@
     })();
 
     me.Eventos = (function () {
+        function BuscarPedidoEnListaGeneral(_id) {
+            for (var i in listaData) {
+                if (listaData[i].id == _id) return listaData[i];
+            }
+        }
+
+        function LlenarTabla() {
+            var tablaPedidos = "";
+            var total = 0;
+            var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
+            if (listaPedidos.length > 0) {
+                for (var i in listaPedidos) {
+                    var data = BuscarPedidoEnListaGeneral(listaPedidos[i].idMenu);
+                    var subtotal = parseFloat(Math.round(listaPedidos[i].subtotal * 100) / 100).toFixed(2);
+                    tablaPedidos += '<tr>';
+                    tablaPedidos += ' <td data-th="Pedido">'
+                    tablaPedidos += '  <div class="row">'
+                    tablaPedidos += '   <div class="col-sm-2 hidden-xs"><img src="../../Uploads/Menu/' + data.foto + '" alt="..." class="img-responsive" /></div>'
+                    tablaPedidos += '   <div class="col-sm-10">'
+                    tablaPedidos += '    <h4 class="nomargin text-uppercase text-center">' + data.titulo + '</h4>'
+                    tablaPedidos += '    <p class="text-left">' + data.descripcion.substring(0, 100) + '...</p>'
+                    tablaPedidos += '   </div>'
+                    tablaPedidos += '  </div>'
+                    tablaPedidos += ' </td>'
+                    tablaPedidos += ' <td data-th="Precio">S/ ' + data.precioString + '</td>';
+                    tablaPedidos += ' <td data-th="Cantidad">' + listaPedidos[i].cantidad + '</td>';
+                    tablaPedidos += ' <td data-th="Subtotal" class="text-center">S/ ' + subtotal + '</td>';
+                    tablaPedidos += ' <td class="actions" data-th="">';
+                    tablaPedidos += '  <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>';
+                    tablaPedidos += ' </td>';
+                    tablaPedidos += '</tr>';
+                    total = total + parseFloat(listaPedidos[i].subtotal);
+                }
+            }
+            
+            $('.totalPedido').html('S/ ' + parseFloat(Math.round(total * 100) / 100).toFixed(2));
+            $('.tb-resultadosPedido').html(tablaPedidos);
+        }
+
         function Agregar(e) {
             e.preventDefault();
 
             var divPadre = $(this).parents("[data-pedido='producto']").eq(0);
-            console.log(divPadre);
             var _idMenu = parseInt($(divPadre).find('.idMenu').val());
-            console.log(_idMenu);
-
+            var _cantidad = parseInt($(divPadre).find('.cantidad').val());
+            var existe = false;
 
             var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
             listaPedidos = listaPedidos == null ? [] : listaPedidos;
-            for (var item in listaData) {
-                if (listaData[item].id == _idMenu) {
-                    listaPedidos.push(listaData[item]);
-                    break;
+
+            if (listaPedidos.length > 0) {
+                for (var i in listaPedidos) {
+                    if (listaPedidos[i].idMenu == _idMenu) {
+                        listaPedidos[i].cantidad = parseInt(_cantidad) + parseInt(listaPedidos[i].cantidad);
+                        listaPedidos[i].subtotal = (listaPedidos[i].cantidad * listaPedidos[i].precio);
+                        existe = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!existe) {
+                for (var i in listaData) {
+                    if (listaData[i].id == _idMenu) {
+                        var data = {
+                            idMenu: _idMenu,
+                            cantidad: _cantidad,
+                            precio: parseFloat(listaData[i].precioString),
+                            subtotal: parseInt(_cantidad) * parseFloat(listaData[i].precioString)
+                        }
+                        listaPedidos.push(data);
+                        break;
+                    }
                 }
             }
 
             localStorage.setItem("pedidos", JSON.stringify(listaPedidos));
-            /*FuncionesGenerales.AbrirCargando();
+            $(divPadre).find('.cantidad').val(1);
 
-            var successLista = function (r) {
-                var tabla = '';
-                for (var i = 0; i < r.length; i++) {
-                    tabla += '<tr>';
-                    tabla += '<td>' +
-                        '<a class="btn btn-success btn-xs" href="' + urls.llamaNuevoRegistro + '/' + r[i].id + '"> <i class="fa fa-edit"></i></a>' +
-                        '<a class="btn btn-danger btn-xs" href="javascript:;" onclick="empleadoModule.Eliminar(' + r[i].id + ');"><i class="fa fa-trash"></i></a>' +
-                        '</td>';
-                    tabla += '<td>' + r[i].nombres + '</td>';
-                    tabla += '<td>' + r[i].apellidos + '</td>';
-                    tabla += '<td>' + r[i].direccion + '</td>';
-                    tabla += '<td class="text-center">' + r[i].celular + '</td>';
-                    tabla += '<td>' + r[i].tipoDocumento + '</td>';
-                    tabla += '<td>' + r[i].documento + '</td>';
-                    tabla += '<td class="text-center"><img src="../../Uploads/Empleado/' + r[i].foto + '" width="100"></td>';
-                    tabla += '</tr>';
-                }
-
-                if (tabla != '') {
-                    $('#ListaEmpleadoTbody').html(tabla);
-                }
-
-                FuncionesGenerales.CerrarCargando();
-            };
-
-            me.Servicios.Lista().then(successLista, function (e) {
-                console.log(e);
-                FuncionesGenerales.CerrarCargando();
-            });*/
+            LlenarTabla();
         }
 
         function DisminuirCantidad(e) {
@@ -89,7 +119,8 @@
         return {
             Agregar: Agregar,
             DisminuirCantidad: DisminuirCantidad,
-            AumentarCantidad: AumentarCantidad
+            AumentarCantidad: AumentarCantidad,
+            LlenarTabla: LlenarTabla
         }
     })();
 
@@ -100,6 +131,7 @@
             body.on('click', '.aumentarCantidad', me.Eventos.AumentarCantidad);
             body.on('click', '.agregarPedido', me.Eventos.Agregar);
 
+            me.Eventos.LlenarTabla();
         }
         return {
             inicializarEventos: inicializarEventos
