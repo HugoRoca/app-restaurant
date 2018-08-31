@@ -25,8 +25,9 @@
                 for (var i in listaPedidos) {
                     var data = BuscarPedidoEnListaGeneral(listaPedidos[i].idMenu);
                     var subtotal = parseFloat(Math.round(listaPedidos[i].subtotal * 100) / 100).toFixed(2);
-                    tablaPedidos += '<tr>';
+                    tablaPedidos += '<tr data-pedido="pedidoRealizado">';
                     tablaPedidos += ' <td data-th="Pedido">'
+                    tablaPedidos += '  <input type="hidden" class="idMenu" value="' + listaPedidos[i].idMenu + '" />';
                     tablaPedidos += '  <div class="row">'
                     tablaPedidos += '   <div class="col-sm-2 hidden-xs"><img src="../../Uploads/Menu/' + data.foto + '" alt="..." class="img-responsive" /></div>'
                     tablaPedidos += '   <div class="col-sm-10">'
@@ -39,7 +40,7 @@
                     tablaPedidos += ' <td data-th="Cantidad"><h4>' + listaPedidos[i].cantidad + '</h4></td>';
                     tablaPedidos += ' <td data-th="Subtotal" class="text-center">S/ ' + subtotal + '</td>';
                     tablaPedidos += ' <td class="actions" data-th="">';
-                    tablaPedidos += '  <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>';
+                    tablaPedidos += '  <button class="btn btn-danger btn-sm eliminar"><i class="fa fa-trash-o"></i></button>';
                     tablaPedidos += ' </td>';
                     tablaPedidos += '</tr>';
                     total = total + parseFloat(listaPedidos[i].subtotal);
@@ -52,7 +53,7 @@
 
         function Agregar(e) {
             e.preventDefault();
-
+            
             var divPadre = $(this).parents("[data-pedido='producto']").eq(0);
             var _idMenu = parseInt($(divPadre).find('.idMenu').val());
             var _cantidad = parseInt($(divPadre).find('.cantidad').val());
@@ -116,11 +117,30 @@
             $(divPadre).find('.cantidad').val(parseInt(cantidad) + 1);
         }
 
+        function EliminarPedido(e) {
+            e.preventDefault();
+            
+            var divPadre = $(this).parents("[data-pedido='pedidoRealizado']").eq(0);
+            var _idMenu = $(divPadre).find('.idMenu').val();
+            var _array = [];
+            var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
+
+            for (var i in listaPedidos) {
+                if (listaPedidos[i].idMenu != _idMenu) {
+                    _array.push(listaPedidos[i]);
+                }
+            }
+
+            localStorage.setItem("pedidos", JSON.stringify(_array));
+            LlenarTabla();
+        }
+
         return {
             Agregar: Agregar,
             DisminuirCantidad: DisminuirCantidad,
             AumentarCantidad: AumentarCantidad,
-            LlenarTabla: LlenarTabla
+            LlenarTabla: LlenarTabla,
+            EliminarPedido: EliminarPedido
         }
     })();
 
@@ -130,6 +150,7 @@
             body.on('click', '.disminuirCantidad', me.Eventos.DisminuirCantidad);
             body.on('click', '.aumentarCantidad', me.Eventos.AumentarCantidad);
             body.on('click', '.agregarPedido', me.Eventos.Agregar);
+            body.on('click', '.eliminar', me.Eventos.EliminarPedido);
 
             me.Eventos.LlenarTabla();
         }

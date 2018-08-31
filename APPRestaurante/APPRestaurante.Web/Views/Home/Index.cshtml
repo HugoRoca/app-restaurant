@@ -17,7 +17,7 @@
                 {
                     <div class="item" data-pedido="producto">
                         <div class="tile">
-                            <input type="hidden" class="idMenu" name="idMenu" value="@item.id" />
+                            <input type="hidden" class="idMenu" value="@item.id" />
                             <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
                                 <h1>S/ @item.precioString</h1>
                             </div>
@@ -53,8 +53,9 @@
             <div class="resCarousel-inner">
                 @foreach (var item in Entrada)
                 {
-                    <div class="item">
+                    <div class="item" data-pedido="producto">
                         <div class="tile">
+                            <input type="hidden" class="idMenu" value="@item.id" />
                             <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
                                 <h1>S/ @item.precioString</h1>
                             </div>
@@ -68,7 +69,7 @@
                                 </div>
                             </p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg agregarPedido"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -90,8 +91,9 @@
             <div class="resCarousel-inner">
                 @foreach (var item in Postre)
                 {
-                    <div class="item">
+                    <div class="item" data-pedido="producto">
                         <div class="tile">
+                            <input type="hidden" class="idMenu" value="@item.id" />
                             <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
                                 <h1>S/ @item.precioString</h1>
                             </div>
@@ -105,7 +107,7 @@
                                 </div>
                             </p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg agregarPedido"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
@@ -127,8 +129,9 @@
             <div class="resCarousel-inner">
                 @foreach (var item in Bebidas)
                 {
-                    <div class="item">
+                    <div class="item" data-pedido="producto">
                         <div class="tile">
+                            <input type="hidden" class="idMenu" value="@item.id" />
                             <div style="background: url('../../Uploads/Menu/@item.foto') center center no-repeat; height: 250px; background-size: cover; color: white;">
                                 <h1>S/ @item.precioString</h1>
                             </div>
@@ -142,7 +145,7 @@
                                 </div>
                             </p>
                             <p>
-                                <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Agregar</button>
+                                <button class="btn btn-primary btn-lg agregarPedido"><i class="fa fa-plus-circle"></i> Agregar</button>
                             </p>
                             <hr />
                         </div>
