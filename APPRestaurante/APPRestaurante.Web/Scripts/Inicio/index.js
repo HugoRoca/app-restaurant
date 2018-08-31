@@ -36,7 +36,7 @@
                     tablaPedidos += '  </div>'
                     tablaPedidos += ' </td>'
                     tablaPedidos += ' <td data-th="Precio">S/ ' + data.precioString + '</td>';
-                    tablaPedidos += ' <td data-th="Cantidad">' + listaPedidos[i].cantidad + '</td>';
+                    tablaPedidos += ' <td data-th="Cantidad"><h4>' + listaPedidos[i].cantidad + '</h4></td>';
                     tablaPedidos += ' <td data-th="Subtotal" class="text-center">S/ ' + subtotal + '</td>';
                     tablaPedidos += ' <td class="actions" data-th="">';
                     tablaPedidos += '  <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>';
