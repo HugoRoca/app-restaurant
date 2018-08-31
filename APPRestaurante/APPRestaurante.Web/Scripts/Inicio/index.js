@@ -6,8 +6,12 @@
     var urls = globalData.urlProvider;
     var listaData = globalData.listaDatos;
 
-    me.Servicios = (function () {
+    me.Elementos = (function () {
+        function getMesa() { return $('select[name=mesa]'); }
 
+        return {
+            getMesa: getMesa
+        }
     })();
 
     me.Eventos = (function () {
@@ -21,6 +25,7 @@
             var tablaPedidos = "";
             var total = 0;
             var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
+            listaPedidos = listaPedidos == null ? [] : listaPedidos;
             if (listaPedidos.length > 0) {
                 for (var i in listaPedidos) {
                     var data = BuscarPedidoEnListaGeneral(listaPedidos[i].idMenu);
@@ -135,12 +140,32 @@
             LlenarTabla();
         }
 
+        function EliminarTodo(e) {
+            e.preventDefault();
+
+            localStorage.removeItem("pedidos");
+            LlenarTabla();
+        }
+
+        function EnviarPedido(e) {
+            e.preventDefault();
+
+            var mesa = me.Elementos.getMesa().val();
+
+            if (mesa <= 0) return alert('Debe de seleccionar una mesa.');
+
+
+
+        }
+
         return {
             Agregar: Agregar,
             DisminuirCantidad: DisminuirCantidad,
             AumentarCantidad: AumentarCantidad,
             LlenarTabla: LlenarTabla,
-            EliminarPedido: EliminarPedido
+            EliminarPedido: EliminarPedido,
+            EliminarTodo: EliminarTodo,
+            EnviarPedido: EnviarPedido
         }
     })();
 
@@ -151,6 +176,8 @@
             body.on('click', '.aumentarCantidad', me.Eventos.AumentarCantidad);
             body.on('click', '.agregarPedido', me.Eventos.Agregar);
             body.on('click', '.eliminar', me.Eventos.EliminarPedido);
+            body.on('click', '.eliminarTodo', me.Eventos.EliminarTodo);
+            body.on('click', '.enviarPedido', me.Eventos.EnviarPedido);
 
             me.Eventos.LlenarTabla();
         }

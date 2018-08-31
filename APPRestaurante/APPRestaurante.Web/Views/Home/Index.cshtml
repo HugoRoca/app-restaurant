@@ -165,7 +165,7 @@
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Mesa</label>
             <div class="col-sm-10">
-                <select class="form-control">
+                <select class="form-control" name="mesa">
                     <option value="">--Seleccione--</option>
                     @for (int i = 1; i <= 20; i++)
                     {
@@ -194,10 +194,10 @@
                 <td class="text-center"><h4 class="totalPedido"></h4></td>
             </tr>
             <tr>
-                <td class="text-left"><a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Limpiar todo</a></td>
+                <td class="text-left"><a href="#" class="btn btn-danger eliminarTodo"><i class="fa fa-trash"></i> Limpiar todo</a></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><h4 class="totalPedido"></h4></td>
-                <td><a href="#" class="btn btn-success btn-block"><i class="fa fa-send-o"></i> Enviar </a></td>
+                <td><a href="#" class="btn btn-success btn-block enviarPedido"><i class="fa fa-send-o"></i> Enviar </a></td>
             </tr>
         </tfoot>
     </table>
