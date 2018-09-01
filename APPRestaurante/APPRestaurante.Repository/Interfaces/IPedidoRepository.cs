@@ -9,6 +9,6 @@ namespace APPRestaurante.Repository.Interfaces
 {
     public interface IPedidoRepository
     {
-        bool PedidoyDetallePedido(Pedido pedido, IEnumerable<PedidoDetalle> items);
+        bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items);
     }
 }

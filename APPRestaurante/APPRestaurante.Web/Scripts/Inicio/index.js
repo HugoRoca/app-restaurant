@@ -14,6 +14,23 @@
         }
     })();
 
+    me.Service = (function () {
+        function insertaPedido(_mesa, _lista) {
+            return $.ajax({
+                url: urls.NuevoRegistro,
+                type: 'POST',
+                data: {
+                    mesa: _mesa,
+                    pedidoDetalle: _lista
+                }
+            });
+        }
+
+        return {
+            insertaPedido: insertaPedido
+        }
+    })();
+
     me.Eventos = (function () {
         function BuscarPedidoEnListaGeneral(_id) {
             for (var i in listaData) {
@@ -163,17 +180,15 @@
 
             if (listaPedidos == null) return toastr.error("", "No tiene pedidos");
 
-            var pedido = {
-                fecha: '',
-                total: 0,
-                nombres: '',
-                mesa: me.Elementos.getMesa().val(),
-                tipoPago: '',
-                idEmpleado: 0,
-                idUsuario: 0,
-                estado: 1
+            var successPedido = function (r) {
+                
             }
 
+            var mesa = me.Elementos.getMesa().val();
+
+            me.Service.insertaPedido(mesa, listaPedidos).then(successPedido, function (e) {
+                console.log(e);
+            });
 
 
             toastr.success("", "Pedido enviado");

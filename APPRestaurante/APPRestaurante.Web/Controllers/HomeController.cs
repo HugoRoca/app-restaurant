@@ -33,9 +33,9 @@ namespace APPRestaurante.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult InsertarPedido(Pedido pedido, PedidoDetalle pedidoDetalle)
+        public JsonResult InsertarPedido(int mesa, List<PedidoDetalle> pedidoDetalle)
         {
-            return Json(new { });
+            return Json(_unit.Pedido.PedidoyDetallePedido(mesa, pedidoDetalle));
         }
     }
 }
