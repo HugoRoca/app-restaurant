@@ -82,6 +82,7 @@
                 for (var i in listaData) {
                     if (listaData[i].id == _idMenu) {
                         var data = {
+                            idPedido: 0,
                             idMenu: _idMenu,
                             cantidad: _cantidad,
                             precio: parseFloat(listaData[i].precioString),
@@ -139,6 +140,7 @@
             }
 
             localStorage.setItem("pedidos", JSON.stringify(_array));
+            toastr.warning("", "Pedido eliminado");
             LlenarTabla();
         }
 
@@ -147,6 +149,7 @@
 
             localStorage.removeItem("pedidos");
             LlenarTabla();
+            toastr.warning("", "Todos los pedidos fueron eliminados");
         }
 
         function EnviarPedido(e) {
@@ -154,10 +157,26 @@
 
             var mesa = me.Elementos.getMesa().val();
 
-            if (mesa <= 0) return alert('Debe de seleccionar una mesa.');
+            if (mesa <= 0) return toastr.error("", "Debe de seleccionar una mesa");
+
+            var listaPedidos = JSON.parse(localStorage.getItem("pedidos"));
+
+            if (listaPedidos == null) return toastr.error("", "No tiene pedidos");
+
+            var pedido = {
+                fecha: '',
+                total: 0,
+                nombres: '',
+                mesa: me.Elementos.getMesa().val(),
+                tipoPago: '',
+                idEmpleado: 0,
+                idUsuario: 0,
+                estado: 1
+            }
 
 
 
+            toastr.success("", "Pedido enviado");
         }
 
         return {
