@@ -30,8 +30,8 @@ namespace APPRestaurante.Repository.Repositories
                         pedido.nombres = "";
                         pedido.mesa = mesa;
                         pedido.tipoPago = "";
-                        pedido.idEmpleado = 0;
-                        pedido.idUsuario = 0;
+                        pedido.idEmpleado = 1;
+                        pedido.idUsuario = 1;
                         pedido.estado = 1;
 
                         var id = (int)connection.Insert(pedido, transaction);
