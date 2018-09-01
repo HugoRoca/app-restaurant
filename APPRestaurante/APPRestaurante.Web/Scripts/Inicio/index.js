@@ -97,6 +97,8 @@
             $(divPadre).find('.cantidad').val(1);
 
             LlenarTabla();
+
+            toastr.success("", "Pedido agregado");
         }
 
         function DisminuirCantidad(e) {

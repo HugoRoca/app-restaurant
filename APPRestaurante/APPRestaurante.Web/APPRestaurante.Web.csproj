@@ -185,10 +185,12 @@
     <Content Include="Assets\css\imagen-no-disponible.png" />
     <Content Include="Assets\css\resCarousel.css" />
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\css\toastr.css" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\flickity.js" />
     <Content Include="Assets\js\jquery.js" />
     <Content Include="Assets\js\resCarousel.js" />
+    <Content Include="Assets\js\toastr.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Acceso\index.js" />
     <Content Include="Scripts\Cobro\index.js" />

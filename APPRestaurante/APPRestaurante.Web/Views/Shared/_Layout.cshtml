@@ -13,20 +13,30 @@
     <link href="~/Assets/css/resCarousel.css" rel="stylesheet" />
     <link href="~/Assets/css/styles.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Assets/css/toastr.css" rel="stylesheet" />
     <script src="~/Assets/js/jquery.js"></script>
     <script src="~/Assets/js/bootstrap.js"></script>
     <script src="~/Assets/js/resCarousel.js"></script>
+    <script src="~/Assets/js/toastr.js"></script>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h5>@ViewBag.Fecha</h5>
-            <h1 class="display-3 text-center">APPRestaurante</h1>
-            <p class="lead text-center">Por favor agregue los pedidos.</p>
-            <hr />
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h5>@ViewBag.Fecha</h5>
+                <h1 class="display-3 text-center">APPRestaurante</h1>
+                <hr />
+            </div>
         </div>
+        @RenderBody()
+
+        <footer>
+            <h4 class="text-center padding-12">
+                &copy; 2018 - <a href="//hugorocaproyectos.js.org" target="_blank">Hugo Roca</a>
+            </h4>
+        </footer>
     </div>
-    @RenderBody()
+
     <script>
         //ResCarouselCustom();
         var pageRefresh = true;
