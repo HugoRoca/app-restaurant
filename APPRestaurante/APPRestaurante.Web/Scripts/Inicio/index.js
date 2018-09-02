@@ -181,7 +181,8 @@
             if (listaPedidos == null) return toastr.error("", "No tiene pedidos");
 
             var successPedido = function (r) {
-                
+                localStorage.removeItem("pedidos");
+                LlenarTabla();
             }
 
             var mesa = me.Elementos.getMesa().val();
@@ -189,7 +190,6 @@
             me.Service.insertaPedido(mesa, listaPedidos).then(successPedido, function (e) {
                 console.log(e);
             });
-
 
             toastr.success("", "Pedido enviado");
         }
