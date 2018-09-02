@@ -4,5 +4,47 @@
     ViewBag.Title = "Editar";
 }
 
-<h2>@Model.id</h2>
+<h2 class="text-center">Pedido N° @Model.id</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
+                <thead>
+                    <tr>
+                        <th class="text-center">Menu</th>
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center">Precio</th>
+                        <th class="text-center">Cantidad</th>
+                        <th class="text-center">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="ListaCobranzaTbody">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <a class="btn btn-success btn-xs" href="@urlEditar/@item.id"> <i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger btn-xs" href=""> <i class="fa fa-trash"></i></a>
+                                <a class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-print"></i></a>
+                            </td>
+                            <td class="text-center">
+                                @if (item.estado == 1)
+                                {
+                                    <span class="label label-danger label-white middle">Pendiente</span>
+                                }
+                            </td>
+                            <td class="text-center">@item.fecha</td>
+                            <td class="text-center text-uppercase">Mesa @item.mesa</td>
+                            <td>@item.nombres</td>
+                            <td>@item.tipoPago</td>
+                            <td class="text-right">S/ @item.total</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
