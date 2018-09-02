@@ -14,7 +14,6 @@ namespace APPRestaurante.UnitOfWork
     {
         public AppRestauranteUnitOfWork()
         {
-            Clientes = new BaseRepository<Cliente>();
             Usuario = new UsuarioRepository();
             Permiso = new PermisoRepository();
             Menu = new MenuRepository();
@@ -23,7 +22,6 @@ namespace APPRestaurante.UnitOfWork
             Pedido = new PedidoRepository();
         }
 
-        public IRepository<Cliente> Clientes { get; private set; }
         public IUsuarioRepository Usuario { get; private set; }
         public IPermisoRepository Permiso { get; private set; }
         public IMenuRepository Menu { get; private set; }

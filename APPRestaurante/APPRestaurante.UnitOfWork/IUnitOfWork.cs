@@ -11,7 +11,6 @@ namespace APPRestaurante.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        IRepository<Cliente> Clientes { get; }
         IUsuarioRepository Usuario { get; }
         IPermisoRepository Permiso { get; }
         IMenuRepository Menu { get; }

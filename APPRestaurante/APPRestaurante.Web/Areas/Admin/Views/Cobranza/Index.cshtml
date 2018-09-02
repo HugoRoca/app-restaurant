@@ -1,4 +1,5 @@
-﻿
+﻿@using APPRestaurante.Web.Areas.Admin.Models
+@model IList<PedidoModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -10,45 +11,44 @@
             Nuevo Registro
         </button>
         <hr />
-        <form class="form-inline">
-            <div class="input-daterange input-group">
-                <input type="text" class="input-sm form-control Desde" id="Desde" />
-                <span class="input-group-addon">
-                    <i class="fa fa-exchange"></i>
-                </span>
-                <input type="text" class="input-sm form-control Hasta" id="Hasta" />
-            </div>
-            <button type="button" name="Buscar" id="Buscar" class="btn btn-info btn-sm">
-                <i class="ace-icon fa fa-search bigger-110"></i> Buscar
-            </button>
-        </form>
-        <div>
-            <h5>
-                Mostrar registros por página:
-                <select name="totalRegistros">
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                </select>
-            </h5>
-        </div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
                 <thead>
                     <tr>
                         <th class="text-center">Acciones</th>
                         <th class="text-center">Fecha</th>
-                        <th>Tipo</th>
-                        <th>Nombre y Apellidos</th>
-                        <th>Tipo Pago</th>
+                        <th class="text-center">Mesa</th>
+                        <th class="text-center">Nombre y Apellidos</th>
+                        <th class="text-center">Tipo Pago</th>
                         <th class="text-right">Total</th>
-                        <th>Detalle</th>
+                        <th class="text-center">Estado</th>
                     </tr>
                 </thead>
-                <tbody id="ListaCobranzaTbody"></tbody>
+                <tbody id="ListaCobranzaTbody">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-success btn-xs" href=""> <i class="fa fa-edit"></i></a>
+                                <a class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-danger btn-xs" href="javascript:;"><i class="fa fa-print"></i></a>
+                            </td>
+                            <td class="text-center">@item.fecha</td>
+                            <td class="text-center text-uppercase">Mesa @item.mesa</td>
+                            <td>@item.nombres</td>
+                            <td>@item.tipoPago</td>
+                            <td class="text-right">S/ @item.total</td>
+                            <td class="text-center">
+                                @if (item.estado == 1)
+                                {
+                                    <span class="label label-danger label-white middle">Pendiente</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
-        <div class="pagination" style="margin: 0 auto;"></div>
     </div>
 </div>
 

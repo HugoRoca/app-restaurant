@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Pedido.cs" />

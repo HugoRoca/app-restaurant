@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace APPRestaurante.Repository.Interfaces
 {
-    public interface IPedidoRepository
+    public interface IPedidoRepository: IRepository<Pedido>
     {
         bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items);
     }
