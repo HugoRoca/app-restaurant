@@ -2,6 +2,7 @@
 @model IList<PedidoModel>
 @{
     ViewBag.Title = "Index";
+    var urlEditar = Url.Action("Editar", "Cobranza");
 }
 
 <div class="row">
@@ -16,34 +17,34 @@
                 <thead>
                     <tr>
                         <th class="text-center">Acciones</th>
+                        <th class="text-center">Estado</th>
                         <th class="text-center">Fecha</th>
                         <th class="text-center">Mesa</th>
-                        <th class="text-center">Nombre y Apellidos</th>
+                        <th class="text-center">Cliente</th>
                         <th class="text-center">Tipo Pago</th>
                         <th class="text-right">Total</th>
-                        <th class="text-center">Estado</th>
                     </tr>
                 </thead>
                 <tbody id="ListaCobranzaTbody">
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                <a class="btn btn-success btn-xs" href=""> <i class="fa fa-edit"></i></a>
-                                <a class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-danger btn-xs" href="javascript:;"><i class="fa fa-print"></i></a>
+                            <td class="text-center">
+                                <a class="btn btn-success btn-xs" href="@urlEditar/@item.id"> <i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger btn-xs" href=""> <i class="fa fa-trash"></i></a>
+                                <a class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-print"></i></a>
                             </td>
-                            <td class="text-center">@item.fecha</td>
-                            <td class="text-center text-uppercase">Mesa @item.mesa</td>
-                            <td>@item.nombres</td>
-                            <td>@item.tipoPago</td>
-                            <td class="text-right">S/ @item.total</td>
                             <td class="text-center">
                                 @if (item.estado == 1)
                                 {
                                     <span class="label label-danger label-white middle">Pendiente</span>
                                 }
                             </td>
+                            <td class="text-center">@item.fecha</td>
+                            <td class="text-center text-uppercase">Mesa @item.mesa</td>
+                            <td>@item.nombres</td>
+                            <td>@item.tipoPago</td>
+                            <td class="text-right">S/ @item.total</td>
                         </tr>
                     }
                 </tbody>

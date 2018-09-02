@@ -1,4 +1,5 @@
-﻿using APPRestaurante.UnitOfWork;
+﻿using APPRestaurante.Models;
+using APPRestaurante.UnitOfWork;
 using APPRestaurante.Web.Areas.Admin.Filters;
 using APPRestaurante.Web.Areas.Admin.Models;
 using System;
@@ -34,6 +35,16 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 });
             }
 
+            return View(result);
+        }
+
+        public ActionResult Editar(int id = 0)
+        {
+            var result = new Pedido();
+            if (id > 0)
+            {
+                result = _unit.Pedido.GetEntitybyId(id);
+            }
             return View(result);
         }
     }
