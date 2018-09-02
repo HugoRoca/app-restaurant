@@ -1,50 +1,107 @@
-﻿@using APPRestaurante.Models
-@model Pedido
+﻿@using APPRestaurante.Web.Areas.Admin.Models
+@model CobranzaModel
 @{
     ViewBag.Title = "Editar";
 }
 
-<h2 class="text-center">Pedido N° @Model.id</h2>
-
-
 <div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-responsive" id="ListaMenu">
-                <thead>
-                    <tr>
-                        <th class="text-center">Menu</th>
-                        <th class="text-center">Tipo</th>
-                        <th class="text-center">Precio</th>
-                        <th class="text-center">Cantidad</th>
-                        <th class="text-center">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody id="ListaCobranzaTbody">
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td class="text-center">
-                                <a class="btn btn-success btn-xs" href="@urlEditar/@item.id"> <i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger btn-xs" href=""> <i class="fa fa-trash"></i></a>
-                                <a class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-print"></i></a>
-                            </td>
-                            <td class="text-center">
-                                @if (item.estado == 1)
-                                {
-                                    <span class="label label-danger label-white middle">Pendiente</span>
-                                }
-                            </td>
-                            <td class="text-center">@item.fecha</td>
-                            <td class="text-center text-uppercase">Mesa @item.mesa</td>
-                            <td>@item.nombres</td>
-                            <td>@item.tipoPago</td>
-                            <td class="text-right">S/ @item.total</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    <div class="col-xs-12">
+        <div class="widget-box">
+            <div class="widget-header widget-header-blue widget-header-flat">
+                <h4 class="widget-title lighter">Pedido N° @Model.id</h4>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+                    <form class="form-horizontal">
+                        @if (Model.estado == 1)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                Este pedido está pendiente de pago!
+                            </div>
+                        }
+                        else if (Model.estado == 2)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                Este pedido ya fue cancelado
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Fecha:</label>
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="input-group">
+                                    <input class="form-control date-picker" name="Fecha" type="text" autocomplete="off" data-date-format="yyyy-mm-dd" value="@Model.fechaString" disabled />
+                                    <input type="hidden" name="hdIdCobranza" value="@Model.id" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="Titulo" autocomplete="off" class="col-xs-12 col-sm-6" autofocus value="@Model.nombres" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right">Tipo de Pago:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    @Html.DropDownListFor(model => model.tipoPago, new SelectList(new[] { "EFECTIVO", "VISA", "MASTER", "POS" }), new { Name = "TipoPago" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>Menu</th>
+                                                <th class="text-center">Tipo</th>
+                                                <th class="text-center">Precio</th>
+                                                <th class="text-center">Cantidad</th>
+                                                <th class="text-center">Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ListaCobranzaTbody">
+                                            @foreach (var item in Model.cobranzaDetalles)
+                                            {
+                                                <tr>
+                                                    <td class="text-uppercase"><img src="~/Uploads/Menu/@item.foto" alt="@item.titulo" width="60" /> | @item.titulo</td>
+                                                    <td class="text-center text-uppercase">@item.tipo</td>
+                                                    <td class="text-right">S/ @item.precio</td>
+                                                    <td class="text-right">@item.cantidad</td>
+                                                    <td class="text-right">S/ @item.subtotal</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="5" class="text-right"><h4>Total S/ @Model.totalString</h4></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-actions">
+                            <a class="btn btn-danger" href="@Url.Action("Index","Cobranza")">
+                                <i class="fa fa-arrow-circle-o-left"></i> Atras
+                            </a>
+                            <button class="btn btn-success" type="button" name="btnGuardar">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

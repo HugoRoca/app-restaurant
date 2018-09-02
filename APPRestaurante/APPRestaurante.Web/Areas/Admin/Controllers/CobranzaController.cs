@@ -1,4 +1,5 @@
-﻿using APPRestaurante.Models;
+﻿using APPRestaurante.Helper;
+using APPRestaurante.Models;
 using APPRestaurante.UnitOfWork;
 using APPRestaurante.Web.Areas.Admin.Filters;
 using APPRestaurante.Web.Areas.Admin.Models;
@@ -40,10 +41,24 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
 
         public ActionResult Editar(int id = 0)
         {
-            var result = new Pedido();
+            var result = new CobranzaModel();
             if (id > 0)
             {
-                result = _unit.Pedido.GetEntitybyId(id);
+                var pedido = _unit.Pedido.GetEntitybyId(id);
+
+                result.cobranzaDetalles = _unit.Pedido.detalleCobranzaResults(pedido.id);
+                result.fecha = pedido.fecha;
+                result.fechaString = String.Format("{0:MM/dd/yyyy}", pedido.fecha);
+                result.id = pedido.id;
+                result.idEmpleado = SessionHelper.GetUser();
+                result.idUsuario = SessionHelper.GetUser();
+                result.mesa = pedido.mesa;
+                result.mesaString = "Mesa " + pedido.mesa;
+                result.nombres = pedido.nombres;
+                result.tipoPago = pedido.tipoPago;
+                result.total = pedido.total;
+                result.totalString = string.Format("{0:#,##0.00}", pedido.total);
+                result.estado = pedido.estado;
             }
             return View(result);
         }

@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APPRestaurante.Models.SelectsResult
+namespace APPRestaurante.Models
 {
-    class DetalleCobranzaResult
+    public class DetalleCobranzaResult
     {
+        public string titulo { get; set; }
+        public string tipo { get; set; }
+        public string precio { get; set; }
+        public int cantidad { get; set; }
+        public string subtotal { get; set; }
+        public string foto { get; set; }
     }
 }

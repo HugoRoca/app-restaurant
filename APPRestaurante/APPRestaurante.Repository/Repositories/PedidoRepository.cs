@@ -1,5 +1,6 @@
 ﻿using APPRestaurante.Models;
 using APPRestaurante.Repository.Interfaces;
+using Dapper;
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,16 @@ namespace APPRestaurante.Repository.Repositories
 {
     public class PedidoRepository : BaseRepository<Pedido>, IPedidoRepository
     {
+        public IEnumerable<DetalleCobranzaResult> detalleCobranzaResults(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@id", id);
+                return connection.Query<DetalleCobranzaResult>("Cobranza_Detalle_SP", parameters, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
         public bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items)
         {
             using (var connection = new SqlConnection(_connectionString))

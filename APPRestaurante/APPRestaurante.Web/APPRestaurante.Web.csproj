@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsuarioController.cs" />
     <Compile Include="Areas\Admin\Filters\AdminFilters.cs" />
+    <Compile Include="Areas\Admin\Models\CobranzaModel.cs" />
     <Compile Include="Areas\Admin\Models\PedidoModel.cs" />
     <Compile Include="Areas\Admin\Models\UsuarioModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
