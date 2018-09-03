@@ -1,0 +1,92 @@
+﻿@using APPRestaurante.Web.Areas.Admin.Models
+@model CobranzaModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pedido N° @Model.id</title>
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Assets/js/bootstrap.js"></script>
+    <script src="~/Assets/js/jquery.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-success" role="alert">
+            Este pedido ya fue cancelado!
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="row p-5">
+                            <div class="col-md-6">
+                                <h1>APPRestaurante</h1>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p class="font-weight-bold mb-1">Pedido N° @Model.id</p>
+                                <p class="text-muted">@Model.fechaString</p>
+                            </div>
+                        </div>
+                        <hr class="my-5">
+                        <div class="row pb-5 p-5">
+                            <div class="col-md-6">
+                                <p class="font-weight-bold mb-4">Cliente: </p>
+                                <p class="mb-1">@Model.nombres</p>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p class="font-weight-bold mb-4">Detalles del pago</p>
+                                <p class="mb-1"><span class="text-muted">Tipo: </span> @Model.tipoPago</p>
+                                <p class="mb-1"><span class="text-muted">Mesa: </span> @Model.mesaString</p>
+                            </div>
+                        </div>
+                        <div class="row p-5">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-0 text-uppercase small font-weight-bold">Descripción</th>
+                                            <th class="border-0 text-uppercase small font-weight-bold">Tipo</th>
+                                            <th class="border-0 text-uppercase small font-weight-bold">Precio</th>
+                                            <th class="border-0 text-uppercase small font-weight-bold">Cantidad</th>
+                                            <th class="border-0 text-uppercase small font-weight-bold">Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.cobranzaDetalles)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <img src="~/Uploads/Menu/@item.foto" alt="@item.titulo" width="60" /> | @item.titulo
+                                                </td>
+                                                <td>@item.tipo</td>
+                                                <td>S/ @item.precio</td>
+                                                <td>@item.cantidad</td>
+                                                <td>S/ @item.subtotal</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                            <div class="py-3 px-5 text-right">
+                                <div class="mb-2">Total</div>
+                                <div class="h2 font-weight-light">S/ @Model.totalString</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-success" role="alert">
+            Este pedido ya fue cancelado!
+        </div>
+        <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="https://hugorocaproyectos.js.org">hugorocaproyectos.js.org</a></div>
+    </div>
+</body>
+</html>

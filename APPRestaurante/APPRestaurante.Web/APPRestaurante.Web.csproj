@@ -271,6 +271,7 @@
     <Content Include="Areas\Admin\Views\Cobranza\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Cobranza\Editar.cshtml" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Areas\Admin\Views\Cobranza\PDF.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

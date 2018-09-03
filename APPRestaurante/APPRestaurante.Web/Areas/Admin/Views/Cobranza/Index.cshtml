@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     var urlEditar = Url.Action("Editar", "Cobranza");
+    var urlPDF = Url.Action("ExportaraPDF", "Cobranza");
 }
 
 <div class="row">
@@ -27,7 +28,7 @@
                             <td class="text-center">
                                 @if (item.estado == 2)
                                 {
-                                    <a class="btn btn-info btn-xs" href="javascript:;"><i class="fa fa-print"></i> Imprimir</a>
+                                    <a class="btn btn-info btn-xs" href="@urlPDF/@item.id" target="_blank"><i class="fa fa-print"></i> Imprimir</a>
                                 }
                                 else
                                 {

@@ -70,5 +70,35 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
             pedido.idUsuario = SessionHelper.GetUser();
             return Json(_unit.Pedido.Update(pedido));
         }
+
+        public ActionResult ExportaraPDF(int id = 0)
+        {
+            var url = "PDF/" + id;
+            return new Rotativa.MVC.ActionAsPdf(url);
+        }
+
+        public ActionResult PDF(int id = 0)
+        {
+            var result = new CobranzaModel();
+            if (id > 0)
+            {
+                var pedido = _unit.Pedido.GetEntitybyId(id);
+
+                result.cobranzaDetalles = _unit.Pedido.detalleCobranzaResults(pedido.id);
+                result.fecha = pedido.fecha;
+                result.fechaString = String.Format("{0:MM/dd/yyyy}", pedido.fecha);
+                result.id = pedido.id;
+                result.idEmpleado = pedido.idEmpleado;
+                result.idUsuario = pedido.idUsuario;
+                result.mesa = pedido.mesa;
+                result.mesaString = "Mesa " + pedido.mesa;
+                result.nombres = pedido.nombres;
+                result.tipoPago = pedido.tipoPago;
+                result.total = pedido.total;
+                result.totalString = string.Format("{0:#,##0.00}", pedido.total);
+                result.estado = pedido.estado;
+            }
+            return View(result);
+        }
     }
 }
