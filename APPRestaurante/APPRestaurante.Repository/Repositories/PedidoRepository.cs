@@ -20,6 +20,14 @@ namespace APPRestaurante.Repository.Repositories
             }
         }
 
+        public IEnumerable<Pedido> lista()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Query<Pedido>("select * from pedido order by 2 desc");
+            }
+        }
+
         public bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items)
         {
             using (var connection = new SqlConnection(_connectionString))

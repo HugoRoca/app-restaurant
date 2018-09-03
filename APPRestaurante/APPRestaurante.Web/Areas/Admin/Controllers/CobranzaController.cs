@@ -21,7 +21,7 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
         // GET: Admin/Cobranza
         public ActionResult Index()
         {
-            var listaPedido = _unit.Pedido.GetAll().ToList();
+            var listaPedido = _unit.Pedido.lista().ToList();
             var result = new List<PedidoModel>();
 
             foreach (var item in listaPedido)

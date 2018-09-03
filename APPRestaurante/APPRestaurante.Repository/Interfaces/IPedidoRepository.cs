@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace APPRestaurante.Repository.Interfaces
 {
-    public interface IPedidoRepository: IRepository<Pedido>
+    public interface IPedidoRepository : IRepository<Pedido>
     {
+        IEnumerable<Pedido> lista();
         bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items);
         IEnumerable<DetalleCobranzaResult> detalleCobranzaResults(int id);
     }
