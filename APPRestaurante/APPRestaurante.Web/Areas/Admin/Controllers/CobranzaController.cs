@@ -32,7 +32,8 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                     tipoPago = item.tipoPago,
                     mesa = item.mesa,
                     total = string.Format("{0:#,##0.00}", item.total),
-                    estado = item.estado
+                    estado = item.estado,
+                    nombres = item.nombres
                 });
             }
 
@@ -50,8 +51,8 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 result.fecha = pedido.fecha;
                 result.fechaString = String.Format("{0:MM/dd/yyyy}", pedido.fecha);
                 result.id = pedido.id;
-                result.idEmpleado = SessionHelper.GetUser();
-                result.idUsuario = SessionHelper.GetUser();
+                result.idEmpleado = pedido.idEmpleado;
+                result.idUsuario = pedido.idUsuario;
                 result.mesa = pedido.mesa;
                 result.mesaString = "Mesa " + pedido.mesa;
                 result.nombres = pedido.nombres;
@@ -61,6 +62,13 @@ namespace APPRestaurante.Web.Areas.Admin.Controllers
                 result.estado = pedido.estado;
             }
             return View(result);
+        }
+
+        public JsonResult Insertar(Pedido pedido)
+        {
+            pedido.idEmpleado = SessionHelper.GetUser();
+            pedido.idUsuario = SessionHelper.GetUser();
+            return Json(_unit.Pedido.Update(pedido));
         }
     }
 }

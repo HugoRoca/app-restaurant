@@ -32,6 +32,10 @@
                                 <div class="input-group">
                                     <input class="form-control date-picker" name="Fecha" type="text" autocomplete="off" data-date-format="yyyy-mm-dd" value="@Model.fechaString" disabled />
                                     <input type="hidden" name="hdIdCobranza" value="@Model.id" />
+                                    <input type="hidden" name="hdFecha" value="@Model.fecha" />
+                                    <input type="hidden" name="hdTotal" value="@Model.total" />
+                                    <input type="hidden" name="hdMesa"value="@Model.mesa" />
+
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar bigger-110"></i>
                                     </span>
@@ -43,7 +47,7 @@
                             <label class="control-label col-xs-12 col-sm-3 no-padding-right">Nombres:</label>
                             <div class="col-xs-12 col-sm-9">
                                 <div class="clearfix">
-                                    <input type="text" name="Titulo" autocomplete="off" class="col-xs-12 col-sm-6" autofocus value="@Model.nombres" />
+                                    <input type="text" name="Nombres" autocomplete="off" class="col-xs-12 col-sm-6" autofocus value="@Model.nombres" />
                                 </div>
                             </div>
                         </div>
@@ -105,3 +109,12 @@
         </div>
     </div>
 </div>
+<script>
+    var cobroData = {
+        urlProvider: {
+            urlRegistro: '@Url.Action("Insertar", "Cobranza")',
+            urlPaginaLista: '@Url.Action("Index", "Cobranza")'
+        }
+    }
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Cobro/index.js")"></script>
