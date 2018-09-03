@@ -12,5 +12,7 @@ namespace APPRestaurante.Repository.Interfaces
         IEnumerable<Pedido> lista();
         bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items);
         IEnumerable<DetalleCobranzaResult> detalleCobranzaResults(int id);
+        IEnumerable<DetalleCobranzaResult> LoMasPedido();
+        IEnumerable<Pedido> PedidosPorFecha();
     }
 }

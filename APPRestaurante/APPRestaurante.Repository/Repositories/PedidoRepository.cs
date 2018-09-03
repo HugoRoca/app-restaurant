@@ -28,6 +28,24 @@ namespace APPRestaurante.Repository.Repositories
             }
         }
 
+        public IEnumerable<DetalleCobranzaResult> LoMasPedido()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Query<DetalleCobranzaResult>("Inicio_LoMasPedido_SP");
+            }
+        }
+
+        public IEnumerable<Pedido> PedidosPorFecha()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@fecha", DateTime.Now);
+                return connection.Query<Pedido>("Incio_ListaPedidos_SP", parameters, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
         public bool PedidoyDetallePedido(int mesa, IEnumerable<PedidoDetalle> items)
         {
             using (var connection = new SqlConnection(_connectionString))
